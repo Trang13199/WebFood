@@ -1,0 +1,129 @@
+﻿@* @using Project.Models *@
+@* @using Web_food.Models *@
+@* @model dynamic *@
+@* *@
+@* @{ *@
+@*     <link rel="stylesheet" href="~/Content/TKKH.css" xmlns="http://www.w3.org/1999/html" *@
+@*           xmlns="http://www.w3.org/1999/html"> *@
+@* } *@
+@* @{ *@
+@*     User u = (User) Session["username"]; *@
+@* } *@
+@* <div class="lzd-playground"> *@
+@*     <div class="lzd-playground-main"> *@
+@*     <div class="lzd-playground-nav"> *@
+@*         <div class="member-info"> *@
+@*             <p><span>Hello,&nbsp;</span><span id="lzd_current_logon_user_name">@u.userName</span></p> *@
+@*              *@
+@*              *@
+@*         </div> *@
+@*         <ul class="nav-container"> *@
+@*             <li class="item" id="Manage-My-Account"><a class="active" href="" data-spm="Manage-My-Account"><span>Manage My Account</span></a> *@
+@*                 <ul class="item-container"> *@
+@*                     <li id="My-profile" class="sub"><a href="" data-spm="My-profile">My Profile</a></li> *@
+@*                     <li id="Address-book" class="sub"><a href="" data-spm="Address-book">Address Book</a></li> *@
+@*                     <li id="Payment-methods" class="sub"><a href="" data-spm="Payment-methods">My Payment Options</a></li> *@
+@*                     <li id="Vouchers" class="sub"><a href="//my.lazada.vn/promotion/my-voucher" data-spm="Vouchers">Vouchers</a></li> *@
+@*                 </ul></li> *@
+@*             <li class="item" id="My-Orders"><a href="//my.lazada.vn/customer/order/index/" data-spm="My-Orders"><span>My Orders</span></a> *@
+@*                 <ul class="item-container"> *@
+@*                     <li id="Returns" class="sub"><a href="//my.lazada.vn/customer/returns/index?requestType=return" data-spm="Returns">My Returns</a></li> *@
+@*                     <li id="Cancellations" class="sub"><a href="//my.lazada.vn/customer/cancellations/index?requestType=cancel" data-spm="Cancellations">My Cancellations</a></li> *@
+@*                 </ul></li> *@
+@*             <li class="item" id="My-Reviews"><a href="//my.lazada.vn/customer/myReview/my-reviews" data-spm="My-Reviews"><span>My Reviews</span></a> *@
+@*                 <ul class="item-container"> *@
+@*                      *@
+@*                 </ul></li> *@
+@*             <li class="item" id="My-Wishlists"><a href="//my.lazada.vn/wishlist/index" data-spm="My-Wishlists"><span>My Wishlist &amp; Followed Stores</span></a> *@
+@*                 <ul class="item-container"> *@
+@*                      *@
+@*                 </ul></li> *@
+@*             <li class="item" id="Sell-On-Lazada"><a href="https://pages.lazada.vn/wow/i/vn/sell-on-lazada/register_now?hybrid=1" data-spm="Sell-On-Lazada"><span>Sell On Lazada</span></a> *@
+@*                 <ul class="item-container"> *@
+@*                      *@
+@*                 </ul></li> *@
+@*         </ul> *@
+@*     </div> *@
+@* *@
+@*     <div class="lzd-playground-right"> *@
+@*         <div class="breadcrumb" data-spm-anchor-id=""><a>Manage My Account</a></div> *@
+@*         <div id="container" class="container"><div class="dashboard" data-spm="1"> *@
+@*             <div class="dashboard-profile"> *@
+@*                 <div class="dashboard-mod-title">Personal Profile <span>|</span> <a data-spm="dprofile_edit" href="#/profile/edit">EDIT</a></div> *@
+@*                 <div class="dashboard-info"> *@
+@*                     <div class="dashboard-info-item">@u.userName</div> *@
+@*                     <div class="dashboard-info-item">@u.email</div> *@
+@*                     <div class="dashboard-info-item last"><a href="javascript:;">Subscribe to our Newsletter</a></div></div></div> *@
+@*             <div class="dashboard-address"> *@
+@*                 <div class="dashboard-address-item shipping"> *@
+@*                     <div class="dashboard-mod-title">Address Book <span>|</span> <a href="/address#/book" data-spm="dprofile_edit">EDIT</a></div> *@
+@*                     <div class="dashboard-address-default">DEFAULT SHIPPING ADDRESS</div> *@
+@*                     <div class="dashboard-address-username">@u.userName</div> *@
+@*                     $1$ <div class="dashboard-address-detail">151 Võ Văn Ngân</div> #1# *@
+@*                     <div class="dashboard-address-detail">@u.address</div> *@
+@*                     <div class="dashboard-address-phone">@u.phone</div></div> *@
+@*                 <div class="dashboard-address-item billing"> *@
+@*                     <div class="dashboard-mod-title">Address Book <span>|</span> <a data-spm="dprofile_edit" href="/address#/book">EDIT</a></div> *@
+@*                     <div class="dashboard-address-default">DEFAULT BILLING ADDRESS</div> *@
+@*                     <div class="dashboard-address-username">Trang Hoàng</div> *@
+@*                     <div class="dashboard-address-detail">151 Võ Văn Ngân</div> *@
+@*                     <div class="dashboard-address-detail">Hồ Chí Minh - Quận Thủ Đức - Phường Bình Thọ</div> *@
+@*                     <div class="dashboard-address-phone">(+84) 0343472530</div></div></div> *@
+@*             <div class="recent-orders" data-spm="recent-orders"> *@
+@*                 <div class="recent-orders-hd">Recent Orders</div> *@
+@*                 <div class="next-table only-bottom-border"> *@
+@*                     <div class="next-table-inner"> *@
+@*                         <div class="next-table-header"> *@
+@*                             <div class="next-table-header-inner"> *@
+@*                                 <table><colgroup><col style="width: 20%;"><col style="width: 20%;"><col style="width: 30%;"><col style="width: 20%;"><col style="width: 15%;"></colgroup> *@
+@*                                     <tbody> *@
+@*                                     <tr> *@
+@*                                         <th rowspan="1" class="next-table-header-node first"> *@
+@*                                             <div class="next-table-cell-wrapper">Order #</div></th> *@
+@*                                         <th rowspan="1" class="next-table-header-node"> *@
+@*                                             <div class="next-table-cell-wrapper">Placed On</div></th> *@
+@*                                         <th rowspan="1" class="next-table-header-node"> *@
+@*                                             <div class="next-table-cell-wrapper">Items</div></th> *@
+@*                                         <th rowspan="1" class="next-table-header-node" style="text-align: right;"> *@
+@*                                             <div class="next-table-cell-wrapper">Total</div></th> *@
+@*                                         <th rowspan="1" class="next-table-header-node last" style="text-align: right;"> *@
+@*                                             <div class="next-table-cell-wrapper"></div></th></tr></tbody></table></div></div> *@
+@*                         <div class="next-table-body"> *@
+@*                             <table><colgroup><col style="width: 20%;"><col style="width: 20%;"><col style="width: 30%;"><col style="width: 20%;"><col style="width: 15%;"></colgroup> *@
+@*                                 <tbody> *@
+@*                                 <tr class="next-table-row first"> *@
+@*                                     <td class="next-table-cell first"> *@
+@*                                         <div class="next-table-cell-wrapper">207601036432710</div></td> *@
+@*                                     <td class="next-table-cell"> *@
+@*                                         <div class="next-table-cell-wrapper">26/09/2018</div></td> *@
+@*                                     <td class="next-table-cell"> *@
+@*                                         <div class="next-table-cell-wrapper"> *@
+@*                                             <div> *@
+@*                                                 <div class="recent-item"><img src="https://vn-live-02.slatic.net/original/325abcb4b48c7be5aa466aa45f71e1d7.jpg" title="Áo khoác hoodie nữ chữ nhật siêu đẹp KG60"></div> *@
+@*                                                 <div class="recent-item"><img src="https://vn-live-02.slatic.net/original/07437becd97f2f299dfdb3a1bdb5ab9e.jpg" title="Áo khoác nam nữ hoodie dễ thương"></div></div></div></td> *@
+@*                                     <td class="next-table-cell" style="text-align: right;"> *@
+@*                                         <div class="next-table-cell-wrapper">₫ 131,000</div></td> *@
+@*                                     <td class="next-table-cell last" style="text-align: right;"> *@
+@*                                         <div class="next-table-cell-wrapper"><a href="https://my.lazada.vn/customer/order/view/?tradeOrderId=207601036432710" class="manage-order">MANAGE</a></div></td></tr> *@
+@*                                 <tr class="next-table-row last"> *@
+@*                                     <td class="next-table-cell first"> *@
+@*                                         <div class="next-table-cell-wrapper">207638379532710</div></td> *@
+@*                                     <td class="next-table-cell"> *@
+@*                                         <div class="next-table-cell-wrapper">24/09/2018</div></td> *@
+@*                                     <td class="next-table-cell"> *@
+@*                                         <div class="next-table-cell-wrapper"> *@
+@*                                             <div> *@
+@*                                                 <div class="recent-item"><img src="https://vn-live-02.slatic.net/original/7af1b26a4cb22c3c72704babfa64f0da.jpg" title="Áo hoodie nữ thêu chữ nhật bản siêu cá tính (AH101)"></div> *@
+@*                                                 <div class="recent-item"><img src="https://vn-live-02.slatic.net/original/07437becd97f2f299dfdb3a1bdb5ab9e.jpg" title="Áo khoác nam nữ hoodie dễ thương"></div></div></div></td> *@
+@*                                     <td class="next-table-cell" style="text-align: right;"> *@
+@*                                         <div class="next-table-cell-wrapper">₫ 141,000</div></td> *@
+@*                                     <td class="next-table-cell last" style="text-align: right;"> *@
+@*                                         <div class="next-table-cell-wrapper"><a href="https://my.lazada.vn/customer/order/view/?tradeOrderId=207638379532710" class="manage-order">MANAGE</a></div></td></tr></tbody></table></div></div></div></div> *@
+@*         </div></div> *@
+@*     </div> *@
+@* *@
+@* </div> *@
+@* *@
+@* *@
+@* *@
+@* </div> *@

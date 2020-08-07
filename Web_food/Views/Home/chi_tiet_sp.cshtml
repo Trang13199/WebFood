@@ -1,0 +1,188 @@
+﻿@using Project.Models
+@using Web_food.Models
+@model dynamic
+@{
+    List<Product> products = ViewBag.ct;
+}
+
+<nav class="pull-left row  col-lg-3">
+    <div class="list-group col-sm-12" style="margin-top: 30px">
+        <a href="#" class="list-group-item list-group-item-danger active">
+            CHÍNH SÁCH BÁN HÀNG
+        </a>
+        <a class="list-group-item list-group-item-action">
+            <ol>
+                <li>Giao hàng TOÀN QUỐC</li>
+                <li>Thanh toán khi nhận hàng</li>
+                <li>Hoàn ngay tiền mặt</li>
+                <li>Chất lượng đảm bảo</li>
+                <li>Miễn phí vận chuyển:<span>Đơn hàng từ 3 món trở lên</span></li>
+            </ol>
+        </a>
+    </div>
+    <div class="list-group col-sm-12" style="margin-top: 30px">
+        <a href="#" class="list-group-item list-group-item-danger active">
+            TIN TỨC
+        </a>
+        <div class="row no-gutters " style="border: 1px solid lightgrey">
+            <div class="col-md-6" style="height: 50%;">
+                <img src="~/Content/image/comchien.jpg" class="card-img" alt="...">
+            </div>
+            <div class="col-md-6" style="height: 50%;">
+                <div class="card-body">
+                    <p class="card-title">Khuyến mãi thứ 2 đầu tiên của tháng
+                    </p>
+                </div>
+            </div>
+            <p class="" style="margin-top: 15px">Tặng thêm một phần khi mua 2 phần
+            </p>
+        </div>
+        <div class="row no-gutters " style="border: 1px solid lightgrey">
+                    <div class="col-md-6" style="height: 50%;">
+                        <img src="~/Content/image/comchien.jpg" class="card-img" alt="...">
+                    </div>
+                    <div class="col-md-6" style="height: 50%;">
+                        <div class="card-body">
+                            <p class="card-title">Khuyến mãi thứ 2 đầu tiên của tháng
+                            </p>
+                        </div>
+                    </div>
+                    <p class="" style="margin-top: 15px">Tặng thêm một phần khi mua 2 phần
+                    </p>
+        </div>
+    </div>
+</nav>
+
+<div class="main">
+    <div class="card mb-8" style="max-width: 100%;">
+        <div class="row no-gutters">
+            @{
+                foreach (var p in products)
+                {
+            <div class="col-md-6">
+                <img src="~/Content/image/@p.Images" class="card-img" alt="..." style="margin: 20px">
+            </div>
+
+                <div class="col-md-6">
+                    <div class="card-body" style="text-align: left; padding-left: 50px">
+                        <h3 class="card-title">@p.Name
+                        </h3>
+                        <h3 class="card-title">Giá: @p.Price VNĐ</h3>
+                        <h3 class="card-title">Mã SP: @p.Id
+                        </h3>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        <div class="btn-group">
+                            <!--                <button type="button" class="btn btn-light">Light</button>-->
+                            <select class="custom-select" style="width: 60px; margin-right: 40px">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                            <a href="@Url.Action("gio_hang", "Home")" style="width: 150px;">
+                                <button class="btn btn-lg btn-primary btn-block ">
+                                    <i class="fa fa-shopping-cart"></i>Giỏ hàng
+                                </button></a>
+                            <a href="@Url.Action("gio_hang", "Home")" style="margin-left: 15px; width: 150px;">
+                                <button class="btn btn-lg btn-danger btn-block " style="height: 50px;
+                            margin-top: 0px;"><i class="fas fa-check"></i>Mua ngay</button></a>
+                        </div>
+                    </div>
+                </div>
+                }
+            }
+        </div>
+    </div>
+<div id="home1" class="container tab-pane fade active show">
+    <div class="contan">
+        <ul class=" nav nav-tabs" role="tablist">
+            <li class="nav-item items">
+                <a class="nav-link active" data-toggle="tab"
+                   href="#mota">Mô tả</a>
+            </li>
+            <li class="nav-item items">
+                <a class="nav-link" data-toggle="tab"
+                   href="#danhgia">Đánh giá</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div id="mota" class="container tab-pane fade active show">
+                 @{
+                     foreach (var p in products)
+                     {
+                         <div class="card">
+                             <div class="card-body">
+                                 <h5 class="card-title">@p.Name
+                                 </h5>
+                                 <p class="card-text">@p.Content</p>
+                             </div>
+                             <img src="~/Content/image/@p.Images" class="card-img-top" alt="...">
+                         </div>
+                     }
+                 }
+                     </div>
+            <div id="danhgia" class="container tab-pane fade">
+                <div class="card">
+                <div class="group1">
+                    <div class="option-group1">
+                        <h4>Điểm đánh giá của bạn</h4>
+                        <div class="input-info" >
+                            <input type="radio" name="gender" value="1" id="1"/>
+                            <label for="1"><i class="far fa-star"></i></label>
+                            <input type="radio" name="gender" value="2" id="2"/>
+                            <label for="2"><i class="far fa-star"></i><i class="far fa-star"></i></label>
+                            <input type="radio" name="gender" value="1" id="3"/>
+                            <label for="3"><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></label>
+                            <input type="radio" name="gender" value="2" id="4"/>
+                            <label for="4"><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></label>
+                            <input type="radio" name="gender" value="1" id="5"/>
+                            <label for="5"><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="group2">
+                    <div class="col-md-12 col-md-offset-2 col-xs-12 col-sm-12 col-xs-offset-0 col-sm-offset-0">
+                        <form class="form-horizontal " ng-submit="register()" style="color: black">
+                            <h4><span></span></h4>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Ý kiến đánh giá của bạn</label>
+                                <div class="col-sm-9">
+                                    <textarea type="text" class="form-control" ng-model="Code" required="true" style="height: 150px;" ></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Tên</label>
+                                <div class="col-sm-9">
+                                    <input type="email" class="form-control" ng-model="Email" required="true" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Email</label>
+                                <div class="col-sm-9">
+                                    <input type="password" class="form-control" ng-model="Password" required="true" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-4 col-sm-8">
+                                    <button type="submit" class="btn btn-primary">Đánh giá</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <hr class="featurette-divider">
+</div>
+
+
+ 
