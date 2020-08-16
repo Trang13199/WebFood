@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -6,15 +7,26 @@ using System.Web;
 using System.Web.Mvc;
 using MySql.Data.MySqlClient;
 using PagedList;
+=======
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
+using System.Web.UI.WebControls;
+>>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
 using Project.Models;
 using Web_food.DAO;
 using Web_food.EditModel;
 using Web_food.Models;
+<<<<<<< HEAD
+=======
+using Login = Web_food.DAO.Login;
+
+>>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
 
 namespace Web_food.Controllers
 {
     public class HomeController : Controller
     {
+<<<<<<< HEAD
         // public HomeController()
         // {
         //     this.lever = 1;
@@ -24,6 +36,13 @@ namespace Web_food.Controllers
         {
             List<Product> list = ListProduct.Product(type);
             // ViewBag.list = list;
+=======
+        public int lever = 3;
+        public ActionResult Index(int? type)
+        {
+            List<Product> list = ListProduct.Product(type);
+            ViewBag.list = list;
+>>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
             List<ProductType> types = ListProduct.getType();
             ViewBag.type = types;
             if (type == null)
@@ -31,7 +50,11 @@ namespace Web_food.Controllers
              list = ListProduct.showProduct();
             }
 
+<<<<<<< HEAD
             return View(list);
+=======
+            return View();
+>>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
         }
         public ActionResult dang_nhap()
         {
@@ -52,9 +75,14 @@ namespace Web_food.Controllers
                 ViewBag.error = "Sai tên đăng nhập hoặc mật khẩu";
                 return View();
             }
+<<<<<<< HEAD
         
         }
 
+=======
+
+        }
+>>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
         public ActionResult Logout() {
             Session.Remove("username");
             return Redirect("/");
@@ -68,16 +96,27 @@ namespace Web_food.Controllers
         public ActionResult dang_ky(EditModelRegister register)
         {
             Register r = new Register();
+<<<<<<< HEAD
             r.doRegister(register.Username, register.Password, register.Email,register.Phone, register.Address);
+=======
+            r.doRegister(register.Username, register.Password, register.Email,register.Phone);
+>>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
             
             return RedirectToAction("dang_nhap","Home");
         }
         
+<<<<<<< HEAD
         public ActionResult san_pham(int? type, int? page)
         {
             List<Product> list = ListProduct.Product(type);
             ViewBag.list = list;
             
+=======
+        public ActionResult san_pham(int? type, int? pages)
+        {
+            List<Product> list = ListProduct.Product(type);
+            ViewBag.list = list;
+>>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
             List<ProductType> types = ListProduct.getType();
             ViewBag.type = types;
             if (type == null)
@@ -86,6 +125,7 @@ namespace Web_food.Controllers
                 ViewBag.list = list;
             }
 
+<<<<<<< HEAD
             if (page == null && type == null) page = 1;
             List<Product> pages = ListProduct.getPage(page);
             
@@ -112,12 +152,26 @@ namespace Web_food.Controllers
                 list = ListProduct.showProduct();
                 ViewBag.list = list;
             }
+=======
+            // if (pages == null) pages = 1;
+            //     List<Product> page = ListProduct.getPage(pages);
+            //
+            //     int pageSize = 5;
+            //     int pageNumber = (pages ?? 1);
+            //
+            // ViewBag.page = page.ToPagedList(pageNumber, pageSize);
+
+>>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
             return View();
         }
         public ActionResult gio_hang()
         {
+<<<<<<< HEAD
             List<CartItem> giohang = Session["giohang"] as List<CartItem>;
             return View(giohang);
+=======
+            return View();
+>>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
         }
 
         public ActionResult thanh_toan()
@@ -168,6 +222,7 @@ namespace Web_food.Controllers
             ViewBag.pro = list;
             return View();
         }
+<<<<<<< HEAD
         
         
         
@@ -233,5 +288,7 @@ namespace Web_food.Controllers
         }
 
 
+=======
+>>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
     }
 }

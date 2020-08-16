@@ -54,6 +54,7 @@
                             </td>
                             <td>@product.Price</td>
                             <td>
+<<<<<<< HEAD
                                 <a href="@Url.Action("chinh_sua_sp","Admin",new{id = @product.Id})"><button data-toggle="tooltip" title="Edit" class="pd-setting-ed">
                                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                     </button>
@@ -63,6 +64,18 @@
                                         <i class="fa fa-trash-o" aria-hidden="true"></i>
                                     </button>
                                     </a>
+=======
+                                <a href="@Url.Action("chinh_sua_sp", "Admin")">
+                                    <button data-toggle="tooltip" title="" class="pd-setting-ed" data-original-title="Edit">
+                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                    </button>
+                                </a>
+                                <a href="@Url.Action("xoa_sp", "Admin")">
+                                    <button data-toggle="tooltip" title="" class="pd-setting-ed" data-original-title="Trash">
+                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                    </button>
+                                </a>
+>>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
                             </td>
                         </tr>
                     }

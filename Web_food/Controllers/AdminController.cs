@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+<<<<<<< HEAD
 using System.Data;
+=======
+>>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
 using System.Web.Mvc;
 using Project.Models;
 using Web_food.DAO;
@@ -10,6 +13,7 @@ using Web_food.Models;
 namespace Web_food.Controllers
 {
     public class AdminController : Controller
+<<<<<<< HEAD
     {
         // public AdminController()
         // {
@@ -74,6 +78,24 @@ namespace Web_food.Controllers
             dao.delete(id);
             return RedirectToAction("danh_sach_sp", "Admin");
         }
+=======
+    { // GET
+        public ActionResult gio_hang()
+        {
+            return View();
+        }
+
+        public ActionResult them_gio_hang()
+        {
+            return View();
+        }
+
+        public ActionResult them_sp()
+        {
+            return View();
+        }
+
+>>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
         public ActionResult chi_tiet_sp()
         {
             return View();
@@ -93,9 +115,30 @@ namespace Web_food.Controllers
         {
             return View();
         }
+<<<<<<< HEAD
         public ActionResult Index()
 
         {
+=======
+
+        public ActionResult chinh_sua_sp()
+        {
+            return View();
+        }
+
+        public ActionResult xoa_sp()
+        {
+            return RedirectToAction("danh_sach_sp", "Admin");
+        }
+
+        public ActionResult Index()
+
+        {
+            // DaoRegister re = new DaoRegister();
+            // bool a = false;
+            // a = re.doRegister("aac", "ad", "ahhaa@gmail.com");
+            // Console.Write(a);
+>>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
             return View();
         }
 
@@ -142,6 +185,16 @@ namespace Web_food.Controllers
         {
             return View();
         }
+<<<<<<< HEAD
+=======
+
+        public ActionResult danh_sach_sp()
+        {
+            List<Product> listProduct = DAOProduct.getListProducts();
+            return View(listProduct);
+        }
+
+>>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
         public ActionResult Login()
         {
             // DBConnection conn = new DBConnection();
@@ -167,6 +220,7 @@ namespace Web_food.Controllers
                 return View();
             }
         }
+<<<<<<< HEAD
         public ActionResult gio_hang()
         {
             return View();
@@ -176,5 +230,7 @@ namespace Web_food.Controllers
         {
             return View();
         }
+=======
+>>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
     }
 }

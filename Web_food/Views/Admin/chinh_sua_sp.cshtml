@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 ﻿@using System.Data
 ﻿@model dynamic
+=======
+﻿﻿@model dynamic
+>>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
 
 @{
     ViewBag.Title = "title";
@@ -7,7 +11,12 @@
 
 
 <div class="all-content-wrapper">
+<<<<<<< HEAD
 <!-- Single pro tab start-->
+=======
+   
+            <!-- Single pro tab start-->
+>>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
             <div class="single-product-tab-area mg-b-30">
                 <!-- Single pro tab review Start-->
                 <div class="single-pro-review-area">
@@ -31,6 +40,7 @@
                                             <div class="row">
     
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<<<<<<< HEAD
                                                     @{
                                                         foreach (DataRow dr in ViewBag.updateSP.Rows)
                                                         {
@@ -118,6 +128,67 @@
                                                     }
                                                 </div>
                                                 </div>
+=======
+    
+                                                    <form method="post" >
+                                                        <input type="hidden" name="id"
+                                                               value="">
+                                                        <div class="review-content-section">
+    
+                                                            <div class="input-group mg-b-pro-edt">
+                                                            <span class="input-group-addon"><i class="icon nalika-user"
+                                                                                               aria-hidden="true"></i></span>
+                                                                <input type="text" class="form-control" name="image"
+                                                                       placeholder="Tên"
+                                                                       value="">
+                                                            </div>
+                                                            <div class="input-group mg-b-pro-edt">
+                                                            <span class="input-group-addon"><i class="icon nalika-edit"
+                                                                                               aria-hidden="true"></i></span>
+                                                                <input type="text" name="name" class="form-control"
+                                                                       placeholder="name"
+                                                                       value="">
+                                                            </div>
+                                                            <div class="input-group mg-b-pro-edt">
+                                                            <span class="input-group-addon"><i class="fa fa-usd"
+                                                                                               aria-hidden="true"></i></span>
+                                                                <input type="text" class="form-control" name="price"
+                                                                       placeholder="price"
+                                                                       value="">
+                                                            </div>
+                                                            <div class="input-group mg-b-pro-edt">
+                                                            <span class="input-group-addon"><i class="icon nalika-favorites"
+                                                                                               aria-hidden="true"></i></span>
+                                                                <input type="text" class="form-control" name="type"
+                                                                       placeholder="type"
+                                                                       value="">
+                                                            </div>
+                                                        </div>
+    
+    
+                                                        <div class="row">
+                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                <div class="text-center custom-pro-edt-ds">
+                                                                    <a href="">
+                                                                        <button type="submit"
+                                                                                class="btn btn-ctl-bt waves-effect waves-light m-r-10">
+                                                                            Lưu
+                                                                        </button>
+                                                                    </a>
+                                                                    <button type="button"
+                                                                            class="btn btn-ctl-bt waves-effect waves-light">
+                                                                        Hủy
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+    
+                                                </div>
+    
+                                             
+                                            </div>
+>>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
                                             
                                         </div>
                                         <div class="product-tab-list tab-pane fade" id="reviews">

@@ -1,0 +1,96 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "Dang ky";
+}
+
+<main role="main">
+    <div class="col">
+        <button class="bg-danger">ĐĂNG KÝ TÀI KHOẢN</button>
+    </div>
+<div class="col-md-8 col-md-offset-2 col-xs-12 col-sm-12 col-xs-offset-0 col-sm-offset-0">
+    <form class="form-horizontal " ng-submit="register()" method="post" action="@Url.Action("dang_ky","Home")">
+        <h2><span>Thông tin tài khoản</span></h2>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Tài khoản<span class="warning">(*)</span></label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" ng-model="Code" required="true" name="username"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Email<span class="warning">(*)</span></label>
+            <div class="col-sm-9">
+                <input type="email" class="form-control" ng-model="Email" required="true" name="email"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Mật khẩu<span class="warning">(*)</span></label>
+            <div class="col-sm-9">
+                <input type="password" class="form-control" ng-model="Password" required="true" name="password" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Nhập lại mật khẩu<span class="warning">(*)</span></label>
+            <div class="col-sm-9">
+                <input type="password" class="form-control" ng-model="RePassword" />
+            </div>
+        </div>
+        <h2>Thông tin cá nhân</h2>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Họ tên<span class="warning">(*)</span></label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" ng-model="Name" required="true" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Giới tính</label>
+            <div class="col-sm-9" style="text-align: center">
+                <input type="radio" name="radio-1" id="radio-1"> NAM
+                <input type="radio" name="radio-1" id="radio-2"> Nữ
+            </div>
+        </div>
+        <div class="form-group form-inline">
+            <label class="col-sm-3 control-label">Ngày sinh</label>
+            <div class="col-sm-9">
+                <select class="col-md-4 form-control" ng-model="SelectedDay" ng-options="label for label in Days | limitTo:NumberOfDays" placeholder="Ngày"></select>
+                <select class="col-md-4 form-control" ng-model="SelectedMonth" ng-options="label for label in Months" ng-change="UpdateNumberOfDays()" placeholder="Tháng"></select>
+                <select class="col-md-4 form-control" ng-model="SelectedYear" ng-options="label for label in Years" ng-change="UpdateNumberOfDays()" placeholder="Năm"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Điện thoại</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" ng-model="Phone" name="phone"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Tỉnh/TP</label>
+            <div class="col-sm-9">
+                <select class="form-control" ng-model="ProvinceId"
+                        ng-options="item.Id as item.Name for item in Provinces" ng-change="getDistricts(ProvinceId)"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Quận/Huyện</label>
+            <div class="col-sm-9">
+                <select class="form-control" ng-model="DistrictId"
+                        ng-options="item.Id as item.Name for item in Districts"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Địa chỉ</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" ng-model="Address" name="address" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-8">
+                <button type="submit" class="btn btn-primary">Đăng ký</button>
+            </div>
+        </div>
+    </form>
+</div>
+</main>
+<hr class="featurette-divider">
+

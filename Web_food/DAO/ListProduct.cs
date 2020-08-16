@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+<<<<<<< HEAD
 using System.Linq;
+=======
+>>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
 using MySql.Data.MySqlClient;
 using Project.Models;
 using Web_food.DAO;
@@ -95,7 +98,11 @@ namespace Web_food.DAO
             conn.Open();
             // string sqlsp = "SELECT id, image, `name`, price, content FROM `product_detail` WHERE active=1 limit @page,9";
             string sqlsp =
+<<<<<<< HEAD
                 "  SELECT id, image, `name`, price, content FROM `products` WHERE active=1 ORDER BY id ";
+=======
+                "  SELECT id, image, `name`, price, content FROM `products` WHERE active=1 ORDER BY id";
+>>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
             MySqlCommand  sqlCommand = new MySqlCommand(sqlsp);
             sqlCommand.Connection = conn;
             sqlCommand.Parameters.AddWithValue("@page",page);
@@ -117,6 +124,7 @@ namespace Web_food.DAO
             }
             return products;
         }
+<<<<<<< HEAD
         
         
         
@@ -147,5 +155,7 @@ namespace Web_food.DAO
             }
             return products;
         }
+=======
+>>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
     }
 }

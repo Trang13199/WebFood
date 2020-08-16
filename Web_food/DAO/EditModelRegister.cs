@@ -6,6 +6,7 @@
         private string password;
         private string email;
         private string phone;
+<<<<<<< HEAD
         private string address;
 
         public string Address
@@ -13,6 +14,8 @@
             get => address;
             set => address = value;
         }
+=======
+>>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
 
         public string Username
         {
