@@ -1,0 +1,54 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "title";
+}
+
+<div class="container marketing">
+    <div class="payment-order clearfix">
+        <h3>Mã đơn hàng của bạn: <b>#100000055</b></h3>
+        <p><b>Ngày đặt:</b> <i>10/11/2019</i></p>
+        <p><b>Phương thức thanh toán:</b> <i></i></p>
+        <h5>Thông tin đơn hàng</h5>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>STT</th>
+                <th>Sản phâm</th>
+                <th>Đơn giá</th>
+                <th>Số lượng</th>
+                <th>Thành tiền</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td>
+                    <span> Cơm sườn</span>
+<!--                    <p class="note"></p>-->
+                </td>
+                <td>25.000</td>
+                <td>1</td>
+                <td>25.000đ</td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="4" class="text-right label-payment"><b>Tổng thanh toán:</b></td>
+                <td class="total-payment">25.000 đ</td>
+            </tr>
+            </tfoot>
+        </table>
+        <span class="print-order"><a href="#"><i class="fa fa-print"></i>In đơn hàng</a></span>
+    </div>
+    <div class="clearfix col-md-12">
+        <div class="button text-right">
+            <a class="btn btn-default btn-danger" @Html.ActionLink("Tiếp tục mua hàng","san_pham","Home")></a>
+            <a class="btn btn-primary" href="../Web/gio_hang.cshtml">Đơn hàng của tôi</a>
+        </div>
+    </div>
+    <hr class="featurette-divider">
+
+
+</div><!-- /.container -->
+

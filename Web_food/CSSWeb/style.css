@@ -1,0 +1,102 @@
+*{ outline: none;
+    list-style: none;
+
+}
+h1.title span {
+    background: #ff363f none repeat scroll 0 0;
+    color: #fff;
+    display: inline-block;
+    font-size: 17px;
+    padding: 7px 12px;
+    position: relative;
+    text-transform: uppercase;
+}
+
+/*START-CSS:OPEN CART CONTENT
+==================================================================================================================*/
+.steps {
+    margin-bottom: 30px;
+    text-align: center;
+    width: 80%;
+    margin: auto;
+}
+.steps li {
+    margin-bottom: 5px;
+    float: left;
+    text-align: center;
+    font-size: 13px;
+    border-bottom: 2px solid #aaaaaa;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    position: relative;
+    font-weight: bold;
+}
+.steps li span {
+    display: block;
+    color: #aaaaaa;
+    padding: 5px 0;
+}
+.steps li span i {
+    font-size: 20px;
+}
+.steps li span.step-number {
+    display: block;
+    text-align: center;
+    left: 0;
+    position: absolute;
+    font-weight: bold;
+    width: 100%;
+}
+.steps li span.step-number a {
+    padding: 3px 7px;
+    background-color: #d0d0d0;
+    border: 1px solid #aaaaaa;
+    color: #ffffff;
+    border-radius: 20px;
+}
+.steps li:last-child {
+    border-right: none;
+}
+.steps li.active {
+    border-bottom-color: #2855a5;
+}
+.steps li.active span {
+    color: #2855a5;
+}
+.steps li.active span.step-number a {
+    border-color: #2855a5;
+    color: #ffffff;
+    background-color: #2855a5;
+}
+h4{
+    color: white;
+    background: #3687ffd1;
+    text-align: left;
+padding-top: 10px;
+   padding-bottom: 10px;
+}
+/*============================================================================*!*/
+/*============================================================================*/
+.payment-content {
+    margin-bottom: 15px;
+}
+
+p{
+    width: 50%;
+    float: left;
+    clear: left;
+}
+.payment-order {
+    position: relative;
+    line-height: 30px;
+    padding: 40px;
+    margin-bottom: 15px;
+    border: 1px solid #dddddd;
+}
+.payment-order h5 {
+    font-size: 16px;
+    color: #d74b33;
+    margin-bottom: 5px;
+    float: left;
+    width: 100%;
+}

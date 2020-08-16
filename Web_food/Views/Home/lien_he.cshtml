@@ -1,0 +1,54 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "title";
+}
+<div class="container marketing">
+    <div class="col">
+        <button class="" style=" background: #ff363f">THÔNG TIN LIÊN HỆ</button>
+    </div>
+        <div class="description" style="margin-bottom: 30px">
+            Xin vui lòng điền các yêu cầu vào mẫu dưới đây và gửi cho chúng tôi. Chúng tôi
+            sẽ trả lời bạn ngay sau khi nhận được. Xin chân thành cảm ơn!
+        </div>
+        <div class="row">
+            <div class=" col-sm-9 col-xs-9" style="box-sizing: border-box;
+    margin-top: 30px;
+    padding: 15px;
+    border: 1px solid #dadad996;
+    border-radius: 10px;
+    background: #dadad996; margin: auto;
+                 height: 500px;">
+                    <form >
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">First Name</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" ng-model="Code" name="First Name" placeholder="Your name..." required="true"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Last Name</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" ng-model="Email" name="Last Name" placeholder="Your last name..." required="true"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Country</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" ng-model="Password" name="Country" placeholder="Viêt Nam" required="true"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Subject<span class="warning" style="color: red"> </span></label>
+                            <div class="col-sm-12">
+                                <textarea  class="form-control" ng-model="" style="height: 200px;" placeholder="Write something..."></textarea>
+                            </div>
+                        </div>
+                    </form>
+            </div>
+        </div>
+<!--End-->
+    <hr class="featurette-divider">
+
+
+</div><!-- /.container -->

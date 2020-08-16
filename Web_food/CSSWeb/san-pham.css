@@ -1,0 +1,69 @@
+/*TRANG SAN PHAM*/
+.pull-left .row ul{
+
+}
+.pull-left .row ul li{
+    border-bottom: 1px dotted darkred;
+}
+.pull-left .row ul .active{
+    background:  #cccccb;
+}
+.pull-left .row ul li:hover{
+    background: #cccccb;
+}
+.pull-left .row ul li a{
+    color: #2855a5;
+    margin-left: 30px;
+}
+
+
+/*THONG TIN CHI TIET SAN PHAM*/
+
+#danhgia{
+    height: 500px;
+}
+.group1{
+    width: 100%;
+    height: 30%;
+    padding: 30px;
+}
+.option-group1 {
+    width: 100%;
+    float: left;
+    padding-right: 0;
+}
+.option-group1 .input-info{
+    margin-bottom: 1em;
+    display: flex;
+    /*width: 50%;*/
+}
+.option-group1 input{
+    display: none;
+}
+.option-group1 label{
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+    float: left;
+    background: #f9f9f9;
+    border: 1px solid #e5e5e5;
+    /*height: 100%;*/
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: #757575;
+    border-radius: 5px;
+}
+.option-group1 .input-info:active{
+    /*background: #2cd348;*/
+}
+input[type="radio"]:checked + label,
+input:checked + label:before,
+select:focus,
+select:active {
+    background-color: #ff363f;
+    color: #fff;
+}
+.custom-pagination .active{
+    background: #1e7e34;
+}

@@ -1,0 +1,203 @@
+﻿﻿@using System.Web.UI.WebControls
+@using Project.Models
+@using Web_food.Models
+@{
+    User u = (User) Session["username"];
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>Pa-tê ER Food</title>
+    <link rel="stylesheet" href="~/CSSWeb/carousel.css">
+    <link rel="stylesheet" href="~/CSSWeb/bootstrap-4.3.1-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="~/CSSWeb/bootstrap-4.3.1-dist/css/bootstrap-grid.css">
+    <link rel="stylesheet" href="~/CSSWeb/bootstrap-4.3.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/CSSWeb/fontawesome-free-5.11.2-web/css/all.css">
+    <link rel="stylesheet" href="~/CSSWeb/san-pham.css">
+    <link rel="stylesheet" href="~/CSSWeb/dangnhap.css">
+</head>
+
+<body>
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark top bg-danger">
+        <div class="col-md-12">
+            <ul class="nav navbar-nav topmenu-contact pull-left hidden-sm hidden-xs">
+                <li><i class="fa fa-phone"></i> <span>Hotline:0908770095</span></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right topmenu  hidden-xs hidden-sm">
+                @* <li class="admin"> <a href="admin.html"><i class="fa fa-user"></i> Admin</a></li> *@
+                @if(u!= null){
+                    <div class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                           Xin chào: @u.userName
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                            <button class="dropdown-item" type="button" ><i class="far fa-smile-beam"></i>
+                                                            <a href="@Url.Action("TKKH", "Home")" style="color:black;">Quản lý tài khoản của tôi</a></button>
+                            <button class="dropdown-item" type="button" ><i class="fas fa-box"></i>
+                                                            <a href="@Url.Action("Logout", "Home")" style="color:black;">Đơn hàng của tôi</a></button>
+                            <button class="dropdown-item" type="button" ><i class="fas fa-sign-out-alt"></i>
+                                <a href="@Url.Action("Logout", "Home")" style="color:black;">Đăng xuất</a></button>
+                        </div>
+                    </div>
+@*                     <li class="account-login"><a href="@Url.Action("dang_nhap", "Home")">Xin chào: @u.userName</a></li> *@
+                }
+                @if (u == null)
+                {
+                    <li class="account-login"> <i class="fas fa-sign-in-alt"></i>@Html.ActionLink(" Đăng nhập", "dang_nhap", "Home")</li>
+                    <li class="account-register"><i class="fa fa-key"></i>@Html.ActionLink(" Đăng ký", "dang_ky", "Home")
+                    </li>
+                }
+@*                 else *@
+@*                 { *@
+@*                     <li class="account-login"> <i class="fas fa-sign-in-alt"></i> *@
+@*                         <a href="@Url.Action("Logout", "Home")">Đăng xuất</a> *@
+@*                     </li> *@
+@* *@
+@*                 } *@
+            </ul>
+        </div>
+    </nav>
+    <nav class="navbar navbar-expand-md navbar-dark backroug bg-light">
+        <div class="logo">
+            <img src="~/CSSWeb/food.jpg">
+        </div>
+        <div class="right">
+            <form class="form-inline mt-2 mt-md-0" method="post" action="@Url.Action("tim_kiem","Home")">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="search" value="@ViewBag.search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><span style="color: white"><i class="fas fa-search"></i></span></button>
+            </form>
+            <ul class="nav navbar-nav navbar-right topmenu  hidden-xs hidden-sm">
+                <li class="order-cart"><i class="fa fa-shopping-cart">@Html.ActionLink("  Giỏ hàng","gio_hang","Home")</i></li>
+            </ul>
+        </div>
+    </nav>
+    <nav class="navbar navbar-expand-md navbar-dark bg-success">
+        <a class="navbar-brand" href="#"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse bs-navbar-collapse" id="navbarCollapse"  role="navigation">
+            <ul class="navbar-nav mr-auto ">
+                <li class="nav-item active navbar-dark">
+                    @Html.ActionLink("TRANG CHỦ","Index","Home" )
+                </li>
+                <li class="nav-item">
+                    @Html.ActionLink("  SẢN PHẨM","san_pham","Home")
+                </li>
+                <li class="nav-item">
+                    @Html.ActionLink("GIỚI THIỆU","gioi_thieu","Home")
+                </li>
+                <li class="nav-item ">
+                    @Html.ActionLink("TIN TỨC & SỰ KIỆN","tin_tuc","Home")
+                </li>
+                <li class="nav-item ">
+                    @Html.ActionLink("NHẬT KÝ","nhat_ky","Home")
+                </li>
+                <li class="nav-item ">
+                    @Html.ActionLink("LIÊN HỆ","lien_he","Home")
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<!-- Main wrapper -->
+
+        <!-- //Header -->
+<div class=" body-content">
+     @RenderBody()
+   </div>
+     <hr/>
+
+    @* <p>&copy; @DateTime.Now.2020 - My ASP.NET Application</p> *@
+    <!-- Footer Area -->
+    <!-- FOOTER -->
+ <footer class="">
+       <div class="images-logo">
+           <img src="~/CSSWeb/food.jpg">
+       </div>
+       <div class="row">
+           <div class="col-lg-3">
+               <ul>
+                   <li>GIỚI THIỆU</li>
+               </ul>
+               <ul>
+                   <li>Về chúng tôi</li>
+                   <li>Lĩnh vực hoạt động</li>
+                   <li>Liên hệ với chúng tôi</li>
+                   <li>Tin tức & sự kiện</li>
+               </ul>
+           </div>
+           <div class="col-lg-3">
+               <ul>
+                   <li>CHĂM SÓC KHÁCH HÀNG</li>
+               </ul>
+               <ul>
+                   <li>Hướng dẫn mua hàng</li>
+                   <li>Chính sách bán hàng</li>
+                   <li>Chính sách bảo mật</li>
+               </ul>
+           </div>
+           <div class="col-lg-3 ketnoi">
+               <ul>
+                   <li>KẾT NỐI VỚI CHÚNG TÔI</li>
+               </ul>
+               <ul>
+                   <li>
+                       <span style="font-size: 30px; color: Dodgerblue;">
+                           <i class="fab fa-facebook "></i></span></li>
+                   <li>
+                       <span style="font-size: 30px; color: Dodgerblue;">
+                           <i class="fab fa-linkedin "></i></span></li>
+                   <li>
+                       <span style="font-size: 30px; color: #57ceff;">
+                           <i class="fab fa-twitter-square "></i></span></li>
+                   <li>
+                       <span style="font-size: 30px; color: #ff3452;">
+                           <i class="fab fa-youtube "></i></span></li>
+                   <li>
+                       <span style="font-size: 30px; color: #ff3452;">
+                           <i class="fas fa-envelope "></i></span></li>
+   
+                   <!--                    <span style="font-size: 20px; color: Dodgerblue;">-->
+                   <!--                    <i class="fas fa-circle fa-stack-2x"></i>-->
+                   <!--                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>-->
+                   <!--                    </span>-->
+               </ul>
+           </div>
+           <div class="col-lg-3 thanhtoan">
+               <ul>
+                   <li>PHƯƠNG THỨC THANH TOÁN</li>
+               </ul>
+               <ul>
+                   <li><i class="far fa-credit-card fa-2x"></i></li>
+                   <li><i class="fab fa-cc-mastercard fa-2x"></i></li>
+                   <li><i class="fab fa-cc-visa fa-2x"></i></li>
+                   <li><i class="fab fa-cc-paypal fa-2x"></i></li>
+                   <li><i class="fab fa-cc-jcb fa-2x"></i></li>
+                   <li><i class="fab fa-cc-amazon-pay fa-2x"></i></li>
+               </ul>
+           </div>
+       </div>
+   </footer>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+<!--<script src="../bootstrap-4.3.1-dist/js/jquery-3.4.1.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
+<script>window.jQuery || document.write('<script src="../bootstrap-4.3.1-dist/js/jquery-3.4.1.min.js"><\/script>')
+</script><script src="~/CSSWeb/bootstrap-4.3.1-dist/js/bootstrap.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+<script src="~/CSSWeb/bootstrap-4.3.1-dist/js/bootstrap.bundle.js"></script>
+<script src="~/CSSWeb/bootstrap-4.3.1-dist/js/bootstrap.js"></script>
+<script src="~/CSSWeb/bootstrap-4.3.1-dist/js/jquery-3.4.1.min.js"></script>
+@* *@
+@* @Scripts.Render("~/bundles/jquery") *@
+@* @Scripts.Render("~/bundles/bootstrap")/ *@
+@* @RenderSection("scripts", required: false) *@
+</body>
+</html>
