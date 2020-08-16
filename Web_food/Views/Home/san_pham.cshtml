@@ -1,19 +1,11 @@
-<<<<<<< HEAD
 ﻿@using PagedList.Mvc
 @model PagedList.IPagedList<Product>
-=======
-﻿@* @model PagedList.IPagedList<Web_food.Models.Product> *@
-@* @using PagedList.Mvc *@
->>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
 @using Project.Models
 @using Web_food.Models
 @{
     List<ProductType> types = ViewBag.type;
     List<Product> list = ViewBag.list;
-<<<<<<< HEAD
     // List<Product> pages = ViewBag.page;
-=======
->>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
 }
 <main role="main">
     <div class="col">
@@ -28,11 +20,7 @@
             </a>
             @foreach (var t in types)
                               {
-<<<<<<< HEAD
                                   <a href="@Url.Action("san_pham1","Home", new {type = @t.Id})" 
-=======
-                                  <a href="@Url.Action("san_pham","Home", new {type = @t.Id})" 
->>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
                                      class="list-group-item list-group-item-action">@t.Name</a>
                               }
         </div>
@@ -40,11 +28,7 @@
     <div class="container marketing col-lg-9">
         <div class="row">
             @{
-<<<<<<< HEAD
                 foreach (var p in Model)
-=======
-                foreach (var p in list)
->>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
                 {
                      
                     <div class="card" style="width: 17rem;">
@@ -56,11 +40,7 @@
                             <p class="card-text">@p.Price đ</p>
                             <div class="cart">
                                 <a href="@Url.Action("gio_hang", "Home")"> <button>Mua hàng</button></a>
-<<<<<<< HEAD
                                 <a href="@Url.Action("ThemVaoGio", "Home", new{SanPhamID = @p.Id})">
-=======
-                                <a href="@Url.Action("gio_hang", "Home")">
->>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
                                     <span style="font-size: 20px; color: #ff363f; margin-left: 5px">
                                         <i class="fas fa-shopping-basket"></i></span></a>
                             </div>
@@ -71,16 +51,11 @@
         </div>
         
         <br />
-<<<<<<< HEAD
         Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
         @Html.PagedListPager(Model, page => Url.Action("san_pham", new {page}),
             PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions()
             {HttpMethod = "GET", UpdateTargetId = "id"}))
            
-=======
-        @* Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount *@
-        @* @Html.PagedListPager(Model, page => Url.Action("san_pham", new { page })) *@
->>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
         @* <div class="custom-pagination" style="margin-top: 40px"> *@
         @*     <ul class="pagination"> *@
         @*         <li class="page-item"><a class="page-link" href="">Previous</a></li> *@
@@ -91,7 +66,6 @@
         @*     </ul> *@
         @* </div> *@
         
-<<<<<<< HEAD
         @*          <div class="custom-pagination" style="margin-top: 40px"> *@
         @*                         <ul class="pagination"> *@
         @*                             <li class="page-item"><a class="page-link" *@
@@ -110,25 +84,5 @@
         @*                     </div> *@
     </div>
     </div>
-=======
-@*          <div class="custom-pagination" style="margin-top: 40px"> *@
-@*                         <ul class="pagination"> *@
-@*                             <li class="page-item"><a class="page-link" *@
-@*                                                      href="<%= Util.fullpath("ListProduct?page=1")%>">Previous</a></li> *@
-@*                             @foreach (var p in page) *@
-@*                             { *@
-@*                             <li class=@{(i+1+"").equals(p1)}"active":""><a class="page-link" *@
-@*                                                                               href="<%= Util.fullpath("ListProduct?page="+(i+1))%>"><%= (i + 1)%> *@
-@*                             </a></li> *@
-@*                             <%}%> *@
-@*                            <li class="page-item"><a class="page-link" *@
-@*                                                     href="<%= Util.fullpath("ListProduct?page="+sum)%>">Next</a> *@
-@*                                } *@
-@*                             </li> *@
-@*                         </ul> *@
-@*                     </div> *@
-    </div>
-</div>
->>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
 <hr class="featurette-divider">
 

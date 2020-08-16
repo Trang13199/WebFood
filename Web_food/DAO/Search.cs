@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 ﻿﻿
-=======
-﻿
->>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 using Project.Models;

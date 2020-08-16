@@ -6,11 +6,7 @@
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
         <SchemaVersion>2.0</SchemaVersion>
-<<<<<<< HEAD
         <ProjectGuid>{B1DE8652-EA86-48DF-93F3-B25B6517F645}</ProjectGuid>
-=======
-        <ProjectGuid>{28CD3E64-5BED-40FB-AF2E-5D32E2EEF293}</ProjectGuid>
->>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
         <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
         <OutputType>Library</OutputType>
         <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -50,7 +46,6 @@
         <Reference Include="MySql.Data, Version=8.0.21.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d">
           <HintPath>E:\DOTNET\v4.8\MySql.Data.dll</HintPath>
         </Reference>
-<<<<<<< HEAD
         <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1">
           <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
           <Private>True</Private>
@@ -59,8 +54,6 @@
           <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
           <Private>True</Private>
         </Reference>
-=======
->>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
         <Reference Include="System" />
         <Reference Include="System.Data" />
         <Reference Include="System.Drawing" />
@@ -136,10 +129,7 @@
         <Compile Include="App_Start\RouteConfig.cs" />
         <Compile Include="Controllers\AdminController.cs" />
         <Compile Include="Controllers\HomeController.cs" />
-<<<<<<< HEAD
         <Compile Include="Controllers\WebController.cs" />
-=======
->>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
         <Compile Include="DAO\DAOProduct.cs" />
         <Compile Include="DAO\DaoRegister.cs" />
         <Compile Include="DAO\DBConnection.cs" />
@@ -150,17 +140,11 @@
         <Compile Include="DAO\ProductDetail.cs" />
         <Compile Include="DAO\Register.cs" />
         <Compile Include="DAO\Search.cs" />
-<<<<<<< HEAD
         <Compile Include="filter\AccountFilter.cs" />
         <Compile Include="Global.asax.cs">
             <DependentUpon>Global.asax</DependentUpon>
         </Compile>
         <Compile Include="Models\CartItem.cs" />
-=======
-        <Compile Include="Global.asax.cs">
-            <DependentUpon>Global.asax</DependentUpon>
-        </Compile>
->>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
         <Compile Include="Models\Product.cs" />
         <Compile Include="Models\ProductType.cs" />
         <Compile Include="Models\Role.cs" />
@@ -169,19 +153,9 @@
     </ItemGroup>
     <ItemGroup>
         <Content Include="Content\bootstrap-theme.css" />
-<<<<<<< HEAD
         <Content Include="Content\bootstrap-theme.min.css" />
         <Content Include="Content\bootstrap.css" />
         <Content Include="Content\bootstrap.min.css" />
-=======
-        <Content Include="Content\bootstrap-theme.css.map" />
-        <Content Include="Content\bootstrap-theme.min.css" />
-        <Content Include="Content\bootstrap-theme.min.css.map" />
-        <Content Include="Content\bootstrap.css" />
-        <Content Include="Content\bootstrap.css.map" />
-        <Content Include="Content\bootstrap.min.css" />
-        <Content Include="Content\bootstrap.min.css.map" />
->>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
         <Content Include="Content\c3-charts\c3-active.js" />
         <Content Include="Content\c3-charts\c3.min.js" />
         <Content Include="Content\c3-charts\d3.min.js" />
@@ -646,10 +620,7 @@
         <Content Include="Content\js\wizard\jquery.steps.js" />
         <Content Include="Content\js\wizard\steps-active.js" />
         <Content Include="Content\js\wow.min.js" />
-<<<<<<< HEAD
         <Content Include="Content\PagedList.css" />
-=======
->>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
         <Content Include="Content\sb-admin.css" />
         <Content Include="Content\Site.css" />
         <Content Include="Content\style.css" />
@@ -2389,7 +2360,6 @@
         <Content Include="Content\vendor\jquery\jquery.slim.min.js" />
         <Content Include="Content\vendor\jquery\jquery.slim.min.map" />
         <Content Include="CSSWeb\bootstrap-4.3.1-dist\css\bootstrap-grid.css" />
-<<<<<<< HEAD
         <Content Include="CSSWeb\bootstrap-4.3.1-dist\css\bootstrap-grid.css.map" />
         <Content Include="CSSWeb\bootstrap-4.3.1-dist\css\bootstrap-grid.min.css" />
         <Content Include="CSSWeb\bootstrap-4.3.1-dist\css\bootstrap-grid.min.css.map" />
@@ -2446,130 +2416,6 @@
         <Content Include="CSSWeb\fontawesome-free-5.11.2-web\js\solid.min.js" />
         <Content Include="CSSWeb\fontawesome-free-5.11.2-web\js\v4-shims.js" />
         <Content Include="CSSWeb\fontawesome-free-5.11.2-web\js\v4-shims.min.js" />
-=======
-        <Content Include="CSSWeb\bootstrap-4.3.1-dist\css\bootstrap-grid.css.map">
-          <DependentUpon>bootstrap-grid.css</DependentUpon>
-        </Content>
-        <Content Include="CSSWeb\bootstrap-4.3.1-dist\css\bootstrap-grid.min.css">
-          <DependentUpon>bootstrap-grid.css</DependentUpon>
-        </Content>
-        <Content Include="CSSWeb\bootstrap-4.3.1-dist\css\bootstrap-grid.min.css.map">
-          <DependentUpon>bootstrap-grid.css</DependentUpon>
-        </Content>
-        <Content Include="CSSWeb\bootstrap-4.3.1-dist\css\bootstrap-reboot.css" />
-        <Content Include="CSSWeb\bootstrap-4.3.1-dist\css\bootstrap-reboot.css.map">
-          <DependentUpon>bootstrap-reboot.css</DependentUpon>
-        </Content>
-        <Content Include="CSSWeb\bootstrap-4.3.1-dist\css\bootstrap-reboot.min.css">
-          <DependentUpon>bootstrap-reboot.css</DependentUpon>
-        </Content>
-        <Content Include="CSSWeb\bootstrap-4.3.1-dist\css\bootstrap-reboot.min.css.map">
-          <DependentUpon>bootstrap-reboot.css</DependentUpon>
-        </Content>
-        <Content Include="CSSWeb\bootstrap-4.3.1-dist\css\bootstrap.css" />
-        <Content Include="CSSWeb\bootstrap-4.3.1-dist\css\bootstrap.css.map">
-          <DependentUpon>bootstrap.css</DependentUpon>
-        </Content>
-        <Content Include="CSSWeb\bootstrap-4.3.1-dist\css\bootstrap.min.css">
-          <DependentUpon>bootstrap.css</DependentUpon>
-        </Content>
-        <Content Include="CSSWeb\bootstrap-4.3.1-dist\css\bootstrap.min.css.map">
-          <DependentUpon>bootstrap.css</DependentUpon>
-        </Content>
-        <Content Include="CSSWeb\bootstrap-4.3.1-dist\js\bootstrap.bundle.js" />
-        <Content Include="CSSWeb\bootstrap-4.3.1-dist\js\bootstrap.bundle.js.map">
-          <DependentUpon>bootstrap.bundle.js</DependentUpon>
-        </Content>
-        <Content Include="CSSWeb\bootstrap-4.3.1-dist\js\bootstrap.bundle.min.js">
-          <DependentUpon>bootstrap.bundle.js</DependentUpon>
-        </Content>
-        <Content Include="CSSWeb\bootstrap-4.3.1-dist\js\bootstrap.bundle.min.js.map">
-          <DependentUpon>bootstrap.bundle.js</DependentUpon>
-        </Content>
-        <Content Include="CSSWeb\bootstrap-4.3.1-dist\js\bootstrap.js" />
-        <Content Include="CSSWeb\bootstrap-4.3.1-dist\js\bootstrap.js.map">
-          <DependentUpon>bootstrap.js</DependentUpon>
-        </Content>
-        <Content Include="CSSWeb\bootstrap-4.3.1-dist\js\bootstrap.min.js">
-          <DependentUpon>bootstrap.js</DependentUpon>
-        </Content>
-        <Content Include="CSSWeb\bootstrap-4.3.1-dist\js\bootstrap.min.js.map">
-          <DependentUpon>bootstrap.js</DependentUpon>
-        </Content>
-        <Content Include="CSSWeb\bootstrap-4.3.1-dist\js\jquery-3.4.1.min.js" />
-        <Content Include="CSSWeb\bootstrap-theme.css" />
-        <Content Include="CSSWeb\bootstrap-theme.css.map">
-          <DependentUpon>bootstrap-theme.css</DependentUpon>
-        </Content>
-        <Content Include="CSSWeb\bootstrap-theme.min.css">
-          <DependentUpon>bootstrap-theme.css</DependentUpon>
-        </Content>
-        <Content Include="CSSWeb\bootstrap-theme.min.css.map">
-          <DependentUpon>bootstrap-theme.css</DependentUpon>
-        </Content>
-        <Content Include="CSSWeb\bootstrap.css" />
-        <Content Include="CSSWeb\bootstrap.min.css">
-          <DependentUpon>bootstrap.css</DependentUpon>
-        </Content>
-        <Content Include="CSSWeb\carousel.css" />
-        <Content Include="CSSWeb\dangnhap.css" />
-        <Content Include="CSSWeb\fontawesome-free-5.11.2-web\css\all.css" />
-        <Content Include="CSSWeb\fontawesome-free-5.11.2-web\css\all.min.css">
-          <DependentUpon>all.css</DependentUpon>
-        </Content>
-        <Content Include="CSSWeb\fontawesome-free-5.11.2-web\css\brands.css" />
-        <Content Include="CSSWeb\fontawesome-free-5.11.2-web\css\brands.min.css">
-          <DependentUpon>brands.css</DependentUpon>
-        </Content>
-        <Content Include="CSSWeb\fontawesome-free-5.11.2-web\css\fontawesome.css" />
-        <Content Include="CSSWeb\fontawesome-free-5.11.2-web\css\fontawesome.min.css">
-          <DependentUpon>fontawesome.css</DependentUpon>
-        </Content>
-        <Content Include="CSSWeb\fontawesome-free-5.11.2-web\css\regular.css" />
-        <Content Include="CSSWeb\fontawesome-free-5.11.2-web\css\regular.min.css">
-          <DependentUpon>regular.css</DependentUpon>
-        </Content>
-        <Content Include="CSSWeb\fontawesome-free-5.11.2-web\css\solid.css" />
-        <Content Include="CSSWeb\fontawesome-free-5.11.2-web\css\solid.min.css">
-          <DependentUpon>solid.css</DependentUpon>
-        </Content>
-        <Content Include="CSSWeb\fontawesome-free-5.11.2-web\css\svg-with-js.css" />
-        <Content Include="CSSWeb\fontawesome-free-5.11.2-web\css\svg-with-js.min.css">
-          <DependentUpon>svg-with-js.css</DependentUpon>
-        </Content>
-        <Content Include="CSSWeb\fontawesome-free-5.11.2-web\css\v4-shims.css" />
-        <Content Include="CSSWeb\fontawesome-free-5.11.2-web\css\v4-shims.min.css">
-          <DependentUpon>v4-shims.css</DependentUpon>
-        </Content>
-        <Content Include="CSSWeb\fontawesome-free-5.11.2-web\js\all.js" />
-        <Content Include="CSSWeb\fontawesome-free-5.11.2-web\js\all.min.js">
-          <DependentUpon>all.js</DependentUpon>
-        </Content>
-        <Content Include="CSSWeb\fontawesome-free-5.11.2-web\js\brands.js" />
-        <Content Include="CSSWeb\fontawesome-free-5.11.2-web\js\brands.min.js">
-          <DependentUpon>brands.js</DependentUpon>
-        </Content>
-        <Content Include="CSSWeb\fontawesome-free-5.11.2-web\js\conflict-detection.js" />
-        <Content Include="CSSWeb\fontawesome-free-5.11.2-web\js\conflict-detection.min.js">
-          <DependentUpon>conflict-detection.js</DependentUpon>
-        </Content>
-        <Content Include="CSSWeb\fontawesome-free-5.11.2-web\js\fontawesome.js" />
-        <Content Include="CSSWeb\fontawesome-free-5.11.2-web\js\fontawesome.min.js">
-          <DependentUpon>fontawesome.js</DependentUpon>
-        </Content>
-        <Content Include="CSSWeb\fontawesome-free-5.11.2-web\js\regular.js" />
-        <Content Include="CSSWeb\fontawesome-free-5.11.2-web\js\regular.min.js">
-          <DependentUpon>regular.js</DependentUpon>
-        </Content>
-        <Content Include="CSSWeb\fontawesome-free-5.11.2-web\js\solid.js" />
-        <Content Include="CSSWeb\fontawesome-free-5.11.2-web\js\solid.min.js">
-          <DependentUpon>solid.js</DependentUpon>
-        </Content>
-        <Content Include="CSSWeb\fontawesome-free-5.11.2-web\js\v4-shims.js" />
-        <Content Include="CSSWeb\fontawesome-free-5.11.2-web\js\v4-shims.min.js">
-          <DependentUpon>v4-shims.js</DependentUpon>
-        </Content>
->>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
         <Content Include="CSSWeb\fontawesome-free-5.11.2-web\less\brands.less" />
         <Content Include="CSSWeb\fontawesome-free-5.11.2-web\less\fontawesome.less" />
         <Content Include="CSSWeb\fontawesome-free-5.11.2-web\less\regular.less" />
@@ -4468,18 +4314,12 @@
         <Content Include="Views\Home\lien_he.cshtml" />
         <Content Include="Views\Home\nhat_ky.cshtml" />
         <Content Include="Views\Home\san_pham.cshtml" />
-<<<<<<< HEAD
         <Content Include="Views\Home\san_pham1.cshtml" />
-=======
->>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
         <Content Include="Views\Home\thanh_toan.cshtml" />
         <Content Include="Views\Home\tim_kiem.cshtml" />
         <Content Include="Views\Home\tin_tuc.cshtml" />
         <Content Include="Views\Home\TKKH.cshtml" />
-<<<<<<< HEAD
         <Content Include="Views\Shared\_Layout.cshtml" />
-=======
->>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
         <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
         <Content Include="Web.config" />
         <Content Include="Web.Debug.config">
@@ -4491,10 +4331,6 @@
         <Content Include="Views\Web.config" />
         <Content Include="Views\_ViewStart.cshtml" />
         <Content Include="Views\Shared\Error.cshtml" />
-<<<<<<< HEAD
-=======
-        <Content Include="Views\Shared\_Layout.cshtml" />
->>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
     </ItemGroup>
     <ItemGroup>
         <Folder Include="App_Data" />
@@ -4504,13 +4340,10 @@
         <Content Include="fonts\glyphicons-halflings-regular.woff" />
         <Content Include="fonts\glyphicons-halflings-regular.ttf" />
         <Content Include="fonts\glyphicons-halflings-regular.eot" />
-<<<<<<< HEAD
         <Content Include="Content\bootstrap.min.css.map" />
         <Content Include="Content\bootstrap.css.map" />
         <Content Include="Content\bootstrap-theme.min.css.map" />
         <Content Include="Content\bootstrap-theme.css.map" />
-=======
->>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
         <None Include="packages.config" />
         <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
         <Content Include="Scripts\jquery-3.3.1.min.map" />

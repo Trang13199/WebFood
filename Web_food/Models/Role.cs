@@ -17,7 +17,6 @@ namespace Project.Models
             this.action = action;
             this.level = level;
         }
-<<<<<<< HEAD
         public Role(string control, string action) {
             this.control = control;
             this.action = action;
@@ -27,12 +26,5 @@ namespace Project.Models
             return control.ToLower().Equals(this.control.ToLower()) && action.ToLower().Equals(this.action.ToLower());
         }
 
-=======
-
-        public bool contain(string control, string action)
-        {
-            return false;
-        }
->>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
     }
 }

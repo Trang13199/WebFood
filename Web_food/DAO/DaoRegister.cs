@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 ﻿﻿using System;
-=======
-﻿using System;
->>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
 using MySql.Data.MySqlClient;
 
 namespace Web_food.DAO

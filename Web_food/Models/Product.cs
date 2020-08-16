@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ﻿using MySql.Data.MySqlClient;
 using Web_food.DAO;
 
@@ -7,14 +6,6 @@ namespace Web_food.Models
     public class Product
     {
         private int id;
-=======
-﻿namespace Web_food.Models
-{
-    public class Product
-    {    
-            
-            private int id;
->>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
         private string images;
         private string name;
         private string content;
@@ -37,11 +28,7 @@ namespace Web_food.Models
             this.content = content;
         }
 
-<<<<<<< HEAD
         public Product(int id, string images, string name, string content, int quantity, double costDiscount, double price, int type)
-=======
-        public Product(int id, string images, string name, string content, int quantity, double costDiscount, double price, int status, int type, int active)
->>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
         {
             this.id = id;
             this.images = images;
@@ -50,13 +37,7 @@ namespace Web_food.Models
             this.quantity = quantity;
             this.costDiscount = costDiscount;
             this.price = price;
-<<<<<<< HEAD
             this.type = type;
-=======
-            this.status = status;
-            this.type = type;
-            this.active = active;
->>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
         }
 
         public int Id
@@ -118,7 +99,6 @@ namespace Web_food.Models
             get => active;
             set => active = value;
         }
-<<<<<<< HEAD
         
         public Product find(int id)  {
             DBConnection dbConnection = new DBConnection();
@@ -146,7 +126,5 @@ namespace Web_food.Models
 
             return null;
         }
-=======
->>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
     }
 }

@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 ﻿using System.Collections.Generic;
 using System.Data.Common;
-=======
-﻿using System.Data.Common;
->>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
 using MySql.Data.MySqlClient;
 using Project.Models;
 using Web_food.DAO;
@@ -17,11 +13,7 @@ namespace Web_food.DAO
             DBConnection dbConnection = new DBConnection();
             MySqlConnection conn = dbConnection.ConnectionSql();
             conn.Open();
-<<<<<<< HEAD
             string sql = "SELECT * FROM `user` WHERE email = @email AND password = @password";
-=======
-            string sql = "SELECT username FROM `user` WHERE email = @email AND password = @password";
->>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
             MySqlCommand sqlCommand = new MySqlCommand(sql);
             sqlCommand.Connection = conn;
             ///Thì có một tham số tên @CateID. Tham số này được thêm vào/ thiết lập qua Parameters của SqlCommand. Ví dụ thêm bằng Parameters.AddWithValue
@@ -36,7 +28,6 @@ namespace Web_food.DAO
                     while (reader.Read())
                     {
                         user.userName = reader[0].ToString();
-<<<<<<< HEAD
                         user.email = reader[2].ToString();
                         user.phone = reader[3].ToString();
                         user.address = reader[4].ToString();
@@ -44,13 +35,6 @@ namespace Web_food.DAO
                     }
                 }
                 return null;
-=======
-                        return user;
-                    }
-                }
-            
-            return null;
->>>>>>> 69df8b6a0eee270c1edd2673ee8f528ccee9a202
         }
             
     }
