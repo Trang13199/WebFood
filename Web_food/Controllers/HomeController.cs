@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
@@ -122,7 +122,13 @@ namespace Web_food.Controllers
 
         public ActionResult thanh_toan()
         {
-            return View();
+            List<CartItem> giohang = Session["giohang"] as List<CartItem>;
+            User u = (User) Session["username"];
+            if (u == null)
+            {
+                return RedirectToAction("dang_nhap");
+            }
+            return View(giohang);
         }
 
         public ActionResult dat_hang()
