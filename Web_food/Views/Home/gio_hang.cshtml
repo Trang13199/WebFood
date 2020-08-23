@@ -1,83 +1,21 @@
-﻿@* @using System.Web.UI.WebControls *@
-@* @model dynamic *@
-@* *@
-@* @{ *@
-@*     ViewBag.Title = "Giỏ hàng"; *@
-@* *@
-@*     <link rel="stylesheet" href="~/CSSWeb/style.css" xmlns="http://www.w3.org/1999/html" *@
-@*       xmlns="http://www.w3.org/1999/html"> *@
-@* *@
-@* } *@
-@* <div class="container marketing"> *@
-@*     <div class="cart-content" ng-controller="orderController" ng-init="initOrderCartController()"> *@
-@*         <h1 class="title"><span>Giỏ hàng của tôi</span></h1> *@
-@*         <div class="steps clearfix"> *@
-@*             <ul class="clearfix"> *@
-@*                 <li class="cart active col-md-2 col-xs-12 col-sm-4 col-md-offset-3 col-sm-offset-0 col-xs-offset-0"><span><i class="fa fa-shopping-cart"></i></span><span>Giỏ hàng của tôi</span><span class="step-number"><a>1</a></span></li> *@
-@*                 <li class="payment col-md-2 col-xs-12 col-sm-4"><span><i class="fas fa-dollar-sign"></i></span><span>Thanh toán</span><span class="step-number"><a>2</a></span></li> *@
-@*                 <li class="finish col-md-2 col-xs-12 col-sm-4"><span><i class="fas fa-check"></i></span><span>Hoàn tất</span><span class="step-number"><a>3</a></span></li> *@
-@*             </ul> *@
-@*         </div> *@
-@*         <div class="cart-block"> *@
-@*             <div class="cart-info table-responsive"> *@
-@*                 <table class="table product-list"> *@
-@*                     <thead> *@
-@*                     <tr> *@
-@*                         <th></th> *@
-@*                         <th>Tên sản phẩm</th> *@
-@*                         <th>Giá</th> *@
-@*                         <th>Số lượng</th> *@
-@*                         <th>Thành tiền</th> *@
-@*                         <th></th> *@
-@*                     </tr> *@
-@*                     </thead> *@
-@*                     <tbody> *@
-@*                     <tr ng-repeat="item in OrderDetails"> *@
-@*                         <td class="image"> *@
-@*                             <a href="#"> <img src="~/Content/image/cơm.jpg" class="img-responsive" style="width: 50px;" /></a> *@
-@*                         </td> *@
-@*                         <td class="des"> *@
-@*                             <h5><a href="#"></a> Cơm sườn</h5> *@
-@*                             <span></span> *@
-@*                         </td> *@
-@*                         <td class="price">25.000 đ</td> *@
-@*                         <td class="quantity"> *@
-@*                             <input type="number" value="1" class="text" ng-model="item.Quantity" ng-change="updateItemCart(item)" /> *@
-@*                         </td> *@
-@*                         <td class="amount"> 25.000 đ *@
-@*                         </td> *@
-@*                    </tr> *@
-@*                     </tbody> *@
-@*                 </table> *@
-@*             </div> *@
-@*             <div class="clearfix text-right"> *@
-@*                 <span><b>Tổng thanh toán: 25.000</b></span> *@
-@*                 <span class="pay-price"> đ *@
-@*             </span> *@
-@*             </div> *@
-@*             <div class="button text-right"> *@
-@*                 <a class="btn btn-default btn-primary" href="@Url.Action("san_pham","Home")">Tiep tuc mua hang</a> *@
-@*                  *@
-@*                  <a class="btn btn-primary" href="@Url.Action("thanh_toan","Home")">Tien hanh thanh toan</a> *@
-@*           *@
-@*                 </div> *@
-@*         </div> *@
-@*     </div> *@
-@*     <hr class="featurette-divider"> *@
-@* *@
-@* *@
-@* </div><!-- /.container --> *@
-@* *@
 @using Web_food.Models
 @model List<Web_food.Models.CartItem>
 @{
-    ViewBag.Title = "Giỏ hàng của bạn";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Thanh toán";
+    <link rel="stylesheet" href="~/CSSWeb/style.css">
+
 }
-
-
-<h2>@ViewBag.Title</h2>
-
+<div class="cart-content" ng-controller="orderController" ng-init="initOrderCartController()"> 
+<h1 class="title"><span>Giỏ hàng của tôi</span></h1>
+     <div class="steps clearfix">
+         <ul class="clearfix">
+             <li class="cart active col-md-2 col-xs-12 col-sm-4 col-md-offset-3 col-sm-offset-0 col-xs-offset-0"><span><i class="fa fa-shopping-cart"></i></span><span>Giỏ hàng của tôi</span><span class="step-number"><a>1</a></span></li>
+             <li class="payment col-md-2 col-xs-12 col-sm-4"><span><i class="fas fa-dollar-sign"></i></span><span>Thanh toán</span><span class="step-number"><a>2</a></span></li>
+             <li class="finish col-md-2 col-xs-12 col-sm-4"><span><i class="fas fa-check"></i></span><span>Hoàn tất</span><span class="step-number"><a>3</a></span></li>
+         </ul>
+     </div>
+      <hr>
+ </div>
 @if (Model == null || Model.Count == 0)
 {
     <p class="text-info text-center">
@@ -129,4 +67,11 @@ else
         </div>
 
     </div>
+    <div class="button text-right">
+                <a class="btn btn-default btn-primary" href="@Url.Action("san_pham","Home")">Tiếp tục mua hàng</a>
+    
+                 <a class="btn btn-primary" href="@Url.Action("thanh_toan","Home")">Tiến hành thanh toán</a>
+    
+    </div>
+    <hr class="featurette-divider">
 }
