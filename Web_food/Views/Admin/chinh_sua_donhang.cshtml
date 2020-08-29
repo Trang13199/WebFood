@@ -1,0 +1,98 @@
+﻿﻿@model dynamic
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="all-content-wrapper">
+  
+        <!-- Single pro tab start-->
+        <div class="single-product-tab-area mg-b-30">
+            <!-- Single pro tab review Start-->
+            <div class="single-pro-review-area">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="review-tab-pro-inner">
+                                <ul id="myTab3" class="tab-review-design">
+                                    <li class="active"><a href="#description"><i class="icon nalika-edit"
+                                                                                 aria-hidden="true"></i> Chỉnh sửa đơn hàng</a></li>
+                                </ul>
+                                <div id="myTabContent" class="tab-content custom-product-edit">
+                                    <div class="product-tab-list tab-pane fade active in" id="description">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <form  method="post">
+                                                    <input type="hidden" name = "id" value=" ">
+                                                    <div class="input-group mg-b-pro-edt">
+                                                        <span class="input-group-addon"><i class="icon nalika-user"
+                                                                                           aria-hidden="true"></i></span>
+                                                        <input type="text" class="form-control" name = "username" placeholder="Mã khách hàng"
+                                                               value="">
+                                                    </div>
+                                                    <div class="input-group mg-b-pro-edt">
+                                                        <span class="input-group-addon"><i class="icon nalika-edit"
+                                                                                           aria-hidden="true"></i></span>
+                                                        <input type="text" name = "password" class="form-control" placeholder="Tổng tiền"
+                                                               value="">
+                                                    </div>
+                                                    <div class="input-group mg-b-pro-edt">
+                                                        <span class="input-group-addon"><i class="fa fa-usd"
+                                                                                           aria-hidden="true"></i></span>
+                                                        <input type="text" class="form-control" name = "name"  placeholder="Ngày lập"
+                                                               value="">
+                                                    </div>
+                                                    <div class="input-group mg-b-pro-edt">
+                                                        <span class="input-group-addon"><i class="icon nalika-edit"
+                                                                                           aria-hidden="true"></i></span>
+                                                        <input type="text" name = "lever" class="form-control" placeholder="Nơi nhận"
+                                                               value="">
+                                                    </div>
+                                                    <div class="input-group mg-b-pro-edt">
+                                                        <span class="input-group-addon"><i class="icon nalika-favorites"
+                                                                                           aria-hidden="true"></i></span>
+                                                        <input type="text" class="form-control"  name = "address" placeholder="Ghi chú"
+                                                               value=" ">
+                                                    </div>
+                                                    <div class="input-group mg-b-pro-edt">
+                                                        <span class="input-group-addon"><i class="icon nalika-favorites"
+                                                                                           aria-hidden="true"></i></span>
+                                                        <input type="text" class="form-control"  name = "date" placeholder="Ghi chú"
+                                                               value=" ">
+                                                    </div>
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                        <div class="text-center custom-pro-edt-ds">
+                                                            <a href=""><button type="submit"
+                                                                                          class="btn btn-ctl-bt waves-effect waves-light m-r-10">Lưu
+                                                            </button></a>
+                                                            <button type="button"
+                                                                    class="btn btn-ctl-bt waves-effect waves-light">Hủy
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                            
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @*     <div class="footer-copyright-area"> *@
+    @*         <div class="container-fluid"> *@
+    @*             <div class="row"> *@
+    @*                 <div class="col-lg-12"> *@
+    @*                     <div class="footer-copy-right"> *@
+    @*                     </div> *@
+    @*                 </div> *@
+    @*             </div> *@
+    @*         </div> *@
+    @*     </div> *@
+    @* </div> *@
+</div>

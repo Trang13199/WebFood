@@ -1,0 +1,81 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "Dang ky";
+}
+
+<main role="main">
+    <div class="col">
+        <button class="bg-danger">ĐĂNG KÝ TÀI KHOẢN</button>
+    </div>
+<div class="col-md-8 col-md-offset-2 col-xs-12 col-sm-12 col-xs-offset-0 col-sm-offset-0">
+    <form class="form-horizontal " ng-submit="register()" method="post">
+        <h2><span>Thông tin tài khoản</span></h2>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Tài khoản<span class="warning">(*)</span></label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" ng-model="Code" required="true" name="username"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Email<span class="warning">(*)</span></label>
+            <div class="col-sm-9">
+                <input type="email" class="form-control" ng-model="Email" required="true" name="email"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Mật khẩu<span class="warning">(*)</span></label>
+            <div class="col-sm-9">
+                <input type="password" class="form-control" ng-model="Password" required="true" name="password" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Nhập lại mật khẩu<span class="warning">(*)</span></label>
+            <div class="col-sm-9">
+                <input type="password" class="form-control" ng-model="RePassword" name="repassword" id="repassword"/>
+            </div>
+        </div>
+        <h2>Thông tin cá nhân</h2>
+      
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Giới tính</label>
+            <div class="col-sm-9" style="text-align: center">
+                <input type="radio" name="radio" id="radio1" onclick="gender1()" value="Nam" checked/> NAM
+                <input type="radio" name="radio" id="radio2" onclick="gender1()" value="Nữ"> NỮ
+                <input type="text" name="gender" id="gender" hidden value="Nam"/>
+            </div>
+        </div>
+      
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Điện thoại</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" ng-model="Phone" name="phone"/>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Địa chỉ</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" ng-model="Address" name="address" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-8">
+                <button type="submit" class="btn btn-primary">Đăng ký</button>
+            </div>
+        </div>
+    </form>
+</div>
+</main>
+<hr class="featurette-divider">
+<script>
+
+  function gender1() {
+      if (document.getElementById("radio1").checked){
+            document.getElementById("gender").value="Nam";
+      }else if(document.getElementById("radio2").checked){
+            document.getElementById("gender").value="Nữ";
+      }
+  }
+</script>

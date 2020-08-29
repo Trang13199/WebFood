@@ -1,0 +1,147 @@
+body {
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-bottom: 3rem;
+    color: #5a5a5a;
+}
+.col-md-12{
+    width: 100%;
+    padding-top: 8px;
+    color: white;
+}
+.pull-left{
+    width: 50%;
+    float: left;
+    clear: right;
+}
+.col-md-12 .navbar-right{
+    width: 50%;
+    float: right;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    text-align: right;
+}
+.navbar-right li{
+    width: 100%;
+}
+.col-md-12 .navbar-right a{
+    color: white;
+}
+.backroug{
+    width: 100%;
+    background: #cccccc;
+    height: 100px;
+}
+.logo{
+    width: 50%;
+    float: left;
+    clear: right;
+}
+.right{
+    width: 50%;
+    float: left;
+    display: grid;
+    grid-template-columns: auto auto;
+}
+.right button{
+    background: #1168d6c7;
+}
+.right .navbar-right a{
+    color: #135090;
+}
+.carousel {
+    margin-bottom: 4rem;
+}
+.carousel-caption {
+    bottom: 3rem;
+    z-index: 10;
+}
+.carousel-item {
+    height: 32rem;
+}
+.carousel-item > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    height: 32rem;
+}
+.marketing .col-lg-4 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+.marketing h2 {
+    font-weight: 400;
+}
+.marketing .col-lg-4 p {
+    margin-right: .75rem;
+    margin-left: .75rem;
+}
+.featurette-divider {
+    margin: 5rem 0;
+}
+.featurette-heading {
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -.05rem;
+}
+.col{
+    border-bottom: 2px solid #ff363f;
+}
+.col button{
+    height: 40px;
+    color: white;
+    border: none;
+}
+.row .col-md-3{
+    margin-left: 50px;
+    height: 195px;
+    margin-top: 30px;
+    border: 1px solid lightgrey;
+}
+.row .col-md-3 img{
+    width: 100%;
+    margin-top: 15px;
+}
+.images-logo{
+    text-align: center;
+}
+.info{
+    display: flex;
+    background: #cccccc;
+    padding-top: 20px;
+}
+.row ul li{
+    list-style: none;
+}
+.info ul>li{
+    font-size: 18px;
+    color: black;
+}
+.ketnoi ul{
+    display: flex;
+    margin: auto;
+}
+.ketnoi ul li{
+    margin-left: 10px;
+}
+.thanhtoan ul{
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+@media (min-width: 40em) {
+    .carousel-caption p {
+        margin-bottom: 1.25rem;
+        font-size: 1.25rem;
+        line-height: 1.4;
+    }
+    .featurette-heading {
+        font-size: 50px;
+    }
+}
+@media (min-width: 62em) {
+    .featurette-heading {
+        margin-top: 7rem;
+    }
+}
