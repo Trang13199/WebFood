@@ -6,7 +6,6 @@ using System.Web;
 using System.Web.Mvc;
 using MySql.Data.MySqlClient;
 using PagedList;
-using Project.Models;
 using Web_food.DAO;
 using Web_food.Models;
 

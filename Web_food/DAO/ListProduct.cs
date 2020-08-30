@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using MySql.Data.MySqlClient;
-using Project.Models;
 using Web_food.DAO;
 using Web_food.Models;
 
@@ -70,7 +69,7 @@ namespace Web_food.DAO
             MySqlConnection conn = dbConnection.ConnectionSql();
             conn.Open();
 
-            string sql = "SELECT id, `name` FROM `product_type` WHERE active=1";
+            string sql = "SELECT id, `name`,active FROM `product_type` WHERE active=1";
 
             MySqlCommand sqlCommand = new MySqlCommand(sql);
             sqlCommand.Connection = conn;
@@ -81,7 +80,8 @@ namespace Web_food.DAO
                 {
                     int id = reader.GetInt32("id");
                     string Name = reader.GetString("name");
-                    ProductType productType = new ProductType(id, Name);
+                    int active = reader.GetInt32("active");
+                    ProductType productType = new ProductType(id, Name,active);
                     types.Add(productType);
                 }
             }

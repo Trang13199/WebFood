@@ -1,15 +1,21 @@
-﻿namespace Project.Models
+﻿namespace Web_food.Models
 {
     public class ProductType
     {
-        private string name;
         private int id;
+        private string name;
         private int active;
 
-        public ProductType(int id, string name)
+        public ProductType(int id, string name,int active)
         {
             this.Id = id;
             this.Name = name;
+            this.active = active;
+        }
+
+        public ProductType()
+        {
+            
         }
         public string Name
         {

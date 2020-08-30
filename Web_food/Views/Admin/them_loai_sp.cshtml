@@ -14,13 +14,13 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="review-tab-pro-inner">
+                            <p>@ViewBag.error</p>
                             <ul id="myTab3" class="tab-review-design">
                                 <li class="active">
                                     <a href="#description">
                                         <i class="icon nalika-edit"
                                            aria-hidden="true">
-                                        </i> Thêm sản
-                                        phẩm
+                                        </i> Thêm loại sản phẩm
                                     </a>
                                 </li>
                             </ul>
@@ -32,15 +32,7 @@
 
                                             <form method="post">
                                                 <div class="review-content-section">
-                                                    <div class="input-group mg-b-pro-edt">
-                                                        <span class="input-group-addon">
-                                                            <i class="icon nalika-user"
-                                                               aria-hidden="true">
-                                                            </i>
-                                                        </span>
-                                                        <input type="text" class="form-control" name="id"
-                                                               placeholder="Mã loại">
-                                                    </div>
+                                                    
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon">
                                                             <i class="icon nalika-edit"
@@ -61,10 +53,14 @@
                                                     </div>
                                                 </div>
                                                 <div class="text-center custom-pro-edt-ds">
-                                                    <a>
-                                                        <button type="submit"
+                                                    <button type="submit"
+                                                            class="btn btn-ctl-bt waves-effect waves-light m-r-10">
+                                                        Lưu
+                                                    </button>
+                                                    <a href="@Url.Action("ql_loai_sp", "Admin")">
+                                                        <button type="button"
                                                                 class="btn btn-ctl-bt waves-effect waves-light m-r-10">
-                                                            Lưu
+                                                            HỦY
                                                         </button>
                                                     </a>
                                                 </div>
@@ -77,16 +73,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="footer-copyright-area">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="footer-copy-right">
                 </div>
             </div>
         </div>

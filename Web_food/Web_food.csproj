@@ -131,6 +131,7 @@
         <Compile Include="Controllers\HomeController.cs" />
         <Compile Include="Controllers\WebController.cs" />
         <Compile Include="DAO\DAOProduct.cs" />
+        <Compile Include="DAO\DAOUser.cs" />
         <Compile Include="DAO\DBConnection.cs" />
         <Compile Include="DAO\EditModelLogin.cs" />
         <Compile Include="DAO\EditModelRegister.cs" />
@@ -4296,7 +4297,6 @@
         <Content Include="Views\Admin\chinh_sua_kh.cshtml" />
         <Content Include="Views\Admin\chinh_sua_loaiSP.cshtml" />
         <Content Include="Views\Admin\chinh_sua_sp.cshtml" />
-        <Content Include="Views\Admin\chi_tiet_sp.cshtml" />
         <Content Include="Views\Admin\danh_sach_sp.cshtml" />
         <Content Include="Views\Admin\gio_hang.cshtml" />
         <Content Include="Views\Admin\Index.cshtml" />
