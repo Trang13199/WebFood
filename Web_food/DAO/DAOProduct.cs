@@ -1,8 +1,8 @@
-﻿﻿using System.Collections.Generic;
+﻿using System.Collections.Generic;
  using System.Data;
  using System.Data.SqlClient;
  using MySql.Data.MySqlClient;
-using Web_food.Models;
+ using Web_food.Models;
 
 namespace Web_food.DAO
 {
@@ -119,6 +119,92 @@ namespace Web_food.DAO
             DataSet ds = new DataSet();
             da.Fill(ds);
             return ds;
+        }
+        
+        
+        
+        
+        ///////////////////// product type ////////////////////////////////////
+
+        public static List<ProductType> getListProductType()
+        {
+            List<ProductType> list = new List<ProductType>();
+            DBConnection dbConnection = new DBConnection();
+            MySqlConnection connection = dbConnection.ConnectionSql();
+            connection.Open();
+            string sql = "select id,name,active from product_type";
+            MySqlCommand command = new MySqlCommand(sql, connection);
+            MySqlDataReader reader = command.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    int id = reader.GetInt32("id");
+                    string nametype = reader.GetString("name");
+                    int active = reader.GetInt32("active");
+                    ProductType pro = new ProductType(id, nametype, active);
+                    list.Add(pro);
+                }
+            }
+
+            return list;
+        }
+
+        public static ProductType getProductType(int id)
+        {
+            ProductType productType=new ProductType();
+            string sql = "select id,name,active from product_type where id=@id";
+            DBConnection dbConnection = new DBConnection();
+            MySqlConnection connection = dbConnection.ConnectionSql();
+            connection.Open();
+            MySqlCommand command = new MySqlCommand(sql,connection);
+            command.Parameters.AddWithValue("@id", id);
+            MySqlDataReader reader = command.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    productType.Id = reader.GetInt32("id");
+                    productType.Name = reader.GetString("name");
+                    productType.Active = reader.GetInt32("active");
+                }
+            }
+            return productType;
+        }
+        public static bool addProductType(ProductType productType)
+        {
+            DBConnection dbConnection = new DBConnection();
+            MySqlConnection connection = dbConnection.ConnectionSql();
+            connection.Open();
+            string sql = "insert into product_type(name) values (@name)";
+            MySqlCommand command = new MySqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@name", productType.Name);
+            // command.Parameters.AddWithValue("@active", productType.Active);
+            return command.ExecuteNonQuery() > 0;
+        }
+
+        public static bool editProductType(ProductType productType)
+        {
+            DBConnection dbConnection= new DBConnection();
+            MySqlConnection connection = dbConnection.ConnectionSql();
+            connection.Open();
+            string sqlUpdate = "update product_type set name=@name,active=@active where id=@id";
+            MySqlCommand command  = new MySqlCommand(sqlUpdate,connection);
+            command.Parameters.AddWithValue("@id", productType.Id);
+            command.Parameters.AddWithValue("@name", productType.Name);
+            command.Parameters.AddWithValue("@active", productType.Active);
+            return command.ExecuteNonQuery()>0;
+        }
+
+        public static bool delProductType(int id)
+        {
+            string sqlDel = "delete from product_type where id=@id";
+            DBConnection dbConnection = new DBConnection();
+            MySqlConnection connection = dbConnection.ConnectionSql();
+            connection.Open();
+            MySqlCommand command = new MySqlCommand(sqlDel, connection);
+            command.Parameters.AddWithValue("@id", id);
+            return command.ExecuteNonQuery() > 0;
         }
     }
 }
