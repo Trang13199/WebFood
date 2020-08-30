@@ -1,6 +1,5 @@
-﻿@using PagedList.Mvc
+@using PagedList.Mvc
 @model PagedList.IPagedList<Product>
-@using Project.Models
 @using Web_food.Models
 @{
     List<ProductType> types = ViewBag.type;
@@ -40,9 +39,10 @@
                             <p class="card-text">@p.Price đ</p>
                             <div class="cart">
                                 <a href="@Url.Action("gio_hang", "Home")"> <button>Mua hàng</button></a>
-                                <a href="@Url.Action("gio_hang", "Home")">
+                                <a href="@Url.Action("ThemVaoGio", "Home", new {SanPhamID = @p.Id})">
                                     <span style="font-size: 20px; color: #ff363f; margin-left: 5px">
-                                        <i class="fas fa-shopping-basket"></i></span></a>
+                                        <i class="fas fa-shopping-basket"></i></span>
+                                </a>
                             </div>
                         </div>
                     </div>
