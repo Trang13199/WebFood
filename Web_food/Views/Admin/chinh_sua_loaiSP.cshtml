@@ -1,4 +1,4 @@
-﻿﻿@model dynamic
+﻿@model dynamic
 
 @{
     ViewBag.Title = "title";
@@ -17,59 +17,48 @@
                                 <div class="review-tab-pro-inner">
                                     <ul id="myTab3" class="tab-review-design">
                                         <li class="active"><a href="#description"><i class="icon nalika-edit"
-                                                                                     aria-hidden="true"></i> Chỉnh sửa người dùng</a></li>
+                                                                                     aria-hidden="true"></i> Chỉnh sửa loại sản phẩm</a></li>
                                     </ul>
                                     <div id="myTabContent" class="tab-content custom-product-edit">
                                         <div class="product-tab-list tab-pane fade active in" id="description">
                                             <div class="row">
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                    <form  method="post">
-                                                        <input type="hidden" name = "id" value="<%=rs.getString(1)%> ">
-
-                                                        <div class="input-group mg-b-pro-edt">
-                                                            <span class="input-group-addon"><i class="icon nalika-user"
-                                                                                               aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" name = "username" placeholder="Username"
-                                                                       value="">
-                                                            </div>
-                                                            <div class="input-group mg-b-pro-edt">
-                                                            <span class="input-group-addon"><i class="icon nalika-edit"
-                                                                                               aria-hidden="true"></i></span>
-                                                                <input type="text" name = "password" class="form-control" placeholder="Password" disabled
-                                                                       value=" ">
-                                                            </div>
-                                                            <div class="input-group mg-b-pro-edt">
-                                                            <span class="input-group-addon"><i class="fa fa-usd"
-                                                                                               aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" name = "name"  placeholder="Name"
-                                                                       value="">
-                                                            </div>
-                                                        <div class="input-group mg-b-pro-edt">
-                                                            <span class="input-group-addon"><i class="icon nalika-edit"
-                                                                                               aria-hidden="true"></i></span>
-                                                            <input type="text" name = "lever" class="form-control" placeholder="Lever"
-                                                                   value=" ">
-                                                        </div>
-                                                            <div class="input-group mg-b-pro-edt">
-                                                            <span class="input-group-addon"><i class="icon nalika-favorites"
-                                                                                               aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control"  name = "address" placeholder="Address"
-                                                                       value=" ">
-                                                            </div>
-   
-                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                                <div class="text-center custom-pro-edt-ds">
-                                                                    <a href=""><button type="submit"
-                                                                                                  class="btn btn-ctl-bt waves-effect waves-light m-r-10">Lưu
-                                                                    </button></a>
-                                                                    <button type="button"
-                                                                            class="btn btn-ctl-bt waves-effect waves-light">Hủy
-                                                                    </button>
-                                                                </div>
-   
-                                                        </div>
-                                                    </form>
-    
+                                                    <form method="post">
+                                                <p style="color: red">@ViewBag.error</p>
+                                                <input type="text" hidden name="id" value="@Model.Id"/>
+                                                <div class="review-content-section">
+                                                    <div class="input-group mg-b-pro-edt">
+                                                        <span class="input-group-addon">
+                                                            <i class="icon nalika-edit"
+                                                               aria-hidden="true">
+                                                            </i>
+                                                        </span>
+                                                        <input type="text" name="name" class="form-control"
+                                                               placeholder="Tên loại sản phẩm" value="@Model.Name">
+                                                    </div>
+                                                    <div class="input-group mg-b-pro-edt">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-usd"
+                                                               aria-hidden="true">
+                                                            </i>
+                                                        </span>
+                                                        <input type="text" class="form-control" name="active"
+                                                               placeholder="Active" value="@Model.Active">
+                                                    </div>
+                                                </div>
+                                                <div class="text-center custom-pro-edt-ds">
+                                                    <button type="submit"
+                                                            class="btn btn-ctl-bt waves-effect waves-light m-r-10">
+                                                        Lưu
+                                                    </button>
+                                                    <a href="@Url.Action("ql_loai_sp", "Admin")">
+                                                        <button type="button"
+                                                                class="btn btn-ctl-bt waves-effect waves-light m-r-10">
+                                                            HỦY
+                                                        </button>
+                                                    </a>
+                                                </div>
+                                            </form>
                                                 </div>
                                             </div>
    
