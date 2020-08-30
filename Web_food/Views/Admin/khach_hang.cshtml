@@ -1,4 +1,5 @@
-﻿﻿@model dynamic
+﻿@using Web_food.Models
+﻿@model dynamic
 
 @{
     ViewBag.Title = "title";
@@ -19,56 +20,52 @@
                             <tr>
                                 <th>#</th>
                                 <th>UserName</th>
-                                <th>Name</th>
-                                <th>Lever</th>
+                                <th>Email</th>
+                                <th>Phone</th>
                                 <th>Address</th>
+                                <th>Gender</th>
+                                <th>Level</th>
                                 <th>Thao tác</th>
                             </tr>
-                            <tr>
-                                <td>
-                                    1
-                                </td>
-                                <td>
-                                    abc@gmail.com
-                                </td>
-                                <td>
-                                </td>
-                                <td>
-                                    @* <% *@
-                                    @* if (rs.getInt(5) == 2) {%> *@
-                                    @* Quản trị *@
-                                    @* <% *@
-                                    @* } else { *@
-                                    @* if (rs.getInt(5) == 1) {%> Quản lý *@
-                                    @* *@
-                                    @* <% } else {%> Khách hàng *@
-                                    @* <% *@
-                                    @* } *@
-                                    @* } *@
-                                    @* %> *@
-                                </td>
-                                <td>
-                                    TPHCM
-                                </td>
-                                <td>
-                                    @* <a href="edit_customer?id=<%=+rs.getInt(1)%>"> *@
-                                    @Html.ActionLink("Edit", "chinh_sua_kh", "Admin")
-                                    <button data-toggle="tooltip" title="Edit" class="pd-setting-ed">
-                                        <i
-                                            class="fa fa-pencil-square-o" aria-hidden="true">
-                                        </i>
-                                    </button>
-                                    @* </a> *@
-                                    @* <a onclick="return confirm('Bạn có chắc muốn xóa')" *@
-                                    @*    href="Delete_customer?id=<%=rs.getString("id")%>"> *@
-                                    <button data-toggle="tooltip" title="Trash" class="pd-setting-ed">
-                                        <i
-                                            class="fa fa-trash-o" aria-hidden="true">
-                                        </i>
-                                    </button>
-                                    @* </a> *@
-                                </td>
-                            </tr>
+                            @foreach (User user in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @user.id
+                                    </td>
+                                    <td>
+                                        @user.userName
+                                    </td>
+                                    <td>
+                                        @user.email
+                                    </td>
+                                    <td>
+                                        @user.phone
+                                    </td>
+                                    <td>
+                                        @user.address
+                                    </td>
+                                    <td>@user.gender</td>
+                                    <td>@user.level</td>
+                                    <td>
+                                        <a href="@Url.Action("chinh_sua_kh", "Admin", new {ID = @user.id})">
+                                            <button data-toggle="tooltip" title="Edit" class="pd-setting-ed">
+                                                <i
+                                                    class="fa fa-pencil-square-o" aria-hidden="true">
+                                                </i> Edit
+                                            </button>
+                                        </a>
+                                        <a onclick="return confirm('Bạn có chắc muốn xóa')"
+                                            href="@Url.Action("xoa_kh", "Admin", new {ID = @user.id})">
+                                            <button data-toggle="tooltip" title="Trash" class="pd-setting-ed">
+                                                <i
+                                                    class="fa fa-trash-o" aria-hidden="true">
+                                                </i>
+                                            </button>
+                                        </a>
+                                    </td>
+                                </tr>
+                                                 }
                         </table>
                     </div>
                 </div>

@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Common;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using MySql.Data.MySqlClient;
 using PagedList;
-using Project.Models;
 using Web_food.DAO;
 using Web_food.EditModel;
 using Web_food.Models;
@@ -68,9 +64,16 @@ namespace Web_food.Controllers
         public ActionResult dang_ky(EditModelRegister register)
         {
             Register r = new Register();
-            r.doRegister(register.Username, register.Password, register.Email,register.Phone, register.Address);
-            
-            return RedirectToAction("dang_nhap","Home");
+            if (r.checkUserExist(register.Username, register.Email))
+            {
+                ViewBag.error = "User hoặc Email đã tồn tại";
+                return View();
+            }
+            else
+            {
+                r.doRegister(register.Username, register.Password, register.Email, register.Phone, register.Address, register.Gender);
+                return RedirectToAction("dang_nhap", "Home");
+            }
         }
         
         public ActionResult san_pham(int? type, int? page)
@@ -92,16 +95,11 @@ namespace Web_food.Controllers
             int pageSize = 12;
             int pageNumber = (page ?? 1);
             
-            // ViewBag.page = pages.ToPagedList(pageNumber, pageSize);
-
             return View(pages.ToPagedList(pageNumber, pageSize));
         }
         
         public ActionResult san_pham1(int? type, int pageindex = 1, int pagesize = 2)
         {
-            // List<Product> list = ListProduct.Category(type, pageindex, pagesize);
-            // ViewBag.list = list;
-            
             List<Product> list = ListProduct.Product(type);
             ViewBag.list = list;
             
@@ -114,15 +112,15 @@ namespace Web_food.Controllers
             }
             return View();
         }
-        public ActionResult gio_hang()
-        {
-            List<CartItem> giohang = Session["giohang"] as List<CartItem>;
-            return View(giohang);
-        }
-
         public ActionResult thanh_toan()
         {
-            return View();
+            List<CartItem> giohang = Session["giohang"] as List<CartItem>;
+            User u = (User) Session["username"];
+            if (u == null)
+            {
+                return RedirectToAction("dang_nhap");
+            }
+            return View(giohang);
         }
 
         public ActionResult dat_hang()
@@ -170,7 +168,11 @@ namespace Web_food.Controllers
         }
         
         
-        
+        public ActionResult gio_hang()
+        {
+            List<CartItem> giohang = Session["giohang"] as List<CartItem>;
+            return View(giohang);
+        }
         public RedirectToRouteResult ThemVaoGio(int SanPhamID)
         {
             if(Session["giohang"] == null) // Nếu giỏ hàng chưa được khởi tạo

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Ajax.Utilities;
 
-namespace Project.Models
+namespace Web_food.Models
 {
     public class Role
     {

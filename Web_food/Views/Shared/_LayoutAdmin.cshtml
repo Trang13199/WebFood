@@ -1,4 +1,4 @@
-﻿﻿<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
@@ -151,11 +151,10 @@
                         </a>
                         <ul class="submenu-angle" aria-expanded="false">
                             <li>
-                                @Html.ActionLink("Login", "", "Admin")
+                                @Html.ActionLink("Login", "dang_nhap", "Home")
                             </li>
                             <li>
-                                @Html.ActionLink("Register", "Register", "Admin")
-
+                                @Html.ActionLink("Register", "dang_ky", "Home")
                             </li>
                             <li>
                                 <a title="Lock" href="">
@@ -366,7 +365,7 @@
                 <ul role="menu"
                     class="dropdown-header-top author-log dropdown-menu animated zoomIn">
                     <li>
-                        <a href="@Url.Action("Register", "Admin")">
+                        <a href="@Url.Action("dang_ky", "Home")">
                             <span
                                 class="icon nalika-home author-log-ic">
                             </span> Đăng kí
@@ -388,7 +387,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="@Url.Action("Login", "Admin")">
+                        <a href="@Url.Action("dang_nhap", "Home")">
                             <span
                                 class="icon nalika-unlocked author-log-ic">
                             </span> Đăng xuất

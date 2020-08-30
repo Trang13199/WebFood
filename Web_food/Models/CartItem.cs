@@ -1,4 +1,6 @@
 ﻿
+using System.Collections.Generic;
+
 namespace Web_food.Models
 {
     public class CartItem
@@ -15,5 +17,6 @@ namespace Web_food.Models
                 return SoLuong * DonGia;
             }
         }
+
     }
 }

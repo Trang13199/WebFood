@@ -1,4 +1,5 @@
-﻿﻿@model dynamic
+﻿@using Web_food.Models
+﻿@model dynamic
 
 @{
     ViewBag.Title = "title";
@@ -21,72 +22,34 @@
                                     <th>Active</th>
                                     <th>Thao tác</th>
                                 </tr>
-                                <tr>
-                                    <td>1
-                                    </td>
-                                    <td>
-                                        Cơm</td>
-                                    <td>
-                                        <button data-toggle="tooltip"  class="pd-setting-ed"> <i class="fa fa-check"> @Html.ActionLink("Edit","chinh_sua_loaiSP","Admin")</i>
-                                        </button>
-                                        <button data-toggle="tooltip"  class="pd-setting-ed">   <i class="fa fa-minus-circle"></i>
-                                        </button>
-                                    </td>
-                                    <td>
-                                        <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i
-                                                    class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                        @* </a> *@
-                                        @* <a onclick="return confirm('Bạn có chắc muốn xóa')" *@
-                                           @* href="Delete_type?id=<%=rs.getString("id")%>"> *@
-                                            <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i
-                                                    class="fa fa-trash-o" aria-hidden="true"></i></button>
-                                        @* </a> *@
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2
-                                    </td>
-                                    <td>
-                                        Cháo</td>
-                                    <td>
-                                        <button data-toggle="tooltip"  class="pd-setting-ed"> <i class="fa fa-check"></i>
-                                        </button>
-                                        <button data-toggle="tooltip"  class="pd-setting-ed">   <i class="fa fa-minus-circle"></i>
-                                        </button>
-                                    </td>
-                                    <td>
-                                        <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i
-                                                                                                             class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                        @* </a> *@
-                                        @* <a onclick="return confirm('Bạn có chắc muốn xóa')" *@
-                                        @* href="Delete_type?id=<%=rs.getString("id")%>"> *@
-                                        <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i
-                                                                                                              class="fa fa-trash-o" aria-hidden="true"></i></button>
-                                        @* </a> *@
-                                    </td>
-                                </tr>
-                                <tr>
-                                                                    <td>3
-                                                                    </td>
-                                                                    <td>
-                                                                        Phở</td>
-                                                                    <td>
-                                                                        <button data-toggle="tooltip"  class="pd-setting-ed"> <i class="fa fa-check"></i>
-                                                                        </button>
-                                                                        <button data-toggle="tooltip"  class="pd-setting-ed">   <i class="fa fa-minus-circle"></i>
-                                                                        </button>
-                                                                    </td>
-                                                                    <td>
-                                                                        <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i
-                                                                                    class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                                                        @* </a> *@
-                                                                        @* <a onclick="return confirm('Bạn có chắc muốn xóa')" *@
-                                                                           @* href="Delete_type?id=<%=rs.getString("id")%>"> *@
-                                                                            <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i
-                                                                                    class="fa fa-trash-o" aria-hidden="true"></i></button>
-                                                                        @* </a> *@
-                                                                    </td>
-                                                                </tr>
+                                @foreach(ProductType protype in Model){
+                                    <tr>
+                                        <td>
+                                            @protype.Id
+                                        </td>
+                                        <td>@protype.Name</td>
+                                        <td>
+                                            @protype.Active
+                                        </td>
+                                        <td>
+                                            <a href="@Url.Action("chinh_sua_loaiSP", "Admin", new {id = @protype.Id})">
+                                                <button data-toggle="tooltip" title="Edit" class="pd-setting-ed">
+                                                    <i
+                                                        class="fa fa-pencil-square-o" aria-hidden="true">
+                                                    </i>
+                                                </button>
+                                            </a>
+                                            <a onclick="return confirm('Bạn có chắc muốn xóa')"
+                                                href="@Url.Action("xoa_loai_sp", "Admin", new {id = @protype.Id})">
+                                                <button data-toggle="tooltip" title="Trash" class="pd-setting-ed">
+                                                    <i
+                                                        class="fa fa-trash-o" aria-hidden="true">
+                                                    </i>
+                                                </button>
+                                            </a>
+                                        </td>
+                                        </tr>
+                                }
                             </table>
                         </div>
                     </div>

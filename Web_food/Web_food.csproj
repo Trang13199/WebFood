@@ -42,6 +42,9 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <ItemGroup>
+        <Reference Include="Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+          <HintPath>..\..\..\Downloads\ckfinder\bin\Microsoft.Azure.KeyVault.Core.dll</HintPath>
+        </Reference>
         <Reference Include="Microsoft.CSharp" />
         <Reference Include="MySql.Data, Version=8.0.21.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d">
           <HintPath>E:\DOTNET\v4.8\MySql.Data.dll</HintPath>
@@ -106,9 +109,6 @@
             <Private>True</Private>
             <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
         </Reference>
-        <Reference Include="Newtonsoft.Json">
-            <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-        </Reference>
         <Reference Include="WebGrease">
             <Private>True</Private>
             <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -132,6 +132,7 @@
         <Compile Include="Controllers\WebController.cs" />
         <Compile Include="DAO\DAOProduct.cs" />
         <Compile Include="DAO\DaoRegister.cs" />
+        <Compile Include="DAO\DAOUser.cs" />
         <Compile Include="DAO\DBConnection.cs" />
         <Compile Include="DAO\EditModelLogin.cs" />
         <Compile Include="DAO\EditModelRegister.cs" />

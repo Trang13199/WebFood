@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using MySql.Data.MySqlClient;
-using Project.Models;
 using Web_food.DAO;
 using Web_food.Models;
 
@@ -93,9 +92,7 @@ namespace Web_food.DAO
             DBConnection dbConnection = new DBConnection();
             MySqlConnection conn = dbConnection.ConnectionSql();
             conn.Open();
-            // string sqlsp = "SELECT id, image, `name`, price, content FROM `product_detail` WHERE active=1 limit @page,9";
-            string sqlsp =
-                "  SELECT id, image, `name`, price, content FROM `products` WHERE active=1 ORDER BY id ";
+            string sqlsp = "  SELECT id, image, `name`, price, content FROM `products` WHERE active=1 ORDER BY id ";
             MySqlCommand  sqlCommand = new MySqlCommand(sqlsp);
             sqlCommand.Connection = conn;
             sqlCommand.Parameters.AddWithValue("@page",page);

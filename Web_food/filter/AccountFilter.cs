@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
-using Project.Models;
 using Web_food.Controllers;
+using Web_food.Models;
 
 namespace Web_food.filter
 {

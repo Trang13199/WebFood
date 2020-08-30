@@ -1,14 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Data.Common;
 using MySql.Data.MySqlClient;
-using Project.Models;
-using Web_food.DAO;
+using Web_food.Models;
 
 namespace Web_food.DAO
 {
     public class Login
     {
-        public User doLogin(string email, string password, string users, string phone, string address)
+        public User doLogin( string users, string password, string email, string phone, string address)
         {
             DBConnection dbConnection = new DBConnection();
             MySqlConnection conn = dbConnection.ConnectionSql();
@@ -27,10 +26,10 @@ namespace Web_food.DAO
                 {
                     while (reader.Read())
                     {
-                        user.userName = reader[0].ToString();
-                        user.email = reader[2].ToString();
-                        user.phone = reader[3].ToString();
-                        user.address = reader[4].ToString();
+                        user.userName = reader["username"].ToString();
+                        user.email = reader["email"].ToString();
+                        user.phone = reader["phone"].ToString();
+                        user.address = reader["address"].ToString();
                         return user;
                     }
                 }

@@ -50,7 +50,6 @@ C:\Users\Admin\RiderProjects\Web_food\Web_food\bin\Antlr3.Runtime.dll
 C:\Users\Admin\RiderProjects\Web_food\Web_food\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\Admin\RiderProjects\Web_food\Web_food\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\Admin\RiderProjects\Web_food\Web_food\bin\MySql.Data.dll
-C:\Users\Admin\RiderProjects\Web_food\Web_food\bin\Newtonsoft.Json.dll
 C:\Users\Admin\RiderProjects\Web_food\Web_food\bin\System.Web.Helpers.dll
 C:\Users\Admin\RiderProjects\Web_food\Web_food\bin\System.Web.Mvc.dll
 C:\Users\Admin\RiderProjects\Web_food\Web_food\bin\System.Web.Optimization.dll
@@ -79,7 +78,6 @@ C:\Users\Admin\RiderProjects\Web_food\Web_food\bin\System.Web.Razor.xml
 C:\Users\Admin\RiderProjects\Web_food\Web_food\bin\System.Web.WebPages.xml
 C:\Users\Admin\RiderProjects\Web_food\Web_food\bin\System.Web.WebPages.Deployment.xml
 C:\Users\Admin\RiderProjects\Web_food\Web_food\bin\System.Web.WebPages.Razor.xml
-C:\Users\Admin\RiderProjects\Web_food\Web_food\bin\Newtonsoft.Json.xml
 C:\Users\Admin\RiderProjects\Web_food\Web_food\bin\Antlr3.Runtime.pdb
 C:\Users\Admin\RiderProjects\Web_food\Web_food\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\Admin\RiderProjects\Web_food\Web_food\obj\Debug\Web_food.csprojAssemblyReference.cache

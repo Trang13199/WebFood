@@ -1,8 +1,7 @@
 ﻿﻿using System;
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
-using Project.Models;
-using Web_food.DAO;
+ using Web_food.DAO;
 using Web_food.Models;
 
 namespace Web_food.DAO
