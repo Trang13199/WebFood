@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web.Mvc;
 using PagedList;
@@ -53,7 +54,7 @@ namespace Web_food.Controllers
 
         public ActionResult Logout() {
             Session.Remove("username");
-            return Redirect("/");
+            return RedirectToAction("dang_nhap","Home");
         }
         public ActionResult dang_ky()
         {
@@ -112,6 +113,13 @@ namespace Web_food.Controllers
             }
             return View();
         }
+        public ActionResult chi_tiet_sp(string name)
+        {
+            List<Product> list = ProductDetail.showProduct(name);
+            ViewBag.ct = list;
+            return View();
+        }
+
         public ActionResult thanh_toan()
         {
             List<CartItem> giohang = Session["giohang"] as List<CartItem>;
@@ -122,21 +130,48 @@ namespace Web_food.Controllers
             }
             return View(giohang);
         }
-        // public ActionResult thanh_toan()
-        // {
-        //     List<CartItem> giohang = Session["giohang"] as List<CartItem>;
-        //     User u = (User) Session["username"];
-        //     if (u == null)
-        //     {
-        //         return RedirectToAction("dang_nhap");
-        //     }
-        //     return View(giohang);
-        // }
-        public ActionResult dat_hang()
-        {
-            return View();
-        }
 
+        [HttpPost]
+        public ActionResult thanh_toan(FormCollection fc)
+        {
+            Order order = new Order();
+            order.username = fc["username"];
+            order.phone = fc["phone"];
+            order.email = fc["email"];
+            order.address = fc["address"];
+            order.date = DateTime.Now;
+            order.total = fc["total"];
+            order.sum = fc["sum"];
+            DAOOrder dao = new DAOOrder();
+            string id =  dao.Add_order(order);
+            
+            List<CartItem> giohang = Session["giohang"] as List<CartItem>;
+            foreach (var item in giohang)
+            {
+                Order_detail orderDetail = new Order_detail();
+                orderDetail.image = item.Hinh;
+                orderDetail.name = item.TenSanPham;
+                orderDetail.quantity = item.SoLuong;
+                orderDetail.price = item.DonGia;
+                orderDetail.id_order = id;
+                dao.order_detail(orderDetail);
+            }
+            
+            TempData["msg"] = "INSERT SUCCESS";
+            Session.Remove("giohang");
+            return RedirectToAction("dat_hang","Home");
+        }
+        public ActionResult dat_hang(int? id)
+        {
+            // List<Order> list = DAOOrder.show_order(id);
+            return View();
+            // DAOOrder dao = new DAOOrder();
+            // DataSet ds = dao.show();
+            // ViewBag.show = ds.Tables[0];
+            // return View();   
+            // List<CartItem> giohang = Session["giohang"] as List<CartItem>;
+            // return View(giohang);
+        }
         public ActionResult gioi_thieu()
         {
             return View();
@@ -156,13 +191,6 @@ namespace Web_food.Controllers
         {
             return View();
         }
-        public ActionResult chi_tiet_sp(string name)
-        {
-           List<Product> list = ProductDetail.showProduct(name);
-           ViewBag.ct = list;
-            return View();
-        }
-
         public ActionResult TKKH()
         {
             return View();
@@ -175,8 +203,6 @@ namespace Web_food.Controllers
             ViewBag.pro = list;
             return View();
         }
-        
-        
         public ActionResult gio_hang()
         {
             List<CartItem> giohang = Session["giohang"] as List<CartItem>;
@@ -230,7 +256,6 @@ namespace Web_food.Controllers
                 itemSua.SoLuong = soluongmoi;
             }
             return RedirectToAction("gio_hang");
-
         }
         public RedirectToRouteResult XoaKhoiGio(int SanPhamID)
         {
@@ -243,6 +268,11 @@ namespace Web_food.Controllers
             return RedirectToAction("gio_hang");
         }
 
-
+        public PartialViewResult hearder_cart()
+        {
+            List<CartItem> giohang = Session["giohang"] as List<CartItem>;
+            
+            return PartialView(giohang);
+        }
     }
 }
