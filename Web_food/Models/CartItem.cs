@@ -1,5 +1,4 @@
-﻿
-namespace Web_food.Models
+﻿namespace Web_food.Models
 {
     public class CartItem
     {

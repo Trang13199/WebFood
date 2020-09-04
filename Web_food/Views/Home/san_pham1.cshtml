@@ -31,17 +31,17 @@
                 {
                      
                     <div class="card" style="width: 17rem;">
-                        <a href="@Url.Action("chi_tiet_sp", "Home", new { name = @p.Name })">
+                        <a href="@Url.Action("chi_tiet_sp", "Home", new { ids = @p.Id })">
                             <img src="~/Content/image/@p.Images" class="card-img" alt="..." style="height: 17rem">
-                        </a>
+                            </a>
                         <div class="card-body">
                             <h5 class="card-title">@p.Name</h5>
                             <p class="card-text">@p.Price đ</p>
                             <div class="cart">
                                 <a href="@Url.Action("gio_hang", "Home")"> <button>Mua hàng</button></a>
-                                <a href="@Url.Action("gio_hang", "Home")">
-                                    <span style="font-size: 20px; color: #ff363f; margin-left: 5px">
-                                        <i class="fas fa-shopping-basket"></i></span></a>
+                                <a href="@Url.Action("ThemVaoGio", "Home", new{SanPhamID = @p.Id})">
+                                                                    <span style="font-size: 20px; color: #ff363f; margin-left: 5px">
+                                                                        <i class="fas fa-shopping-basket"></i></span></a>
                             </div>
                         </div>
                     </div>

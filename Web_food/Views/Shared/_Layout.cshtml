@@ -1,9 +1,11 @@
 ﻿﻿@using System.Web.UI.WebControls
 @using Web_food.Models
+@* @model List<Web_food.Models.CartItem> *@
+<!DOCTYPE html>
 @{
     User u = (User) Session["username"];
+    // List<CartItem> giohang = Session["giohang"] as List<CartItem>;
 }
-<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -31,6 +33,10 @@
             <ul class="nav navbar-nav navbar-right topmenu  hidden-xs hidden-sm">
                 @* <li class="admin"> <a href="admin.html"><i class="fa fa-user"></i> Admin</a></li> *@
                 @if(u!= null){
+                    if (u.level == 0)
+                    {
+                        <li class="admin"> <a href="@Url.Action("Index","Admin")"><i class="fa fa-user"></i> Admin</a></li>
+                    }
                     <div class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                            Xin chào: @u.userName
@@ -44,7 +50,6 @@
                                 <a href="@Url.Action("Logout", "Home")" style="color:black;">Đăng xuất</a></button>
                         </div>
                     </div>
-@*                     <li class="account-login"><a href="@Url.Action("dang_nhap", "Home")">Xin chào: @u.userName</a></li> *@
                 }
                 @if (u == null)
                 {
@@ -52,13 +57,6 @@
                     <li class="account-register"><i class="fa fa-key"></i>@Html.ActionLink(" Đăng ký", "dang_ky", "Home")
                     </li>
                 }
-@*                 else *@
-@*                 { *@
-@*                     <li class="account-login"> <i class="fas fa-sign-in-alt"></i> *@
-@*                         <a href="@Url.Action("Logout", "Home")">Đăng xuất</a> *@
-@*                     </li> *@
-@* *@
-@*                 } *@
             </ul>
         </div>
     </nav>
@@ -71,9 +69,22 @@
                 <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="search" value="@ViewBag.search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><span style="color: white"><i class="fas fa-search"></i></span></button>
             </form>
-            <ul class="nav navbar-nav navbar-right topmenu  hidden-xs hidden-sm">
-                <li class="order-cart"><i class="fa fa-shopping-cart">@Html.ActionLink("  Giỏ hàng","gio_hang","Home")</i></li>
-            </ul>
+@*             <ul class="nav navbar-nav navbar-right topmenu  hidden-xs hidden-sm"> *@
+@*                 <li class="order-cart"><i class="fa fa-shopping-cart">@Html.ActionLink("  Giỏ hàng","gio_hang","Home") *@
+@*                     </i> *@
+@* $1$                       @if (giohang != null) #1# *@
+@* $1$                       { #1# *@
+@* $1$                           <a href="#"><span class="btn-qua"> @Model.Sum(m => m.SoLuong) : @Model.Sum(m => m.ThanhTien).ToString("#,##0").Replace(',', '.') VNĐ </span> </a> #1# *@
+@* $1$                       } #1# *@
+@* $1$                       else #1# *@
+@* $1$                       { #1# *@
+@* $1$ #1# *@
+@* $1$                       } #1# *@
+@*                                                                                                                                       </li > *@
+@*             </ul> *@
+@{
+    Html.RenderAction("hearder_cart","Home");
+}
         </div>
     </nav>
     <nav class="navbar navbar-expand-md navbar-dark bg-success">

@@ -1,4 +1,4 @@
-@using Web_food.Models
+﻿@using Web_food.Models
 @model List<Web_food.Models.CartItem>
 
 @{
@@ -15,8 +15,7 @@
                 <li class="finish col-md-2 col-xs-12 col-sm-4"><span><i class="fas fa-check"></i></span><span>Hoàn tất</span><span class="step-number"><a>3</a></span></li>
             </ul>
         </div>
-
-    <form class="payment-block clearfix" id="checkout-container" ng-submit="checkout()" style="display: flex">
+    <form class="payment-block clearfix" id="checkout-container" ng-submit="checkout()" style="display: flex" method="post">
         <div class="row col-md-12">
             <div class="col-md-6 col-sm-12 col-xs-12 payment-step step2">
                 <div class="row">
@@ -29,27 +28,18 @@
                                     @Html.ActionLink("  Đăng nhập", "dang_nhap", "Home")
                                 </div><br>
                                 <label style="color: black">Mua hàng không cần tài khoản</label>
-                                <div class="form-group"><input class="form-control" placeholder="Họ & Tên" type="text" ng-model="$parent.CustomerName" value="@u.userName" required/></div>
-                                <div class="form-group"><input class="form-control" placeholder="Số điện thoại" type="text" ng-model="$parent.CustomerPhone" value="@u.phone" required/></div>
-                                <div class="form-group"><input class="form-control" placeholder="Email" type="email" ng-model="$parent.CustomerEmail" value="@u.email" required/></div>
-                                <div class="form-group"><input class="form-control" placeholder="Địa chỉ" type="text" ng-model="$parent.CustomerAddress" value="@u.address" required/></div>
-                                <textarea class="form-control" rows="4" placeholder="Ghi chú đơn hàng" ng-model="$parent.Description"></textarea>
-                                @* <div class="form-group" style="width: 50%;float:left; margin-top: 30px"> *@
-                                @*     <div class="col-sm-offset-4 col-sm-6"> *@
-                                @*         <button type="submit" class="btn btn-danger">Hủy bỏ</button> *@
-                                @*     </div> *@
-                                @* </div> *@
-                                @* <div class="form-group" style="width: 50%; float: right; margin-top: 30px;"> *@
-                                @*     <div class="col-sm-offset-4 col-sm-12"> *@
-                                @*         <button type="submit" class="btn btn-primary">Giao đến địa chỉ này</button> *@
-                                @*     </div> *@
-                                @* </div> *@
+                                <div class="form-group"><input class="form-control" type="text" name="id" value="@DateTime.Now.ToString("ddmmyyyyhhmmss")"/></div>
+                                <div class="form-group"><input class="form-control" type="text" name="date" value="@DateTime.Now.ToString("MM/dd/yyyy")"/></div>
+                                <div class="form-group"><input class="form-control" placeholder="Họ & Tên" type="text" name="username" ng-model="$parent.CustomerName" value="@u.userName" required/></div>
+                                <div class="form-group"><input class="form-control" placeholder="Số điện thoại" type="text" name="phone" ng-model="$parent.CustomerPhone" value="@u.phone" required/></div>
+                                <div class="form-group"><input class="form-control" placeholder="Email" name="email" type="email" ng-model="$parent.CustomerEmail" value="@u.email" required/></div>
+                                <div class="form-group"><input class="form-control" placeholder="Địa chỉ" name="address" type="text" ng-model="$parent.CustomerAddress" value="@u.address" required/></div>
+                                @* <textarea class="form-control" rows="4" placeholder="Ghi chú đơn hàng" ng-model="$parent.Description"></textarea> *@
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-                
             <div class="col-md-6 col-sm-12 col-xs-12 payment-step step1" style="float:right;">
                 <div class="row">
                     <div class="card" style="width: 100%;">
@@ -58,20 +48,19 @@
                             <div class="step-preview">
                                     <div class="cart-info">
                                         <div class="cart-items">
-
                                         </div>
                                         <div class="total-price" style="color:#000;">
                                             <p> Thành tiền </p>
+                                            <input name="total" type="hidden" value="@Model.Sum(m => m.ThanhTien).ToString("#,##0").Replace(',', '.')"/>
                                             <label> @Model.Sum(m => m.ThanhTien).ToString("#,##0").Replace(',', '.') VNĐ</label>
                                         </div>
                                         <div class="shiping-price" style="color:#000;">
                                             <p> Tổng sản phẩm </p>
+                                            <input name="sum" value="@Model.Sum(m => m.SoLuong)" type="hidden"/>
                                             <label>@Model.Sum(m => m.SoLuong)</label>
                                         </div>
-                                        <div class="button text-right">
-                                            <a class="btn btn-primary"
-                                               @Html.ActionLink("Đặt hàng", "dat_hang", "Home")></a>
-                                        </div>
+                                        @* <a class="btn btn-primary" href="@Url.Action("dat_hang","Home")">Thanh toán</a> *@
+                                        <button type="submit" class="btn-primary">Thanh toán</button>
                                     </div>
                                 </div>
                         </div>
@@ -94,14 +83,14 @@
              {
                  <tr>
                      <td class="text-center"><img src="~/Content/image/@item.Hinh" width="70" height="60"/> </td>
-                     <td><a target="_blank" href="@Url.Action("gio_hang", "Home", new {id = item.SanPhamID})"> @item.TenSanPham </a> </td>
+                     <td>@item.TenSanPham </td>
                      <td>
-                        @item.SoLuong
+                         @item.SoLuong
                      </td>
                      <td> @item.DonGia.ToString("#,##0").Replace(',', '.') VNĐ </td>
                      <td> @item.ThanhTien.ToString("#,##0").Replace(',', '.') VNĐ </td>
                  </tr>
-                        }
+             }
          </table>
 </div>
     <!-- /.container -->

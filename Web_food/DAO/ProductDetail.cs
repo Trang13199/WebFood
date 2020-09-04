@@ -1,22 +1,22 @@
-﻿﻿using System;
+﻿using System;
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
- using Web_food.DAO;
+using Web_food.DAO;
 using Web_food.Models;
 
 namespace Web_food.DAO
 {
     public class ProductDetail
     {
-        public static List< Product> showProduct(string name)
+        public static List< Product> showProduct(string ids)
         {
             DBConnection dbConnection = new DBConnection();
             MySqlConnection conn = dbConnection.ConnectionSql();
             conn.Open();
-            string sql = "SELECT * FROM `products` WHERE `name`= @name ";
+            string sql = "SELECT * FROM `products` WHERE `id`= @id ";
             MySqlCommand sqlCommand = new MySqlCommand(sql);
             sqlCommand.Connection = conn;
-            sqlCommand.Parameters.AddWithValue("name",name);
+            sqlCommand.Parameters.AddWithValue("@id",ids);
             List<Product> list = new List<Product>();
             MySqlDataReader reader = sqlCommand.ExecuteReader();
             if (reader.HasRows)

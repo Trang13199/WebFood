@@ -8,6 +8,7 @@ using Web_food.Models;
 
 namespace Web_food.Controllers
 {
+    [KiemTraQuyen]
     public class AdminController : Controller
     {
         // public AdminController()
@@ -20,7 +21,6 @@ namespace Web_food.Controllers
             List<Product> listProduct = DAOProduct.getListProducts();
             return View(listProduct);
         }
-
         public ActionResult them_sp()
         {
             return View();
@@ -183,7 +183,6 @@ namespace Web_food.Controllers
 
         public ActionResult chinh_sua_loaiSP(int id)
         {
-            
             ProductType productType = DAOProduct.getProductType(id);
             return View(productType);
         }
@@ -195,17 +194,16 @@ namespace Web_food.Controllers
             string name = formCollection["name"];
             int active = Convert.ToInt32(formCollection["active"]);
 
-            ProductType productType = new ProductType(id,name,active);
+            ProductType productType = new ProductType(id, name, active);
             if (DAOProduct.editProductType(productType))
             {
-                return RedirectToAction("ql_loai_sp","Admin");
+                return RedirectToAction("ql_loai_sp", "Admin");
             }
             else
             {
                 ViewBag.error = "edit product type not success";
                 return View();
             }
-           
         }
 
         public ActionResult xoa_loai_sp(int id)
@@ -214,18 +212,29 @@ namespace Web_food.Controllers
             return RedirectToAction("ql_loai_sp", "Admin");
         }
 
-        public ActionResult thanh_toan()
+        // public ActionResult thanh_toan()
+        // {
+        //     return View();
+        // }
+
+        public ActionResult QuanLyDonHang()
         {
-            return View();
+            List<Order> list_order = DAOOrder.show_quanlyhoadon();
+            return View(list_order);
         }
 
-        public ActionResult gio_hang()
+        public ActionResult del_oder(string idi)
         {
-            return View();
+            DAOOrder.del_oder(idi);
+
+            return RedirectToAction("QuanLyDonHang", "Admin");
         }
 
-        public ActionResult them_gio_hang()
+        public ActionResult chi_tiet_don_hang(string idi)
         {
+            ViewBag.list_order = DAOOrder.show_hoadon(idi);
+            DataSet ds = DAOOrder.show_order_byID(idi);
+            ViewBag.show = ds.Tables[0];
             return View();
         }
     }

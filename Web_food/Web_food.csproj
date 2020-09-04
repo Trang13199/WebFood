@@ -130,7 +130,9 @@
         <Compile Include="Controllers\AdminController.cs" />
         <Compile Include="Controllers\HomeController.cs" />
         <Compile Include="Controllers\WebController.cs" />
+        <Compile Include="DAO\DAOOder.cs" />
         <Compile Include="DAO\DAOProduct.cs" />
+        <Compile Include="DAO\DAOrole.cs" />
         <Compile Include="DAO\DAOUser.cs" />
         <Compile Include="DAO\DBConnection.cs" />
         <Compile Include="DAO\EditModelLogin.cs" />
@@ -145,6 +147,10 @@
             <DependentUpon>Global.asax</DependentUpon>
         </Compile>
         <Compile Include="Models\CartItem.cs" />
+        <Compile Include="Models\KiemTraQuyenAttribute.cs" />
+        <Compile Include="Models\log.cs" />
+        <Compile Include="Models\Order.cs" />
+        <Compile Include="Models\Order_detail.cs" />
         <Compile Include="Models\Product.cs" />
         <Compile Include="Models\ProductType.cs" />
         <Compile Include="Models\Role.cs" />
@@ -4297,8 +4303,9 @@
         <Content Include="Views\Admin\chinh_sua_kh.cshtml" />
         <Content Include="Views\Admin\chinh_sua_loaiSP.cshtml" />
         <Content Include="Views\Admin\chinh_sua_sp.cshtml" />
+        <Content Include="Views\Admin\chi_tiet_don_hang.cshtml" />
         <Content Include="Views\Admin\danh_sach_sp.cshtml" />
-        <Content Include="Views\Admin\gio_hang.cshtml" />
+        <Content Include="Views\Admin\QuanLyDonHang.cshtml" />
         <Content Include="Views\Admin\Index.cshtml" />
         <Content Include="Views\Admin\khach_hang.cshtml" />
         <Content Include="Views\Admin\ql_loai_sp.cshtml" />
@@ -4307,18 +4314,20 @@
         <Content Include="Views\Admin\them_khach_hang.cshtml" />
         <Content Include="Views\Admin\them_loai_sp.cshtml" />
         <Content Include="Views\Admin\them_sp.cshtml" />
+        <Content Include="Views\Home\thanh_toan.cshtml" />
         <Content Include="Views\Home\chi_tiet_sp.cshtml" />
         <Content Include="Views\Home\dang_ky.cshtml" />
         <Content Include="Views\Home\dang_nhap.cshtml" />
         <Content Include="Views\Home\dat_hang.cshtml" />
+        <Content Include="Views\Home\errorpage.cshtml" />
         <Content Include="Views\Home\gioi_thieu.cshtml" />
         <Content Include="Views\Home\gio_hang.cshtml" />
+        <Content Include="Views\Home\hearder_cart.cshtml" />
         <Content Include="Views\Home\Index.cshtml" />
         <Content Include="Views\Home\lien_he.cshtml" />
         <Content Include="Views\Home\nhat_ky.cshtml" />
         <Content Include="Views\Home\san_pham.cshtml" />
         <Content Include="Views\Home\san_pham1.cshtml" />
-        <Content Include="Views\Home\thanh_toan.cshtml" />
         <Content Include="Views\Home\tim_kiem.cshtml" />
         <Content Include="Views\Home\tin_tuc.cshtml" />
         <Content Include="Views\Home\TKKH.cshtml" />

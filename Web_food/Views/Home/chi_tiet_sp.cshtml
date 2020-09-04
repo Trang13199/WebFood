@@ -88,7 +88,7 @@
                                 <button class="btn btn-lg btn-primary btn-block ">
                                     <i class="fa fa-shopping-cart"></i>Giỏ hàng
                                 </button></a>
-                            <a href="@Url.Action("gio_hang", "Home")" style="margin-left: 15px; width: 150px;">
+                            <a href="@Url.Action("ThemVaoGio", "Home", new{SanPhamID = @p.Id})">
                                 <button class="btn btn-lg btn-danger btn-block " style="height: 50px;
                             margin-top: 0px;"><i class="fas fa-check"></i>Mua ngay</button></a>
                         </div>

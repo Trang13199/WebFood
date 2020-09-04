@@ -1,3 +1,4 @@
+﻿@using Web_food.Models
 @using Web_food.Models
 @model List<Web_food.Models.CartItem>
 @{
@@ -63,14 +64,12 @@ else
                     </tr>
                 </table>
             </div>
-
         </div>
-
     </div>
     <div class="button text-right">
-                <a class="btn btn-default btn-primary" href="@Url.Action("san_pham","Home")">Tiếp tục mua hàng</a>
-    
-                 <a class="btn btn-primary" href="@Url.Action("thanh_toan","Home")">Tiến hành thanh toán</a>
+        <a class="btn btn-default btn-primary" href="@Url.Action("san_pham","Home")">Tiếp tục mua hàng</a>
+        
+        <a class="btn btn-primary" href="@Url.Action("thanh_toan","Home")">Tiến hành thanh toán</a>
     
     </div>
     <hr class="featurette-divider">

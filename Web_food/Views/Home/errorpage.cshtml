@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4 style="color: red;padding-top: 20px;text-align: center">
+    Bạn không có quyền truy cập chức năng này.
+    vui lòng liên hệ với ban quản trị.
+<a href="@Url.Action("Index","Home")">Quay lại trang chủ</a>/
+<a href="@Url.Action("Logout","Home")">Thay đổi tài khoản</a>
+</h4>
