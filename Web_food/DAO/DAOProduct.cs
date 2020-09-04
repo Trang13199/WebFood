@@ -40,7 +40,7 @@ namespace Web_food.DAO
         }
 
         // Them moi mot san pham
-        public void Add_product(Product product)
+        public bool Add_product(Product product)
         {
             DBConnection dbConnection = new DBConnection();
             MySqlConnection connection = dbConnection.ConnectionSql();
@@ -57,11 +57,11 @@ namespace Web_food.DAO
             command.Parameters.AddWithValue("@type", product.Type);
             command.Parameters.AddWithValue("@quantity", product.Quantity);
 
-            command.ExecuteNonQuery();
+           return command.ExecuteNonQuery()>0;
         }
 
         // Cap nhat lai thong tin san pham
-        public void Update_product(Product product, int id)
+        public bool Update_product(Product product, int id)
         {
             DBConnection dbConnection = new DBConnection();
             MySqlConnection connection = dbConnection.ConnectionSql();
@@ -79,7 +79,7 @@ namespace Web_food.DAO
             command.Parameters.AddWithValue("@type", product.Type);
             command.Parameters.AddWithValue("@quantity", product.Quantity);
 
-            command.ExecuteNonQuery();
+           return command.ExecuteNonQuery()>0;
         }
 
         // Hien thi san pham theo id
@@ -100,7 +100,7 @@ namespace Web_food.DAO
         }
 
         // Xoa san pham theo id
-        public void delete(int id)
+        public bool delete(int id)
         {
             DBConnection dbConnection = new DBConnection();
             MySqlConnection connection = dbConnection.ConnectionSql();
@@ -110,7 +110,7 @@ namespace Web_food.DAO
             MySqlCommand command = new MySqlCommand(sql_delete, connection);
 
             command.Parameters.AddWithValue("@id", id);
-            command.ExecuteNonQuery();
+           return command.ExecuteNonQuery()>0;
         }
 
         //hien thi tat ca san pham

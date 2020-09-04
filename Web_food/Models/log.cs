@@ -7,7 +7,7 @@ namespace Web_food.Models
         public string message { get; set; }
         public string level { get; set; }
         public User user { get; set; }
-        public string address { get; set; }
+        public string action { get; set; }
         public string ip { get; set; }
         public DateTime creatAt { get; set; }
         

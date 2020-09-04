@@ -11,16 +11,12 @@ namespace Web_food.Controllers
     [KiemTraQuyen]
     public class AdminController : Controller
     {
-        // public AdminController()
-        // {
-        //     this.lever = 2;
-        // }
-        // GET
         public ActionResult danh_sach_sp()
         {
             List<Product> listProduct = DAOProduct.getListProducts();
             return View(listProduct);
         }
+
         public ActionResult them_sp()
         {
             return View();
@@ -37,7 +33,15 @@ namespace Web_food.Controllers
             p.Type = Convert.ToInt32(fc["type"]);
             p.Quantity = Convert.ToInt32(fc["quantity"]);
             DAOProduct dao = new DAOProduct();
-            dao.Add_product(p);
+            if (dao.Add_product(p))
+            {
+                new DaoLog().INFO("success", "them_sp");
+            }
+            else
+            {
+                new DaoLog().INFO("fail", "them_sp");
+            }
+
             TempData["msg"] = "INSERT SUCCESS";
             return RedirectToAction("danh_sach_sp", "Admin");
         }
@@ -62,7 +66,15 @@ namespace Web_food.Controllers
             p.Type = Convert.ToInt32(fc["type"]);
             p.Quantity = Convert.ToInt32(fc["quantity"]);
             DAOProduct dao = new DAOProduct();
-            dao.Update_product(p, id);
+            if (dao.Update_product(p, id))
+            {
+                new DaoLog().INFO("success", "chinh_sua_sp");
+            }
+            else
+            {
+                new DaoLog().INFO("fail", "chinh_sua_sp");
+            }
+
             TempData["msg"] = "UPDATE SUCCESS";
             return RedirectToAction("danh_sach_sp", "Admin");
         }
@@ -70,7 +82,16 @@ namespace Web_food.Controllers
         public ActionResult xoa_sp(int id)
         {
             DAOProduct dao = new DAOProduct();
-            dao.delete(id);
+
+            if (dao.delete(id))
+            {
+                new DaoLog().WARNING("success", "xoa_sp");
+            }
+            else
+            {
+                new DaoLog().WARNING("fail", "xoa_sp");
+            }
+
             return RedirectToAction("danh_sach_sp", "Admin");
         }
 
@@ -101,7 +122,15 @@ namespace Web_food.Controllers
             user.address = formCollection["address"];
             user.gender = formCollection["gender"];
             user.level = Convert.ToInt32(formCollection["level"]);
-            DAOUser.addUser(user);
+            if (DAOUser.addUser(user))
+            {
+                new DaoLog().INFO("success", "them_khach_hang");
+            }
+            else
+            {
+                new DaoLog().INFO("fail", "them_khach_hang");
+            }
+
             return RedirectToAction("khach_hang", "Admin");
         }
 
@@ -127,13 +156,14 @@ namespace Web_food.Controllers
                               " email: " + user.email
                               + " address: " + user.address + "phone: " + user.phone + " gender: " + user.gender +
                               " level: " + user.level + "'}");
-            // DAOUser.editUser(user);
             if (DAOUser.editUser(user))
             {
+                new DaoLog().INFO("success", "chinh_sua_kh");
                 return RedirectToAction("khach_hang", "Admin");
             }
             else
             {
+                new DaoLog().INFO("fail", "chinh_sua_kh");
                 ViewBag.error = "not success";
                 return RedirectToAction("chinh_sua_kh", "Admin", new {ID = Convert.ToInt32(formCollection["id"])});
             }
@@ -141,7 +171,15 @@ namespace Web_food.Controllers
 
         public ActionResult xoa_kh(int id)
         {
-            DAOUser.delUser(id);
+            if (DAOUser.delUser(id))
+            {
+                new DaoLog().WARNING("success", "xoa_kh");
+            }
+            else
+            {
+                new DaoLog().WARNING("fail", "xoa_kh");
+            }
+
             return RedirectToAction("khach_hang", "Admin");
         }
 
@@ -172,10 +210,12 @@ namespace Web_food.Controllers
             ProductType productType = new ProductType(id, name, active);
             if (DAOProduct.addProductType(productType))
             {
+                new DaoLog().INFO("success", "them_loai_sp");
                 return RedirectToAction("ql_loai_sp", "Admin");
             }
             else
             {
+                new DaoLog().INFO("fail", "them_loai_sp");
                 ViewBag.error = "add product type not success";
                 return View();
             }
@@ -197,10 +237,12 @@ namespace Web_food.Controllers
             ProductType productType = new ProductType(id, name, active);
             if (DAOProduct.editProductType(productType))
             {
+                new DaoLog().INFO("success", "chinh_sua_loaiSP");
                 return RedirectToAction("ql_loai_sp", "Admin");
             }
             else
             {
+                new DaoLog().INFO("fail", "chinh_sua_loaiSP");
                 ViewBag.error = "edit product type not success";
                 return View();
             }
@@ -208,14 +250,17 @@ namespace Web_food.Controllers
 
         public ActionResult xoa_loai_sp(int id)
         {
-            DAOProduct.delProductType(id);
+            if (DAOProduct.delProductType(id))
+            {
+                new DaoLog().WARNING("success", "xoa_loai_sp");
+            }
+            else
+            {
+                new DaoLog().WARNING("fail", "xoa_loai_sp");
+            }
+
             return RedirectToAction("ql_loai_sp", "Admin");
         }
-
-        // public ActionResult thanh_toan()
-        // {
-        //     return View();
-        // }
 
         public ActionResult QuanLyDonHang()
         {
@@ -225,7 +270,14 @@ namespace Web_food.Controllers
 
         public ActionResult del_oder(string idi)
         {
-            DAOOrder.del_oder(idi);
+            if (DAOOrder.del_oder(idi))
+            {
+                new DaoLog().WARNING("success", "del_oder");
+            }
+            else
+            {
+                new DaoLog().WARNING("fail", "del_oder");
+            }
 
             return RedirectToAction("QuanLyDonHang", "Admin");
         }

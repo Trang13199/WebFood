@@ -130,6 +130,7 @@
         <Compile Include="Controllers\AdminController.cs" />
         <Compile Include="Controllers\HomeController.cs" />
         <Compile Include="Controllers\WebController.cs" />
+        <Compile Include="DAO\DaoLog.cs" />
         <Compile Include="DAO\DAOOder.cs" />
         <Compile Include="DAO\DAOProduct.cs" />
         <Compile Include="DAO\DAOrole.cs" />
@@ -148,6 +149,7 @@
         </Compile>
         <Compile Include="Models\CartItem.cs" />
         <Compile Include="Models\KiemTraQuyenAttribute.cs" />
+        <Compile Include="Models\LEVER.cs" />
         <Compile Include="Models\log.cs" />
         <Compile Include="Models\Order.cs" />
         <Compile Include="Models\Order_detail.cs" />
