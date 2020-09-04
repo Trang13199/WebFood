@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web.Mvc;
 using PagedList;
@@ -200,8 +201,18 @@ namespace Web_food.Controllers
             return View();
         }
 
-        public ActionResult TKKH()
+        public ActionResult TKKH(string user)
         {
+            DAOOrder dao = new DAOOrder();
+            DataSet ds = dao.show_order_byuser(user);
+            ViewBag.showSP = ds.Tables[0];
+            return View();
+        }
+        public ActionResult Dơn_hang(string user)
+        {
+            DAOOrder dao = new DAOOrder();
+            DataSet ds = dao.show_order_byuser(user);
+            ViewBag.showSP = ds.Tables[0];
             return View();
         }
 
@@ -286,6 +297,18 @@ namespace Web_food.Controllers
             List<CartItem> giohang = Session["giohang"] as List<CartItem>;
 
             return PartialView(giohang);
+        }
+        public PartialViewResult SP_cungLoai(int? type)
+        {
+            List<Product> list_spcungloai = ProductDetail.sp_cungloai(type);
+            return PartialView(list_spcungloai);
+        }
+        public PartialViewResult sp_yeuThich(string user)
+        {
+            ProductDetail dao = new ProductDetail();
+            DataSet ds = dao.sp_yeuThich(user);
+            ViewBag.sp_yeuthich = ds.Tables[0];
+            return PartialView();
         }
     }
 }

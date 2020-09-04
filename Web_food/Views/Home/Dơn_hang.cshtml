@@ -1,4 +1,9 @@
-﻿@using Web_food.Models
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "title";
+}
+@using Web_food.Models
 @{
     <link rel="stylesheet" href="~/CSSWeb/TKKH.css" xmlns="http://www.w3.org/1999/html"
       xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
@@ -30,38 +35,12 @@
     </div>
 
     <div class="lzd-playground-right">
-        <div class="breadcrumb" data-spm-anchor-id=""><a>Quản lý tài khoản</a></div>
-        <div id="container" class="container">
-            <div class="dashboard" data-spm="1" style="display: flex;">
-                <div class="dashboard-profile">
-                    <div class="dashboard-mod-title">Thông tin cá nhân <span>|</span> <a data-spm="dprofile_edit" href="#/profile/edit">EDIT</a></div>
-                    <div class="dashboard-info">
-                        <div class="dashboard-info-item">@u.userName</div>
-                        <div class="dashboard-info-item">@u.email</div>
-                        <div class="dashboard-address-phone">@u.phone</div></div>
-                    @* <div class="dashboard-info-item last"><a href="javascript:;">Subscribe to our Newsletter</a></div> *@
-                </div>
-                @* <div class="dashboard-address"> *@
-                <div class="dashboard-address-item shipping">
-                    <div class="dashboard-mod-title">Address Book <span>|</span> <a href="/address#/book" data-spm="dprofile_edit">EDIT</a></div>
-                    <div class="dashboard-address-default"><b>Địa chỉ giao hàng</b></div>
-                    <div class="dashboard-address-username">@u.userName</div>
-                    <div class="dashboard-address-detail">@u.address</div>
-                </div>
-                <div class="dashboard-address-item billing">
-                    <div class="dashboard-mod-title">Address Book <span>|</span> <a data-spm="dprofile_edit" href="/address#/book">EDIT</a></div>
-                    <div class="dashboard-address-default"><b>Địa chỉ thanh toán</b></div>
-                    <div class="dashboard-address-username">@u.userName</div>
-                    <div class="dashboard-address-detail">@u.address</div>
-                </div>
-            </div>
-        </div>
         <br>
         <div class="recent-orders" data-spm="recent-orders">
             @* <h4>Đơn hàng gần đây</h4> *@
             <a href="#" class="list-group-item list-group-item-info active">
-                       ĐƠN HÀNG GẦN ĐÂY
-                    </a>
+                ĐƠN HÀNG CỦA TÔI
+            </a>
             <div class="next-table only-bottom-border">
                 <div class="next-table-inner">
                     <div class="next-table-header">
@@ -73,15 +52,17 @@
                                     <th>Sản phẩm</th>
                                     <th>Số lượng</th>
                                     <th>Đơn giá</th>
+                                    <th>Tình trạng</th>
                                 </tr>
                                 @foreach (System.Data.DataRow item in ViewBag.showSP.Rows)
                                 {
                                     <tr>
                                         <td> @item["id_order"] </td>
                                         <td> @item["date"] </td>
-                                        <td class="text-center" title="@item["name"]"><img src="@item["image"]" width="70" height="60"> </td>
+                                        <td class="text-center" title="@item["name"]"><img alt="" src="~/Content/image/@item["image"]" width="70" height="60"> </td>
                                         <td> @item["quantity"] </td>
                                         <td> @item["price"] VNĐ </td>
+                                        <td> @item["status"]</td>
                                     </tr>
                                 }
                             </table>
@@ -93,4 +74,5 @@
     </div>
 </div>
 </div>
+    
     

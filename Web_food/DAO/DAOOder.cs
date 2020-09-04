@@ -132,5 +132,21 @@ namespace Web_food.DAO
             command.Parameters.AddWithValue("@id", id);
            return command.ExecuteNonQuery()>0;
         }
+        //hiển thị hoá đơn theo khách hàng
+        public DataSet show_order_byuser(string user)
+        {
+            DBConnection dbConnection = new DBConnection();
+            MySqlConnection connection = dbConnection.ConnectionSql();
+            connection.Open();
+
+            string sql = "SELECT d.id_order, d.image, d.`name`, d.quantity, d.price, o.date, d.product_id, o.status FROM `order` o JOIN order_detail d ON o.id = d.id_order WHERE o.username = @username";
+            MySqlCommand command = new MySqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@username", user);
+            MySqlDataAdapter da = new MySqlDataAdapter(command);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            return ds;
+        }
     }
+    
 }

@@ -43,9 +43,9 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                             <button class="dropdown-item" type="button" ><i class="far fa-smile-beam"></i>
-                                                            <a href="@Url.Action("TKKH", "Home")" style="color:black;">Quản lý tài khoản của tôi</a></button>
+                                                            <a href="@Url.Action("TKKH", "Home", new {user = @u.userName})" style="color:black;">Quản lý tài khoản của tôi</a></button>
                             <button class="dropdown-item" type="button" ><i class="fas fa-box"></i>
-                                                            <a href="@Url.Action("Logout", "Home")" style="color:black;">Đơn hàng của tôi</a></button>
+                                                            <a href="@Url.Action("Dơn_hang", "Home", new {user = @u.userName})" style="color:black;">Đơn hàng của tôi</a></button>
                             <button class="dropdown-item" type="button" ><i class="fas fa-sign-out-alt"></i>
                                 <a href="@Url.Action("Logout", "Home")" style="color:black;">Đăng xuất</a></button>
                         </div>
@@ -69,20 +69,7 @@
                 <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="search" value="@ViewBag.search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><span style="color: white"><i class="fas fa-search"></i></span></button>
             </form>
-@*             <ul class="nav navbar-nav navbar-right topmenu  hidden-xs hidden-sm"> *@
-@*                 <li class="order-cart"><i class="fa fa-shopping-cart">@Html.ActionLink("  Giỏ hàng","gio_hang","Home") *@
-@*                     </i> *@
-@* $1$                       @if (giohang != null) #1# *@
-@* $1$                       { #1# *@
-@* $1$                           <a href="#"><span class="btn-qua"> @Model.Sum(m => m.SoLuong) : @Model.Sum(m => m.ThanhTien).ToString("#,##0").Replace(',', '.') VNĐ </span> </a> #1# *@
-@* $1$                       } #1# *@
-@* $1$                       else #1# *@
-@* $1$                       { #1# *@
-@* $1$ #1# *@
-@* $1$                       } #1# *@
-@*                                                                                                                                       </li > *@
-@*             </ul> *@
-@{
+            @{
     Html.RenderAction("hearder_cart","Home");
 }
         </div>

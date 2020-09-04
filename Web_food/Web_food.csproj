@@ -4316,6 +4316,9 @@
         <Content Include="Views\Admin\them_khach_hang.cshtml" />
         <Content Include="Views\Admin\them_loai_sp.cshtml" />
         <Content Include="Views\Admin\them_sp.cshtml" />
+        <Content Include="Views\Home\Dơn_hang.cshtml" />
+        <Content Include="Views\Home\SP_cungLoai.cshtml" />
+        <Content Include="Views\Home\sp_yeuThich.cshtml" />
         <Content Include="Views\Home\thanh_toan.cshtml" />
         <Content Include="Views\Home\chi_tiet_sp.cshtml" />
         <Content Include="Views\Home\dang_ky.cshtml" />

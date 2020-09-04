@@ -1,7 +1,8 @@
 ﻿@using Web_food.Models
-@model dynamic
 @{
+    User u = (User) Session["username"];
     List<Product> products = ViewBag.ct;
+    // List<comment> comments = ViewBag.comment;
 }
 
 <nav class="pull-left row  col-lg-3">
@@ -55,133 +56,136 @@
 <div class="main">
     <div class="card mb-8" style="max-width: 100%;">
         <div class="row no-gutters">
-            @{
-                foreach (var p in products)
+            @foreach (var p in products)
                 {
-            <div class="col-md-6">
-                <img src="~/Content/image/@p.Images" class="card-img" alt="..." style="margin: 20px">
-            </div>
+                    <div class="col-md-6">
+                        <img src="@p.Images" class="card-img" alt="..." style="margin: 20px">
+                    </div>
 
-                <div class="col-md-6">
-                    <div class="card-body" style="text-align: left; padding-left: 50px">
-                        <h3 class="card-title">@p.Name
-                        </h3>
-                        <h3 class="card-title">Giá: @p.Price VNĐ</h3>
-                        <h3 class="card-title">Mã SP: @p.Id
-                        </h3>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        <div class="btn-group">
-                            <!--                <button type="button" class="btn btn-light">Light</button>-->
-                            <select class="custom-select" style="width: 60px; margin-right: 40px">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                            </select>
-                            <a href="@Url.Action("gio_hang", "Home")" style="width: 150px;">
-                                <button class="btn btn-lg btn-primary btn-block ">
-                                    <i class="fa fa-shopping-cart"></i>Giỏ hàng
-                                </button></a>
-                            <a href="@Url.Action("ThemVaoGio", "Home", new{SanPhamID = @p.Id})">
-                                <button class="btn btn-lg btn-danger btn-block " style="height: 50px;
+                    <div class="col-md-6">
+                        <div class="card-body" style="text-align: left; padding-left: 50px">
+                            <h3 class="card-title">@p.Name
+                            </h3>
+                            <h3 class="card-title">Giá: @p.Price VNĐ</h3>
+                            <h3 class="card-title">Mã SP: @p.Id
+                            </h3>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            <div class="btn-group">
+                                <!--                <button type="button" class="btn btn-light">Light</button>-->
+                                <select class="custom-select" style="width: 60px; margin-right: 40px">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                                <a href="@Url.Action("gio_hang", "Home")" style="width: 150px;">
+                                    <button class="btn btn-lg btn-primary btn-block ">
+                                        <i class="fa fa-shopping-cart"></i>Giỏ hàng
+                                    </button></a>
+                                <a href="@Url.Action("ThemVaoGio", "Home", new{SanPhamID = @p.Id})">
+                                    <button class="btn btn-lg btn-danger btn-block " style="height: 50px;
                             margin-top: 0px;"><i class="fas fa-check"></i>Mua ngay</button></a>
+                            </div>
                         </div>
                     </div>
-                </div>
                 }
-            }
         </div>
     </div>
-<div id="home1" class="container tab-pane fade active show">
-    <div class="contan">
-        <ul class=" nav nav-tabs" role="tablist">
-            <li class="nav-item items">
-                <a class="nav-link active" data-toggle="tab"
-                   href="#mota">Mô tả</a>
-            </li>
-            <li class="nav-item items">
-                <a class="nav-link" data-toggle="tab"
-                   href="#danhgia">Đánh giá</a>
-            </li>
-        </ul>
-        <div class="tab-content">
-            <div id="mota" class="container tab-pane fade active show">
-                 @{
-                     foreach (var p in products)
-                     {
-                         <div class="card">
-                             <div class="card-body">
-                                 <h5 class="card-title">@p.Name
-                                 </h5>
-                                 <p class="card-text">@p.Content</p>
-                             </div>
-                             <img src="~/Content/image/@p.Images" class="card-img-top" alt="...">
-                         </div>
-                     }
-                 }
-                     </div>
-            <div id="danhgia" class="container tab-pane fade">
-                <div class="card">
-                <div class="group1">
-                    <div class="option-group1">
-                        <h4>Điểm đánh giá của bạn</h4>
-                        <div class="input-info" >
-                            <input type="radio" name="gender" value="1" id="1"/>
-                            <label for="1"><i class="far fa-star"></i></label>
-                            <input type="radio" name="gender" value="2" id="2"/>
-                            <label for="2"><i class="far fa-star"></i><i class="far fa-star"></i></label>
-                            <input type="radio" name="gender" value="1" id="3"/>
-                            <label for="3"><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></label>
-                            <input type="radio" name="gender" value="2" id="4"/>
-                            <label for="4"><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></label>
-                            <input type="radio" name="gender" value="1" id="5"/>
-                            <label for="5"><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></label>
+    <div id="home1" class="container tab-pane fade active show">
+        <div class="contan">
+            <ul class=" nav nav-tabs" role="tablist">
+                <li class="nav-item items">
+                    <a class="nav-link active" data-toggle="tab"
+                       href="#mota">Mô tả</a>
+                </li>
+                <li class="nav-item items">
+                    <a class="nav-link" data-toggle="tab"
+                       href="#danhgia">Đánh giá</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div id="mota" class="container tab-pane fade active show">
+                    @foreach (var p in products)
+                        {
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">@p.Name
+                                    </h5>
+                                    <p class="card-text">@p.Content</p>
+                                </div>
+                                <img src="@p.Images" class="card-img-top" alt="...">
+                            </div>
+                        }
+                </div>
+                <div id="danhgia" class="container tab-pane fade">
+                    <div class="card">
+                        <div class="group1">
+                            <div class="option-group1">
+                                <h4>Điểm đánh giá của bạn</h4>
+                                <div class="input-info" >
+                                    <input type="radio" name="star" value="1" id="1"/>
+                                    <label for="1"><i class="far fa-star"></i></label>
+                                    <input type="radio" name="star" value="2" id="2"/>
+                                    <label for="2"><i class="far fa-star"></i><i class="far fa-star"></i></label>
+                                    <input type="radio" name="star" value="3" id="3"/>
+                                    <label for="3"><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></label>
+                                    <input type="radio" name="star" value="4" id="4"/>
+                                    <label for="4"><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></label>
+                                    <input type="radio" name="star" value="5" id="5"/>
+                                    <label for="5"><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></label>
+                                </div>
+                            </div>
                         </div>
+                        <div class="group2">
+                            
+                                <div class="col-md-12 col-md-offset-2 col-xs-12 col-sm-12 col-xs-offset-0 col-sm-offset-0">
+                                    <form class="form-horizontal " ng-submit="register()" style="color: black">
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">Ý kiến đánh giá của bạn</label>
+                                            <div class="col-sm-9">
+                                                <textarea type="text" name="comment_text" class="form-control" ng-model="Code" required="true" style="height: 150px;" ></textarea>
+                                            </div>
+                                        </div>
+                                        @if (u != null)
+                                        {
+                                            <input type="hidden" class="form-control" ng-model="Email" name="id_username" value="@u.id"/> 
+                                            <input type="hidden" class="form-control" ng-model="Email" name="username" value="@u.userName"/> 
+                                        }
+                                        <br/>
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-4 col-sm-8">
+                                                <button type="submit" class="btn btn-primary">Đánh giá</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            
+                        </div>
+@*                          @foreach (comment c in comments) *@
+@*                          { *@
+@*                              <div class="col-xl-6 left"> *@
+@*                                  <p>@c.username</p> *@
+@*                              </div> *@
+@*                              <div class="col-xl-6 right"> *@
+@*                                  <p>@c.comment_text</p> *@
+@*                              </div> *@
+@*                          } *@
                     </div>
                 </div>
-                <div class="group2">
-                    <div class="col-md-12 col-md-offset-2 col-xs-12 col-sm-12 col-xs-offset-0 col-sm-offset-0">
-                        <form class="form-horizontal " ng-submit="register()" style="color: black">
-                            <h4><span></span></h4>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">Ý kiến đánh giá của bạn</label>
-                                <div class="col-sm-9">
-                                    <textarea type="text" class="form-control" ng-model="Code" required="true" style="height: 150px;" ></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">Tên</label>
-                                <div class="col-sm-9">
-                                    <input type="email" class="form-control" ng-model="Email" required="true" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">Email</label>
-                                <div class="col-sm-9">
-                                    <input type="password" class="form-control" ng-model="Password" required="true" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-4 col-sm-8">
-                                    <button type="submit" class="btn btn-primary">Đánh giá</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                    </div>
             </div>
         </div>
     </div>
-</div>
     <hr class="featurette-divider">
 </div>
-
+ @foreach (var p in products)
+ {
+     Html.RenderAction("SP_cungLoai","Home",new {type = p.Type});
+ }
 
  
