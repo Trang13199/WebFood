@@ -3,8 +3,28 @@
 
 @{
     ViewBag.Title = "title";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";}
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    <script src="~/plugins/ckeditor/ckeditor.js"></script>
+    <script src="~/plugins/ckfinder/ckfinder.js"></script>
+}
+@section jsFooter
+{
+  <script>
+    $('#chonanh').on('click',function(e) {
+        e.preventDefault();
+      var finder = new CKFinder();
+          finder.selectActionFunction = function(url) {
+            $('#image').val(url);
+          };
+              finder.popup();
+    })
+    
+    var editor = CKEDITOR.replace('content',{
+            customConfig: '/plugins/ckeditor/config.js',
+        })
+  </script>
 
+}
 
 <div class="all-content-wrapper">
 <!-- Single pro tab start-->
@@ -38,14 +58,10 @@
                                                                 <input type="hidden" name="id"
                                                                        value="@dr["id"]">
                                                                 <div class="review-content-section">
-
-                                                                    <div class="input-group mg-b-pro-edt">
-                                                                        <span class="input-group-addon">
-                                                                            <i class="icon nalika-user"
-                                                                               aria-hidden="true"></i></span>
-                                                                        <input type="text" class="form-control" name="image"
-                                                                               placeholder="Tên"
-                                                                               value="@dr["image"]">
+                                                                    <div class="form-group">
+                                                                        <img style="height: 200px;" src="@dr["image"]"/>
+                                                                        <a id="chonanh" href="#">Chọn ảnh</a>
+                                                                        <input class="ckeditor form-control" name="image" id="image" value="@dr["image"]">
                                                                     </div>
                                                                     <div class="input-group mg-b-pro-edt">
                                                                         <span class="input-group-addon">
@@ -75,17 +91,13 @@
                                                                         <span class="input-group-addon">
                                                                             <i class="icon nalika-favorites"
                                                                                aria-hidden="true"></i></span>
-                                                                        <input type="text" class="form-control" name="content"
-                                                                               placeholder="content"
-                                                                               value="@dr["content"]">
-                                                                    </div>
-                                                                    <div class="input-group mg-b-pro-edt">
-                                                                        <span class="input-group-addon">
-                                                                            <i class="icon nalika-favorites"
-                                                                               aria-hidden="true"></i></span>
                                                                         <input type="text" class="form-control" name="quantity"
                                                                                placeholder="quantity"
                                                                                value="@dr["quantity"]">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="moTa">Mô tả</label>
+                                                                        <textarea class="ckeditor" runat ="server" name="content" rows="3" id="content" >@dr["content"]</textarea>
                                                                     </div>
                                                                 </div>
 
@@ -109,11 +121,6 @@
                                                                     </div>
                                                                 </div>
                                                             </form>
-                                                        }
-                                                    }
-                                                    @{
-                                                        if (TempData["msg"] != null){
-                                                            <script>alert('@TempData["msg"]')</script>
                                                         }
                                                     }
                                                 </div>

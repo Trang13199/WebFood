@@ -10,12 +10,13 @@ namespace Web_food.DAO
 {
     public class ListProduct
     {
+        //Lấy thông tin sản sẩm để hiển thị
         public static List<Product> showProduct()
         {
             DBConnection dbConnection = new DBConnection();
             MySqlConnection conn = dbConnection.ConnectionSql();
             conn.Open();
-            string sql = "SELECT id, `name`, price, image, content FROM `products` WHERE active=1";
+            string sql = "SELECT id, `name`, price, image, content FROM `products` WHERE active=1 LIMIT 0,12";
             MySqlCommand sqlCommand = new MySqlCommand(sql);
             sqlCommand.Connection = conn;
             List<Product> products = new List<Product>();
@@ -36,7 +37,8 @@ namespace Web_food.DAO
             }
             return products;
         }
-        public static List<Product> Product(int? type)
+        //Lấy sản phẩm theo loại
+        public static List<Product> Product_type(int? type)
         {
             DBConnection dbConnection = new DBConnection();
             MySqlConnection conn = dbConnection.ConnectionSql();
@@ -63,6 +65,7 @@ namespace Web_food.DAO
             }
             return products;
         }
+        //Hiển thị loại sản phẩm
         public static List<ProductType> getType()
         {
             DBConnection dbConnection = new DBConnection();
@@ -86,7 +89,7 @@ namespace Web_food.DAO
             }
             return types;
         }
-
+        //Phân trang sản phẩm
         public static List<Product> getPage(int? page)
         {
             DBConnection dbConnection = new DBConnection();
@@ -114,9 +117,6 @@ namespace Web_food.DAO
             }
             return products;
         }
-        
-        
-        
         public static List<Product> Category(int? type, int pageindex = 1, int pagesize = 2)
         {
             DBConnection dbConnection = new DBConnection();

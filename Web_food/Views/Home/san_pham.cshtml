@@ -31,12 +31,12 @@
                 {
                      
                     <div class="card" style="width: 17rem;">
-                        <a href="@Url.Action("chi_tiet_sp", "Home", new { name = @p.Name })">
-                            <img src="~/Content/image/@p.Images" class="card-img" alt="..." style="height: 17rem">
+                        <a href="@Url.Action("chi_tiet_sp", "Home", new {ids = @p.Id})">
+                            <img src="@p.Images" class="card-img" alt="..." style="height: 17rem">
                         </a>
                         <div class="card-body">
                             <h5 class="card-title">@p.Name</h5>
-                            <p class="card-text">@p.Price đ</p>
+                            <p class="card-text">@p.Price.ToString("#,##0").Replace(',', '.') VNĐ</p>
                             <div class="cart">
                                 <a href="@Url.Action("gio_hang", "Home")"> <button>Mua hàng</button></a>
                                 <a href="@Url.Action("ThemVaoGio", "Home", new{SanPhamID = @p.Id})">
@@ -53,34 +53,9 @@
         @Html.PagedListPager(Model, page => Url.Action("san_pham", new {page}),
             PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions()
             {HttpMethod = "GET", UpdateTargetId = "id"}))
-           
-        @* <div class="custom-pagination" style="margin-top: 40px"> *@
-        @*     <ul class="pagination"> *@
-        @*         <li class="page-item"><a class="page-link" href="">Previous</a></li> *@
-        @*         $1$ <li class=""><a class="page-link" href="@Html.PagedListPager(Model,page => Url.Action("san_pham", new{page = page}))">1 </a></li> #1# *@
-        @*         <li class=""><a class="page-link" href="">2 </a></li> *@
-        @*         <li class=""><a class="page-link" href="">3 </a></li> *@
-        @*         <li class="page-item"><a class="page-link" href="">Next</a></li> *@
-        @*     </ul> *@
-        @* </div> *@
-        
-        @*          <div class="custom-pagination" style="margin-top: 40px"> *@
-        @*                         <ul class="pagination"> *@
-        @*                             <li class="page-item"><a class="page-link" *@
-        @*                                                      href="<%= Util.fullpath("ListProduct?page=1")%>">Previous</a></li> *@
-        @*                             @foreach (var p in page) *@
-        @*                             { *@
-        @*                             <li class=@{(i+1+"").equals(p1)}"active":""><a class="page-link" *@
-        @*                                                                               href="<%= Util.fullpath("ListProduct?page="+(i+1))%>"><%= (i + 1)%> *@
-        @*                             </a></li> *@
-        @*                             <%}%> *@
-        @*                            <li class="page-item"><a class="page-link" *@
-        @*                                                     href="<%= Util.fullpath("ListProduct?page="+sum)%>">Next</a> *@
-        @*                                } *@
-        @*                             </li> *@
-        @*                         </ul> *@
-        @*                     </div> *@
-    </div>
-    </div>
-<hr class="featurette-divider">
+           </div>
+               </div>
+           <hr class="featurette-divider">
+      
+    
 

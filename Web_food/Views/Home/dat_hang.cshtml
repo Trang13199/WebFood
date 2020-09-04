@@ -1,54 +1,49 @@
-﻿@model dynamic
-
+﻿@using Web_food.Models
 @{
-    ViewBag.Title = "title";
+    List<Order> orders = ViewBag.list_order;
 }
-
+<h1 style="color:red;">THANH TOAN THANH CONG</h1>
+<br/>
+  
 <div class="container marketing">
-    <div class="payment-order clearfix">
-        <h3>Mã đơn hàng của bạn: <b>#100000055</b></h3>
-        <p><b>Ngày đặt:</b> <i>10/11/2019</i></p>
-        <p><b>Phương thức thanh toán:</b> <i></i></p>
-        <h5>Thông tin đơn hàng</h5>
-        <table class="table">
-            <thead>
+    @foreach (Order order in orders)
+     {
+         <div class="payment-order clearfix">
+             <h3>Mã đơn hàng của bạn: <b>#@order.id</b></h3>
+             <p>Tên khách hàng: <b>@order.username</b></p>
+             <p>Số điện thoại: <b>@order.phone</b></p>
+             <p>Địa chỉ giao hàng: <b>@order.address</b></p>
+             <p>Ngày đặt: <i>@order.date</i></p>
+             <p>Số lượng: <b>@order.sum sản phẩm</b></p>
+             <p>Tổng tiền: <b>@order.total VNĐ</b></p>
+         </div>
+         <br/>
+    }
+    <h4>Thông tin đơn hàng</h4>
+    <table class="table table-bordered">
+        <tr>
+            <th>Hình</th>
+            <th>Tên sản phẩm</th>
+            <th>Số lượng</th>
+            <th>Đơn giá</th>
+        </tr>
+        @foreach (System.Data.DataRow item in ViewBag.show.Rows)
+        {
             <tr>
-                <th>STT</th>
-                <th>Sản phâm</th>
-                <th>Đơn giá</th>
-                <th>Số lượng</th>
-                <th>Thành tiền</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>1</td>
+                <td class="text-center"><img src="@item["image"]" width="70" height="60"/> </td>
+                <td>@item["name"] </td>
                 <td>
-                    <span> Cơm sườn</span>
-<!--                    <p class="note"></p>-->
+                    @item["quantity"]
                 </td>
-                <td>25.000</td>
-                <td>1</td>
-                <td>25.000đ</td>
+                <td> @item["price"] VNĐ </td>
             </tr>
-            </tbody>
-            <tfoot>
-            <tr>
-                <td colspan="4" class="text-right label-payment"><b>Tổng thanh toán:</b></td>
-                <td class="total-payment">25.000 đ</td>
-            </tr>
-            </tfoot>
-        </table>
-        <span class="print-order"><a href="#"><i class="fa fa-print"></i>In đơn hàng</a></span>
-    </div>
+        }
+    </table>
     <div class="clearfix col-md-12">
         <div class="button text-right">
-            <a class="btn btn-default btn-danger" @Html.ActionLink("Tiếp tục mua hàng","san_pham","Home")></a>
-            <a class="btn btn-primary" href="../Web/gio_hang.cshtml">Đơn hàng của tôi</a>
+            <a class="btn btn-default btn-danger" @Html.ActionLink("Tiếp tục mua hàng", "san_pham", "Home")></a>
         </div>
     </div>
     <hr class="featurette-divider">
-
-
-</div><!-- /.container -->
-
+</div>
+ 

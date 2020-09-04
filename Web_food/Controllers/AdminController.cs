@@ -2,32 +2,29 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Web.Mvc;
+using PagedList;
 using Web_food.DAO;
 using Web_food.EditModel;
 using Web_food.Models;
 
 namespace Web_food.Controllers
 {
+    [KiemTraQuyen]
     public class AdminController : Controller
     {
-        // public AdminController()
-        // {
-        //     this.lever = 2;
-        // }
-        // GET
         public ActionResult Index()
         {
             return View();
         }
         public ActionResult Login()
         {
-            // Session.Remove("FirstName");
             return View();
         }
+        [HttpPost]
         public ActionResult Login(EditModelLogin editModel)
         {
             Login login = new Login();
-            User user = login.doLogin(editModel.Username,editModel.Password, editModel.Email, editModel.Phone, editModel.Address);
+            User user = login.doLogin(editModel.Password, editModel.Email);
             if (user != null)
             {
                 Session["username"] = user;
@@ -56,20 +53,27 @@ namespace Web_food.Controllers
             Session.Remove("FirstName");
             return Redirect("/");
         }
-        public ActionResult danh_sach_sp()
+        public ActionResult danh_sach_sp(int? page)
         {
-            List<Product> listProduct = DAOProduct.getListProducts();
-            return View(listProduct);
-            // DAOProduct dao = new DAOProduct();
-            // DataSet ds = dao.show();
-            // ViewBag.showSP = ds.Tables[0];
-            // return View();
+            if (page == null) page = 1;
+            List<Product> pages = DAOProduct.getPage(page);
+            
+            int pageSize = 12;
+            int pageNumber = (page ?? 1);
+            
+            return View(pages.ToPagedList(pageNumber, pageSize));
+        }
+
+        public ActionResult loai_sp(int? type)
+        {
+            List<Product> list = DAOProduct.Product_type(type);
+            return View(list);
         }
         public ActionResult them_sp()
         {
             return View();
         }
-        [HttpPost]
+        [HttpPost, ValidateInput(false)]
         public ActionResult them_sp(FormCollection fc)
         {
             Product p = new Product();
@@ -80,10 +84,17 @@ namespace Web_food.Controllers
             p.Type = Convert.ToInt32(fc["type"]);
             p.Quantity = Convert.ToInt32(fc["quantity"]);
             DAOProduct dao = new DAOProduct();
-            dao.Add_product(p);
+            if (dao.Add_product(p))
+            {
+                new DaoLog().INFO("success", "them_sp");
+            }
+            else
+            {
+                new DaoLog().INFO("fail", "them_sp");
+            }
+
             TempData["msg"] = "INSERT SUCCESS";
-            return RedirectToAction("danh_sach_sp","Admin");
-        }
+            return RedirectToAction("danh_sach_sp", "Admin");  }
         public ActionResult chinh_sua_sp(int id)
         {
             DAOProduct dao = new DAOProduct();
@@ -91,7 +102,7 @@ namespace Web_food.Controllers
             ViewBag.updateSP = ds.Tables[0];
             return View();
         } 
-        [HttpPost]
+        [HttpPost, ValidateInput(false)]
         public ActionResult chinh_sua_sp(int id, FormCollection fc)
         {
             Product p = new Product();
@@ -103,17 +114,33 @@ namespace Web_food.Controllers
             p.Type = Convert.ToInt32(fc["type"]);
             p.Quantity = Convert.ToInt32(fc["quantity"]);
             DAOProduct dao = new DAOProduct();
-            dao.Update_product(p, id);
+            if (dao.Update_product(p, id))
+            {
+                new DaoLog().INFO("success", "chinh_sua_sp");
+            }
+            else
+            {
+                new DaoLog().INFO("fail", "chinh_sua_sp");
+            }
+
             TempData["msg"] = "UPDATE SUCCESS";
             return RedirectToAction("danh_sach_sp", "Admin");
         }
-
         public ActionResult xoa_sp(int id)
         {
             DAOProduct dao = new DAOProduct();
-            dao.delete(id);
+            if (dao.delete(id))
+            {
+                new DaoLog().WARNING("success", "xoa_sp");
+            }
+            else
+            {
+                new DaoLog().WARNING("fail", "xoa_sp");
+            }
+
             return RedirectToAction("danh_sach_sp", "Admin");
         }
+
         public ActionResult ql_loai_sp()
         {
             List<ProductType> list = DAOProduct.getListProductType();
@@ -131,10 +158,12 @@ namespace Web_food.Controllers
             ProductType productType = new ProductType(id, name);
             if (DAOProduct.addProductType(productType))
             {
+                new DaoLog().INFO("success", "them_loai_sp");
                 return RedirectToAction("ql_loai_sp", "Admin");
             }
             else
             {
+                new DaoLog().INFO("fail", "them_loai_sp");
                 ViewBag.error = "add product type not success";
                 return View();
             }
@@ -151,20 +180,30 @@ namespace Web_food.Controllers
             string name = formCollection["name"];
             int active = Convert.ToInt32(formCollection["active"]);
 
-            ProductType productType = new ProductType(id,name,active);
+            ProductType productType = new ProductType(id, name, active);
             if (DAOProduct.editProductType(productType))
             {
-                return RedirectToAction("ql_loai_sp","Admin");
+                new DaoLog().INFO("success", "chinh_sua_loaiSP");
+                return RedirectToAction("ql_loai_sp", "Admin");
             }
             else
             {
+                new DaoLog().INFO("fail", "chinh_sua_loaiSP");
                 ViewBag.error = "edit product type not success";
                 return View();
             }
         }
         public ActionResult xoa_loai_sp(int id)
         {
-            DAOProduct.delProductType(id);
+            if (DAOProduct.delProductType(id))
+            {
+                new DaoLog().WARNING("success", "xoa_loai_sp");
+            }
+            else
+            {
+                new DaoLog().WARNING("fail", "xoa_loai_sp");
+            }
+
             return RedirectToAction("ql_loai_sp", "Admin");
         }
         public ActionResult khach_hang()
@@ -186,7 +225,15 @@ namespace Web_food.Controllers
             user.phone = formCollection["phone"];
             user.address = formCollection["address"];
             user.gender = formCollection["gender"];
-            DAOUser.addUser(user);
+            if (DAOUser.addUser(user))
+            {
+                new DaoLog().INFO("success", "them_khach_hang");
+            }
+            else
+            {
+                new DaoLog().INFO("fail", "them_khach_hang");
+            }
+
             return RedirectToAction("khach_hang", "Admin");
         }
         public ActionResult chinh_sua_kh(int id)
@@ -200,7 +247,7 @@ namespace Web_food.Controllers
             User user = new User();
             user.id = Convert.ToInt32(formCollection["id"]);
             user.email = formCollection["email"];
-            user.password = formCollection["password"];
+            // user.password = formCollection["password"];
             user.userName = formCollection["username"];
             user.phone = formCollection["phone"];
             user.address = formCollection["address"];
@@ -212,37 +259,79 @@ namespace Web_food.Controllers
                               " level: " + user.level + "'}");
             if (DAOUser.editUser(user))
             {
+                new DaoLog().INFO("success", "chinh_sua_kh");
                 return RedirectToAction("khach_hang", "Admin");
             }
             else
             {
+                new DaoLog().INFO("fail", "chinh_sua_kh");
                 ViewBag.error = "not success";
                 return RedirectToAction("chinh_sua_kh", "Admin", new {ID = Convert.ToInt32(formCollection["id"])});
             }
         }
+
         public ActionResult xoa_kh(int id)
         {
-            DAOUser.delUser(id);
+            if (DAOUser.delUser(id))
+            {
+                new DaoLog().WARNING("success", "xoa_kh");
+            }
+            else
+            {
+                new DaoLog().WARNING("fail", "xoa_kh");
+            }
+
             return RedirectToAction("khach_hang", "Admin");
         }
-       public ActionResult thanh_toan()
-        {
-            return View();
-        }
-       public ActionResult gio_hang()
-        {
-            return View();
-        }
-       public ActionResult them_gio_hang()
-        {
-            return View();
-        }
-       public ActionResult chinh_sua_donhang()
+
+        public ActionResult chinh_sua_donhang(string maDH)
        {
+           DAOOrder dao = new DAOOrder();
+           DataSet ds = dao.show_order_id(maDH);
+           ViewBag.updateDH = ds.Tables[0];
            return View();
        }
+        [HttpPost]
+        public ActionResult chinh_sua_donhang(string maDH, FormCollection fc)
+        {
+            Order o = new Order();
+            o.id = maDH;
+            o.status = fc["status"];
+            o.date = Convert.ToDateTime(fc["date"]);
+            DAOOrder daoOrder = new DAOOrder();
+            daoOrder.Update_order(o,maDH);
+            return RedirectToAction("QuanLyDonHang", "Admin");
+        }
         public ActionResult chi_tiet_sp()
         {
+            return View();
+        }
+        public ActionResult del_oder(string idi)
+        {
+            if (DAOOrder.del_oder(idi))
+            {
+                new DaoLog().WARNING("success", "del_oder");
+            }
+            else
+            {
+                new DaoLog().WARNING("fail", "del_oder");
+            }
+
+            return RedirectToAction("QuanLyDonHang", "Admin");
+        }
+
+
+        public ActionResult QuanLyDonHang()
+        {
+            List<Order> list_order = DAOOrder.show_quanlyhoadon();
+            return View(list_order);
+        }
+
+        public ActionResult chi_tiet_don_hang(string idi)
+        {
+            ViewBag.list_order = DAOOrder.show_hoadon(idi);
+            DataSet ds = DAOOrder.show_order_byID(idi);
+            ViewBag.show = ds.Tables[0];
             return View();
         }
     }

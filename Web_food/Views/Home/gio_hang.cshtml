@@ -1,4 +1,5 @@
-﻿@using Web_food.Models
+﻿﻿@using Web_food.Models
+@using Web_food.Models
 @model List<Web_food.Models.CartItem>
 @{
     ViewBag.Title = "Thanh toán";
@@ -29,6 +30,7 @@ else
             <div class="table-responsive">
                 <table class="table table-bordered">
                     <tr>
+                        <th>Mã sản phẩm</th>
                         <th>Hình</th>
                         <th>Tên sản phẩm</th>
                         <th>Số lượng</th>
@@ -39,8 +41,9 @@ else
                     @foreach (CartItem item in Model)
                     {
                         <tr>
-                            <td class="text-center"><img src="~/Content/image/@item.Hinh" width="70" height="60"/> </td>
-                            <td><a target="_blank" href="@Url.Action("gio_hang", "Home", new {id = item.SanPhamID})"> @item.TenSanPham </a> </td>
+                            <td>@item.SanPhamID</td>
+                            <td class="text-center"><img src="@item.Hinh" width="70" height="60"/> </td>
+                            <td><a target="_blank" href="@Url.Action("chi_tiet_sp", "Home", new {name = @item.TenSanPham})"> @item.TenSanPham </a> </td>
                             <td>
                                 <form action="@Url.Action("SuaSoLuong")" method="get">
                                     <input type="hidden" name="SanPhamID" value="@item.SanPhamID"/>
@@ -63,14 +66,12 @@ else
                     </tr>
                 </table>
             </div>
-
         </div>
-
     </div>
     <div class="button text-right">
-                <a class="btn btn-default btn-primary" href="@Url.Action("san_pham","Home")">Tiếp tục mua hàng</a>
-    
-                 <a class="btn btn-primary" href="@Url.Action("thanh_toan","Home")">Tiến hành thanh toán</a>
+        <a class="btn btn-default btn-primary" href="@Url.Action("san_pham","Home")">Tiếp tục mua hàng</a>
+        
+        <a class="btn btn-primary" href="@Url.Action("thanh_toan","Home")">Tiến hành thanh toán</a>
     
     </div>
     <hr class="featurette-divider">

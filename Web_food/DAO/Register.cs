@@ -11,10 +11,9 @@ namespace Web_food.DAO
             MySqlConnection conn = dbConnection.ConnectionSql();
             conn.Open();
             
-            string sql = "INSERT INTO user (username, `password`, email, phone, address,gender,level) VALUES(@username,@password,@email,@phone, @address,@gender)";
+            string sql = "INSERT INTO user (username, `password`, email, phone, address,gender) VALUES(@username,md5(@password),@email,@phone, @address,@gender)";
             MySqlCommand sqlCommand = new MySqlCommand(sql);
             sqlCommand.Connection = conn;
-            // level = 1;
 
             sqlCommand.Parameters.AddWithValue("@username", username);
             sqlCommand.Parameters.AddWithValue("@password", password);
@@ -39,7 +38,7 @@ namespace Web_food.DAO
             {
                 while (reader.Read())
                 {
-                    if (email == reader[0].ToString() && username==reader[1].ToString())
+                    if (email == reader[0].ToString() || username==reader[1].ToString())
                     {
                         return  true;
                     }

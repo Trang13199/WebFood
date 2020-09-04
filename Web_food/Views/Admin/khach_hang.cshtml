@@ -46,13 +46,22 @@
                                         @user.address
                                     </td>
                                     <td>@user.gender</td>
-                                    <td>@user.level</td>
+                                    <td>@{
+                                            if (user.level == 0)
+                                            {
+                                                <p>Admin</p>
+                                            }
+                                            else
+                                            {
+                                                <p>User</p>
+                                            }
+                                        }</td>
                                     <td>
                                         <a href="@Url.Action("chinh_sua_kh", "Admin", new {ID = @user.id})">
                                             <button data-toggle="tooltip" title="Edit" class="pd-setting-ed">
                                                 <i
                                                     class="fa fa-pencil-square-o" aria-hidden="true">
-                                                </i> Edit
+                                                </i>
                                             </button>
                                         </a>
                                         <a onclick="return confirm('Bạn có chắc muốn xóa')"

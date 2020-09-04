@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Web_food.Models
+@{
+    User u = (User) Session["username"];
+}
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
@@ -69,7 +73,7 @@
 <div class="left-sidebar-pro">
     <nav id="sidebar" class="">
         <div class="sidebar-header">
-            <a href="../Admin/index.cshtml">
+            <a href="@Url.Action("Index", "Home")">
                 <img class="main-logo" style="width: 200px" src="~/Content/image/logoFood.jpg" alt=""/>
             </a>
             <strong>
@@ -79,7 +83,14 @@
         <div class="nalika-profile">
             <div class="profile-dtl">
                 <a href="#">
-                    <img src="../../Content/img/notification/4.jpg" alt=""/>
+                    @if (u != null)
+                        {
+                            @u.userName;
+                        }
+                    else
+                    {
+                        <p>"Guest000"</p>
+                    }
                 </a>
                 <h2>
                     <span class="min-dtn"></span>
@@ -137,7 +148,7 @@
                             </li>
 
                             <li>
-                                @Html.ActionLink("Giỏ hàng", "gio_hang", "Admin")
+                                @Html.ActionLink("Quản lý đơn hàng", "QuanLyDonHang", "Admin")
                             </li>
 
                         </ul>
@@ -155,6 +166,7 @@
                             </li>
                             <li>
                                 @Html.ActionLink("Register", "dang_ky", "Home")
+
                             </li>
                             <li>
                                 <a title="Lock" href="">
@@ -387,7 +399,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="@Url.Action("dang_nhap", "Home")">
+                        <a href="@Url.Action("Logout", "Home")">
                             <span
                                 class="icon nalika-unlocked author-log-ic">
                             </span> Đăng xuất
@@ -398,10 +410,10 @@
                     <i class="icon nalika-user"></i>
                     <span class="admin-name">
                         @{
-                            string firstName = @Session["FirstName"] as string;
-                            firstName = firstName != null ? firstName : "Guest000";
+                            string name = u != null ? u.userName : "Guest000";
                         }
-                        @firstName
+                        @name
+
                     </span>
                     <i class="icon nalika-down-arrow nalika-angle-dw"></i>
                 </a>
@@ -512,6 +524,7 @@
 <script src="~/Content/js/main.js"></script>
 @* @Scripts.Render("~/bundles/jquery") *@
 @* @Scripts.Render("~/bundles/bootstrap") *@
+@RenderSection("jsFooter",required:false)
 @RenderSection("scripts", required: false)
 </body>
 </html>

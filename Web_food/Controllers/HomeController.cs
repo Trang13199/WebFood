@@ -1,7 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web.Mvc;
+using MySql.Data.MySqlClient;
 using PagedList;
 using Web_food.DAO;
 using Web_food.EditModel;
@@ -11,15 +13,9 @@ namespace Web_food.Controllers
 {
     public class HomeController : Controller
     {
-        // public HomeController()
-        // {
-        //     this.lever = 1;
-        // }
-
         public ActionResult Index(int? type)
         {
-            List<Product> list = ListProduct.Product(type);
-            // ViewBag.list = list;
+            List<Product> list = ListProduct.Product_type(type);
             List<ProductType> types = ListProduct.getType();
             ViewBag.type = types;
             if (type == null)
@@ -37,7 +33,7 @@ namespace Web_food.Controllers
         public ActionResult dang_nhap(EditModelLogin editModel)
         {
             Login login = new Login();
-            User user = login.doLogin(editModel.Username,editModel.Password, editModel.Email, editModel.Phone, editModel.Address);
+            User user = login.doLogin(editModel.Password, editModel.Email);
             if (user != null)
             {
                 Session["username"] = user;
@@ -48,12 +44,10 @@ namespace Web_food.Controllers
                 ViewBag.error = "Sai tên đăng nhập hoặc mật khẩu";
                 return View();
             }
-        
         }
-
         public ActionResult Logout() {
             Session.Remove("username");
-            return Redirect("/");
+            return RedirectToAction("dang_nhap","Home");
         }
         public ActionResult dang_ky()
         {
@@ -75,10 +69,9 @@ namespace Web_food.Controllers
                 return RedirectToAction("dang_nhap", "Home");
             }
         }
-        
         public ActionResult san_pham(int? type, int? page)
         {
-            List<Product> list = ListProduct.Product(type);
+            List<Product> list = ListProduct.Product_type(type);
             ViewBag.list = list;
             
             List<ProductType> types = ListProduct.getType();
@@ -100,7 +93,7 @@ namespace Web_food.Controllers
         
         public ActionResult san_pham1(int? type, int pageindex = 1, int pagesize = 2)
         {
-            List<Product> list = ListProduct.Product(type);
+            List<Product> list = ListProduct.Product_type(type);
             ViewBag.list = list;
             
             List<ProductType> types = ListProduct.getType();
@@ -111,6 +104,38 @@ namespace Web_food.Controllers
                 ViewBag.list = list;
             }
             return View();
+        }
+        public ActionResult chi_tiet_sp(string ids)
+        {
+            List<Product> list = ProductDetail.chi_tiet_sp(ids);
+            ViewBag.ct = list;
+            return View();
+        }
+        [HttpPost]
+        public ActionResult chi_tiet_sp(FormCollection fc)
+        {
+            comment c = new comment();
+            c.comment_text = fc["comment_text"];
+            c.id_product = Convert.ToInt32(fc["id_product"]);
+            c.id_user = Convert.ToInt32(fc["id_user"]);
+            c.username = fc["username"];
+            ProductDetail productDetail = new ProductDetail();
+            productDetail.danh_gia(c);
+            return RedirectToAction("chi_tiet_sp", "Home",new{ids = c.id_product});
+        }
+        
+        public PartialViewResult SP_cungLoai(int? type)
+        {
+            List<Product> list_spcungloai = ProductDetail.sp_cungloai(type);
+            return PartialView(list_spcungloai);
+        }
+
+        public PartialViewResult sp_yeuThich(string user)
+        {
+            ProductDetail dao = new ProductDetail();
+            DataSet ds = dao.sp_yeuThich(user);
+            ViewBag.sp_yeuthich = ds.Tables[0];
+            return PartialView();
         }
         public ActionResult thanh_toan()
         {
@@ -123,11 +148,52 @@ namespace Web_food.Controllers
             return View(giohang);
         }
 
-        public ActionResult dat_hang()
+        [HttpPost]
+        public ActionResult thanh_toan(FormCollection fc)
         {
+            Order order = new Order();
+            order.id = DateTime.Now.ToString("ddmmyyyyhhmmss");
+            order.username = fc["username"];
+            order.phone = fc["phone"];
+            order.email = fc["email"];
+            order.address = fc["address"];
+            order.date = DateTime.Now;
+            order.total = fc["total"];
+            order.sum = fc["sum"];
+            DAOOrder dao = new DAOOrder();
+            dao.Add_order(order);
+            
+            List<CartItem> giohang = Session["giohang"] as List<CartItem>;
+            foreach (var item in giohang)
+            {
+                Order_detail orderDetail = new Order_detail();
+                orderDetail.image = item.Hinh;
+                orderDetail.name = item.TenSanPham;
+                orderDetail.quantity = item.SoLuong;
+                orderDetail.price = item.DonGia;
+                orderDetail.id_order = order.id;
+                orderDetail.product_id = item.SanPhamID;
+                dao.order_detail(orderDetail);
+            }
+            
+            TempData["msg"] = "INSERT SUCCESS";
+            Session.Remove("giohang");
+            return RedirectToAction("dat_hang","Home",new{order_id = order.id});
+        }
+        public ActionResult dat_hang(string order_id)
+        {
+            List<Order> list_order = DAOOrder.show_hoadon(order_id);
+            ViewBag.list_order = list_order;
+            
+            DataSet ds = DAOOrder.show_order_byID(order_id);
+            ViewBag.show = ds.Tables[0];
             return View();
         }
 
+        public ActionResult chi_tiet_don_hang(string id_order)
+        {
+            return View();
+        }
         public ActionResult gioi_thieu()
         {
             return View();
@@ -147,18 +213,20 @@ namespace Web_food.Controllers
         {
             return View();
         }
-        public ActionResult chi_tiet_sp(string name)
+        public ActionResult TKKH(string user)
         {
-           List<Product> list = ProductDetail.showProduct(name);
-           ViewBag.ct = list;
+            DAOOrder dao = new DAOOrder();
+            DataSet ds = dao.show_order_byuser(user);
+            ViewBag.showSP = ds.Tables[0];
             return View();
         }
-
-        public ActionResult TKKH()
+        public ActionResult Dơn_hang(string user)
         {
+            DAOOrder dao = new DAOOrder();
+            DataSet ds = dao.show_order_byuser(user);
+            ViewBag.showSP = ds.Tables[0];
             return View();
         }
-
         public ActionResult tim_kiem(string search)
         {
             List<Product> list = Search.seacrh(search);
@@ -166,8 +234,6 @@ namespace Web_food.Controllers
             ViewBag.pro = list;
             return View();
         }
-        
-        
         public ActionResult gio_hang()
         {
             List<CartItem> giohang = Session["giohang"] as List<CartItem>;
@@ -179,7 +245,6 @@ namespace Web_food.Controllers
             {
                 Session["giohang"] = new List<CartItem>();  // Khởi tạo Session["giohang"] là 1 List<CartItem>
             }
-           
             List<CartItem> giohang = Session["giohang"] as List<CartItem>;  // Gán qua biến giohang dễ code
 
             // Kiểm tra xem sản phẩm khách đang chọn đã có trong giỏ hàng chưa
@@ -206,11 +271,9 @@ namespace Web_food.Controllers
                 CartItem cardItem = giohang.FirstOrDefault(m => m.SanPhamID == SanPhamID);
                 cardItem.SoLuong++;
             }
-            
             // Action này sẽ chuyển hướng về trang chi tiết sp khi khách hàng đặt vào giỏ thành công. Bạn có thể chuyển về chính trang khách hàng vừa đứng bằng lệnh return Redirect(Request.UrlReferrer.ToString()); nếu muốn.
             return RedirectToAction("san_pham", "Home", new { id = SanPhamID });
         }
-
         public RedirectToRouteResult SuaSoLuong(int SanPhamID, int soluongmoi)
         {
             // tìm carditem muon sua
@@ -221,7 +284,6 @@ namespace Web_food.Controllers
                 itemSua.SoLuong = soluongmoi;
             }
             return RedirectToAction("gio_hang");
-
         }
         public RedirectToRouteResult XoaKhoiGio(int SanPhamID)
         {
@@ -233,7 +295,15 @@ namespace Web_food.Controllers
             }
             return RedirectToAction("gio_hang");
         }
-
-
+        public PartialViewResult hearder_cart()
+        {
+            List<CartItem> giohang = Session["giohang"] as List<CartItem>;
+            
+            return PartialView(giohang);
+        }
+        public PartialViewResult errorpage()
+        {
+            return PartialView();
+        }
     }
 }

@@ -90,3 +90,5 @@ C:\Users\Admin\RiderProjects\Web_food\Web_food\bin\PagedList.dll
 C:\Users\Admin\RiderProjects\Web_food\Web_food\bin\PagedList.Mvc.dll
 C:\Users\Admin\RiderProjects\Web_food\Web_food\bin\PagedList.xml
 C:\Users\Admin\RiderProjects\Web_food\Web_food\bin\PagedList.Mvc.xml
+C:\Users\Admin\RiderProjects\Web_food\Web_food\bin\CKFinder.dll
+C:\Users\Admin\RiderProjects\Web_food\Web_food\bin\CKFinder.pdb

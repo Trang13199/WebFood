@@ -2,6 +2,7 @@
 
 @{
     List<ProductType> types = ViewBag.type;
+    User u = (User) Session["username"];
 }
 <!-- Start Search Popup -->
 <main role="main">
@@ -33,196 +34,13 @@
         </a>
     </div>
 </main>
-<div class="carousel-inner">
-                <p><h4>   SẢN PHẨM NỔI BẬT</h4></p>
-<div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-        <div class="carousel-item active" data-interval="2000">
-            <div class="container marketing">
-                <div class="row">
-                    <div class="card" style="width: 15.2rem;">
-                        <a href="@Url.Action("chi_tiet_sp","Home")">
-                            <img src="~/Content/image/cơm.jpg" class="card-img" style="height: 15.2rem" alt="...">
-                        </a>
-                        <div class="card-body">
-                            <h5 class="card-title">Cơm sườn</h5>
-                            <p class="card-text">25.000 đ</p>
-                            <div class="cart">
-                                <button>Mua hàng</button>
-                                <a href="@Url.Action("gio_hang","Home")">   <span style="font-size: 20px; color: #ff363f; margin-left: 5px">
-                                                                    <i class="fas fa-shopping-basket"></i></span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 15.2rem;">
-                        <a href="@Url.Action("chi_tiet_sp","Home")">   
-                            <img src="~/Content/image/comtam.jpg" class="card-img" style="height: 15.2rem" alt="..." ></a>
-                        <div class="card-body">
-                            <h5 class="card-title">Cơm tấm</h5>
-                            <p class="card-text">25.000 đ</p>
-                            <div class="cart">
-                                <button>Mua hàng</button>
-                                 <a href="@Url.Action("gio_hang","Home")">   <span style="font-size: 20px; color: #ff363f; margin-left: 5px">
-                                                                     <i class="fas fa-shopping-basket"></i></span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 15.2rem;">
-                        <a href="@Url.Action("chi_tiet_sp","Home")">
-                            <img src="~/Content/image/comchienhaisan.jpg" style="height: 15.2rem" class="card-img" alt="..." ></a>
-                        <div class="card-body">
-                            <h5 class="card-title">Cơm chiên hải sản</h5>
-                            <p class="card-text">25.000 đ</p>
-                            <div class="cart">
-                                <button>Mua hàng</button>
-                                 <a href="@Url.Action("gio_hang","Home")">   <span style="font-size: 20px; color: #ff363f; margin-left: 5px">
-                                                                     <i class="fas fa-shopping-basket"></i></span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 15.2rem;">
-                        <a href="@Url.Action("chi_tiet_sp","Home")">
-                            <img src="~/Content/image/comchien.jpg" class="card-img" style="height: 15.2rem" alt="..." ></a>
-                        <div class="card-body">
-                            <h5 class="card-title">Cơm chiên dương châu</h5>
-                            <p class="card-text">25.000 đ</p>
-                            <div class="cart">
-                                <button>Mua hàng</button>
-                                <a href="@Url.Action("gio_hang","Home")">   <span style="font-size: 20px; color: #ff363f; margin-left: 5px">
-                                                                    <i class="fas fa-shopping-basket"></i></span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="carousel-item" data-interval="2000">
-            <div class="container marketing">
-                <div class="row">
-                    <div class="card" style="width: 15.2rem;">
-                        <a href="@Url.Action("chi_tiet_sp","Home")">
-                            <img src="~/Content/image/phobo.jpg" class="card-img" style="height: 15.2rem" alt="..."></a>
-                        <div class="card-body">
-                            <h5 class="card-title">Phở bò</h5>
-                            <p class="card-text">25.000 đ</p>
-                            <div class="cart">
-                                <button>Mua hàng</button>
-                                 <a href="@Url.Action("gio_hang","Home")">   <span style="font-size: 20px; color: #ff363f; margin-left: 5px">
-                                                                     <i class="fas fa-shopping-basket"></i></span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 15.2rem;">
-                        <a href="@Url.Action("chi_tiet_sp","Home")">   
-                            <img src="~/Content/image/hutieubokho.jpg" style="height: 15.2rem" class="card-img" alt="..." ></a>
-                        <div class="card-body">
-                            <h5 class="card-title">Hủ tiếu bò kho</h5>
-                            <p class="card-text">25.000 đ</p>
-                            <div class="cart">
-                                <button>Mua hàng</button>
-                                 <a href="@Url.Action("gio_hang","Home")">   <span style="font-size: 20px; color: #ff363f; margin-left: 5px">
-                                                                     <i class="fas fa-shopping-basket"></i></span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 15.2rem;">
-                        <a href="@Url.Action("chi_tiet_sp","Home")">      
-                            <img src="~/Content/image/chaoech.jpg" class="card-img" style="height: 15.2rem" alt="..." ></a>
-                        <div class="card-body">
-                            <h5 class="card-title">Cháo ếch</h5>
-                            <p class="card-text">25.000 đ</p>
-                            <div class="cart">
-                                <button>Mua hàng</button>
-                                <a href="@Url.Action("gio_hang","Home")">   <span style="font-size: 20px; color: #ff363f; margin-left: 5px">
-                                                                    <i class="fas fa-shopping-basket"></i></span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card" style="width:15.2rem;">
-                        <a href="@Url.Action("chi_tiet_sp","Home")">       
-                            <img src="~/Content/image/chaothit.jpeg" style="height: 15.2rem" class="card-img" alt="..." ></a>
-                        <div class="card-body">
-                            <h5 class="card-title">Cháo thịt bằm</h5>
-                            <p class="card-text">25.000 đ</p>
-                            <div class="cart">
-                                <button>Mua hàng</button>
-                                <a href="@Url.Action("gio_hang","Home")">   <span style="font-size: 20px; color: #ff363f; margin-left: 5px">
-                                                                    <i class="fas fa-shopping-basket"></i></span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="carousel-item" data-interval="2000">
-            <div class="container marketing">
-                <div class="row">
-                    <div class="card" style="width: 15.2rem;">
-                        <a href="@Url.Action("chi_tiet_sp","Home")">    
-                            <img src="~/Content/image/banhcanhca.png" style="height: 15.2rem" class="card-img" alt="..."></a>
-                        <div class="card-body">
-                            <h5 class="card-title">Bánh canh cá</h5>
-                            <p class="card-text">25.000 đ</p>
-                            <div class="cart">
-                                <button>Mua hàng</button>
-                                <a href="@Url.Action("gio_hang","Home")">   <span style="font-size: 20px; color: #ff363f; margin-left: 5px">
-                                                                    <i class="fas fa-shopping-basket"></i></span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 15.2rem;">
-                        <a href="@Url.Action("chi_tiet_sp","Home")">   
-                            <img src="~/Content/image/comchienhaisan.jpg" style="height: 15.2rem" class="card-img" alt="..." ></a>
-                        <div class="card-body">
-                            <h5 class="card-title">Cơm chiên hải sản</h5>
-                            <p class="card-text">25.000 đ</p>
-                            <div class="cart">
-                                <button>Mua hàng</button>
-                                <a href="@Url.Action("gio_hang","Home")">   <span style="font-size: 20px; color: #ff363f; margin-left: 5px">
-                                                                    <i class="fas fa-shopping-basket"></i></span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 15.2rem;">
-                        <a href="@Url.Action("chi_tiet_sp","Home")">    
-                            <img src="~/Content/image/phoga.jpg" style="height: 15.2rem" class="card-img" alt="..." ></a>
-                        <div class="card-body">
-                            <h5 class="card-title">Phở gà</h5>
-                            <p class="card-text">25.000 đ</p>
-                            <div class="cart">
-                                <button>Mua hàng</button>
-                               <a href="@Url.Action("gio_hang","Home")">   <span style="font-size: 20px; color: #ff363f; margin-left: 5px">
-                                     <i class="fas fa-shopping-basket"></i></span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 15.2rem;">
-                        <a href="@Url.Action("chi_tiet_sp","Home")">    
-                            <img src="~/Content/image/comga.jpg" style="height: 15.2rem" class="card-img" alt="..." ></a>
-                        <div class="card-body">
-                            <h5 class="card-title">Cơm gà</h5>
-                            <p class="card-text">25.000 đ</p>
-                            <div class="cart">
-                                <button>Mua hàng</button>
-                              <a href="@Url.Action("gio_hang","Home")">   <span style="font-size: 20px; color: #ff363f; margin-left: 5px">
-                                      <i class="fas fa-shopping-basket"></i></span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-                            </div>
-                        </div>
-    </div>
-    <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
-</div>
+@if(u!= null){
+    Html.RenderAction("sp_yeuThich","Home",new{ user = @u.userName });
+}
+else
+{
+}
+<br/>
 <nav class="pull-left row  col-lg-3">
     <div class="list-group col-sm-12" style="margin-top: 30px">
         <a href="@Url.Action("san_pham", "Home")" class="list-group-item list-group-item-danger active">
@@ -231,10 +49,7 @@
          @foreach (var t in types)
                    {
                        <a href="@Url.Action("san_pham","Home", new {type = @t.Id})" class="list-group-item list-group-item-action">@t.Name</a>
-@*                  <a href="" class="list-group-item list-group-item-action">@t.Name</a> *@
-@*                 <a href="" class="list-group-item list-group-item-action">Phở</a> *@
-@*                 <a href="" class="list-group-item list-group-item-action">Khác</a> *@
-                   }
+                  }
     </div>
     <div class="row col-xl-12">
     <div class="col-md-12" style="background: #ff363f; font-weight: bold; border-bottom: 1px dotted"><a href="tintuc.html" style="color: white"> TIN TỨC</a></div>
@@ -277,7 +92,7 @@
 
 <main class="main col-lg-9 ">
     <div class="col">
-        <button class="" style="background:  #ff363f"> SẢN PHẨM </button>
+        <button class="" style="background:  #ff363f"> SẢN PHẨM NỔI BẬT</button>
     </div>
 
 <div class="container marketing">
@@ -287,8 +102,8 @@
                         {
                              
                             <div class="card" style="width: 17rem;">
-                                <a href="@Url.Action("chi_tiet_sp", "Home", new { name = @p.Name })">
-                                    <img src="~/Content/image/@p.Images" class="card-img" alt="..." style="height: 17rem">
+                                <a href="@Url.Action("chi_tiet_sp", "Home", new {ids = @p.Id})">
+                                    <img src="@p.Images" class="card-img" alt="..." style="height: 17rem">
                                 </a>
                                 <div class="card-body">
                                     <h5 class="card-title">@p.Name</h5>
@@ -305,7 +120,7 @@
                     }
     </div> <br>
         <div class="col-md-4" style="float:right">
-           <a href="@Url.Action("san_pham","Home")"> <button class="btn-lg btn-info" style="color: white"> Xem thêm >></button></a>
+           <a href="@Url.Action("san_pham","Home")"> <button class="btn btn-info" style="color: white"> Xem thêm >></button></a>
         </div>
 <!--    <div class="col-xl-12">-->
 <!--    </div>-->

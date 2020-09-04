@@ -5,6 +5,7 @@ namespace Web_food.Models
 {
     public class CartItem
     {
+        public int id { get; set; }
         public string Hinh { get; set; }
         public int SanPhamID { get; set; }
         public string TenSanPham { get; set; }

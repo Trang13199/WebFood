@@ -12,7 +12,7 @@ namespace Web_food.Models
             DBConnection dbConnection=new DBConnection();
             MySqlConnection connection = dbConnection.ConnectionSql();
             connection.Open();
-            string sql = "select username,password,email,phone,address,gender,level from user where id=@id";
+            string sql = "select username, password, email, phone, address, gender,level from user where id=@id";
             MySqlCommand command=new MySqlCommand(sql,connection);
             command.Parameters.AddWithValue("@id", id);
             MySqlDataReader reader = command.ExecuteReader();
@@ -91,7 +91,6 @@ namespace Web_food.Models
 
             command.Parameters.AddWithValue("@id", user.id);
             command.Parameters.AddWithValue("@username", user.email);
-            // command.Parameters.AddWithValue("@password", user.password);
             command.Parameters.AddWithValue("@email", user.email);
             command.Parameters.AddWithValue("@phone", user.phone);
             command.Parameters.AddWithValue("@address", user.address);

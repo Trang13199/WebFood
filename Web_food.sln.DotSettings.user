@@ -138,4 +138,5 @@
 	<s:Boolean x:Key="/Default/AddReferences/RecentPaths/=C_003A_005CUsers_005CAdmin_005CDownloads_005Cckfinder_005Cbin_005CSystem_002EXml_002EXmlSerializer_002Edll/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/AddReferences/RecentPaths/=C_003A_005CUsers_005CAdmin_005CDownloads_005Cckfinder_005Cbin_005CSystem_002EXml_002EXPath_002Edll/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/AddReferences/RecentPaths/=C_003A_005CUsers_005CAdmin_005CDownloads_005Cckfinder_005Cbin_005CSystem_002EXml_002EXPath_002EXDocument_002Edll/@EntryIndexedValue">True</s:Boolean>
-	<s:Boolean x:Key="/Default/AddReferences/RecentPaths/=E_003A_005CDOTNET_005Cv4_002E8_005CMySql_002EData_002Edll/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>
+	<s:Boolean x:Key="/Default/AddReferences/RecentPaths/=E_003A_005CDOTNET_005Cv4_002E8_005CMySql_002EData_002Edll/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/AddReferences/RecentPaths/=F_003A_005CFile_005FTu_005FCKEDITER_005Cplugins_005Cckfinder_005Cbin_005CRelease_005CCKFinder_002Edll/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>

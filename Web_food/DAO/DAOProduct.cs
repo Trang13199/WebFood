@@ -1,4 +1,5 @@
-﻿﻿using System.Collections.Generic;
+﻿﻿using System;
+ using System.Collections.Generic;
  using System.Data;
  using System.Data.SqlClient;
  using MySql.Data.MySqlClient;
@@ -8,6 +9,36 @@ namespace Web_food.DAO
 {
     public class DAOProduct
     {
+        public static List<Product> getPage(int? page)
+        {
+            DBConnection dbConnection = new DBConnection();
+            MySqlConnection conn = dbConnection.ConnectionSql();
+            conn.Open();
+            string sqlsp = "  SELECT id, image, `name`, price, content, quantity, type FROM `products` WHERE active=1 ORDER BY id ";
+            MySqlCommand  sqlCommand = new MySqlCommand(sqlsp);
+            sqlCommand.Connection = conn;
+            sqlCommand.Parameters.AddWithValue("@page",page);
+            List<Product> products = new List<Product>();
+            MySqlDataReader reader = sqlCommand.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    int id = reader.GetInt32("id");
+                    string Name = reader.GetString("name");
+                    string Img = reader.GetString("image");
+                    int Price = reader.GetInt32("price");
+                    string content = reader.GetString("content");
+                    int quantity = Convert.ToInt32(reader.GetString("quantity"));
+                    int type = reader.GetInt32("type");
+
+                    Product sp = new Product(id, Price, Name, Img, content, quantity, type);
+                    products.Add(sp);
+                }
+            }
+            return products;
+        }
+
         // Hien thi danh sach san pham
         public static List<Product> getListProducts()
         {
@@ -38,7 +69,7 @@ namespace Web_food.DAO
             return listproducts;
         }
         // Them moi mot san pham
-        public void Add_product(Product product)
+        public bool Add_product(Product product)
         {
             DBConnection dbConnection = new DBConnection();
             MySqlConnection connection = dbConnection.ConnectionSql();
@@ -54,10 +85,10 @@ namespace Web_food.DAO
             command.Parameters.AddWithValue("@type", product.Type);
             command.Parameters.AddWithValue("@quantity", product.Quantity);
 
-            command.ExecuteNonQuery();
+           return command.ExecuteNonQuery() > 0;
         }
         // Cap nhat lai thong tin san pham
-        public void Update_product(Product product, int id)
+        public bool Update_product(Product product, int id)
         {
             DBConnection dbConnection = new DBConnection();
             MySqlConnection connection = dbConnection.ConnectionSql();
@@ -74,7 +105,7 @@ namespace Web_food.DAO
             command.Parameters.AddWithValue("@type", product.Type);
             command.Parameters.AddWithValue("@quantity", product.Quantity);
 
-            command.ExecuteNonQuery();
+            return command.ExecuteNonQuery() > 0;
         }
         // Hien thi san pham theo id
         public DataSet show_record_byid(int id)
@@ -93,7 +124,7 @@ namespace Web_food.DAO
             return ds;
         }
         // Xoa san pham theo id
-        public void delete(int id)
+        public bool delete(int id)
         {
             DBConnection dbConnection = new DBConnection();
             MySqlConnection connection = dbConnection.ConnectionSql();
@@ -103,7 +134,7 @@ namespace Web_food.DAO
             MySqlCommand command = new MySqlCommand(sql_delete, connection);
 
             command.Parameters.AddWithValue("@id", id);
-            command.ExecuteNonQuery();
+            return command.ExecuteNonQuery() > 0;
         }
         //hien thi tat ca san pham
         public DataSet show()
@@ -146,7 +177,6 @@ namespace Web_food.DAO
                     list.Add(pro);
                 }
             }
-
             return list;
         }
 
@@ -179,7 +209,6 @@ namespace Web_food.DAO
             string sql = "insert into product_type(name) values (@name)";
             MySqlCommand command = new MySqlCommand(sql, connection);
             command.Parameters.AddWithValue("@name", productType.Name);
-            // command.Parameters.AddWithValue("@active", productType.Active);
             return command.ExecuteNonQuery() > 0;
         }
 
@@ -205,6 +234,36 @@ namespace Web_food.DAO
             MySqlCommand command = new MySqlCommand(sqlDel, connection);
             command.Parameters.AddWithValue("@id", id);
             return command.ExecuteNonQuery() > 0;
+        }
+        
+        public static List<Product> Product_type(int? type)
+        {
+            DBConnection dbConnection = new DBConnection();
+            MySqlConnection conn = dbConnection.ConnectionSql();
+            conn.Open();
+            string sqlsp = "  SELECT id, image, `name`, price, content, quantity, type FROM `products` WHERE type = @type ";
+            MySqlCommand  sqlCommand = new MySqlCommand(sqlsp);
+            sqlCommand.Connection = conn;
+            sqlCommand.Parameters.AddWithValue("@type",type);
+            List<Product> products = new List<Product>();
+            MySqlDataReader reader = sqlCommand.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    int id = reader.GetInt32("id");
+                    string Name = reader.GetString("name");
+                    string Img = reader.GetString("image");
+                    int Price = reader.GetInt32("price");
+                    string content = reader.GetString("content");
+                    int quantity = Convert.ToInt32(reader.GetString("quantity"));
+                    int types = reader.GetInt32("type");
+
+                    Product sp = new Product(id, Price, Name, Img, content, quantity, types);
+                    products.Add(sp);
+                }
+            }
+            return products;
         }
     }
 }

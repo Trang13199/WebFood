@@ -1,0 +1,78 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "title";
+}
+@using Web_food.Models
+@{
+    <link rel="stylesheet" href="~/CSSWeb/TKKH.css" xmlns="http://www.w3.org/1999/html"
+      xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+}
+@{
+    User u = (User) Session["username"];
+}
+<div class="lzd-playground">
+<div class="lzd-playground-main">
+    <div class="lzd-playground-nav">
+        <div class="member-info">
+            <p><span>Hello,&nbsp;</span><span id="lzd_current_logon_user_name">@u.userName</span></p>
+
+        </div>
+        <ul class="nav-container">
+            <li class="item" id="Manage-My-Account"><a class="active" href="@Url.Action("TKKH", "Home", new {user = @u.userName})" data-spm="Manage-My-Account"><span>Manage My Account</span></a>
+                <ul class="item-container">
+                    <li id="My-profile" class="sub"><a href="#" data-spm="My-profile">Thông tin cá nhân</a></li>
+                    <li id="Address-book" class="sub"><a href="#" data-spm="Address-book">Địa chỉ giao hàng</a></li>
+                </ul></li>
+            <li class="item" id="My-Orders"><a href="@Url.Action("Dơn_hang", "Home", new {user = @u.userName})" data-spm="My-Orders"><span>Đơn hàng của tôi</span></a>
+            <li class="item" id="My-Reviews"><a href="#" data-spm="My-Reviews"><span>Đánh giá của tôi</span></a>
+                <ul class="item-container">
+                </ul></li>
+            <li class="item" id="My-Wishlists"><a href="#"><span>My Wishlist &amp; Followed Stores</span></a>
+                <ul class="item-container">
+                </ul></li>
+        </ul>
+    </div>
+
+    <div class="lzd-playground-right">
+        <br>
+        <div class="recent-orders" data-spm="recent-orders">
+            @* <h4>Đơn hàng gần đây</h4> *@
+            <a href="#" class="list-group-item list-group-item-info active">
+                ĐƠN HÀNG CỦA TÔI
+            </a>
+            <div class="next-table only-bottom-border">
+                <div class="next-table-inner">
+                    <div class="next-table-header">
+                        <div class="next-table-header-inner">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>Mã hoá đơn #</th>
+                                    <th>Ngày đặt</th>
+                                    <th>Sản phẩm</th>
+                                    <th>Số lượng</th>
+                                    <th>Đơn giá</th>
+                                    <th>Tình trạng</th>
+                                </tr>
+                                @foreach (System.Data.DataRow item in ViewBag.showSP.Rows)
+                                {
+                                    <tr>
+                                        <td> @item["id_order"] </td>
+                                        <td> @item["date"] </td>
+                                        <td class="text-center" title="@item["name"]"><img src="@item["image"]" width="70" height="60"> </td>
+                                        <td> @item["quantity"] </td>
+                                        <td> @item["price"] VNĐ </td>
+                                        <td> @item["status"]</td>
+                                    </tr>
+                                }
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+    
+    

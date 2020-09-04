@@ -1,4 +1,6 @@
-﻿@using Web_food.Models
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<Product>
+@using Web_food.Models
 @{
     ViewBag.Title = "title";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
@@ -22,13 +24,14 @@
                         <th>Số lượng</th>
                         <th>Giá giảm</th>
                         <th>Giá gốc</th>
+                        <th>Loại</th>
                         <th>Thao tác</th>
                     </tr>
                     @foreach (Product product in Model)
                     {
                         <tr>
                             <td>
-                                <img src="~/Content/image/@product.Images" width="50px" alt=""/>
+                                <img src="@product.Images" width="50px" alt=""/>
                             </td>
                             <td>@product.Name</td>
                             <td>
@@ -53,20 +56,49 @@
                                 @discount
                             </td>
                             <td>@product.Price</td>
+                            <td> @if (@product.Type == 1)
+                                {
+                                    <p>CƠM</p>
+                                }
+                                else if (@product.Type == 2)
+                                    {
+                                        <p>GỎI</p>
+                                    }
+                                    else if (@product.Type == 3)
+                                        {
+                                            <p>MÓN NƯỚC</p>
+
+                                        } else if (@product.Type == 4)
+                                            {
+                                                <p>CHÁO</p>
+                                            }else if (@product.Type == 5)
+                                            {
+                                                <p>SOUP</p>
+                                            }
+                                            else
+                                            {
+                                                <p>ĐỒ UỐNG</p>
+                                            }
+                                               
+                            </td>
                             <td>
                                 <a href="@Url.Action("chinh_sua_sp","Admin",new{id = @product.Id})"><button data-toggle="tooltip" title="Edit" class="pd-setting-ed">
                                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                     </button>
-                                    </a>
+                                </a>
                                 <a onclick="return confirm('Bạn có chắc muốn xóa')"
                                    href="@Url.Action("xoa_sp","Admin", new{id = @product.Id})"><button data-toggle="tooltip" title="Trash" class="pd-setting-ed">
                                         <i class="fa fa-trash-o" aria-hidden="true"></i>
                                     </button>
-                                    </a>
+                                </a>
                             </td>
                         </tr>
                     }
                     </tbody>
+                     Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+                            @Html.PagedListPager(Model, page => Url.Action("danh_sach_sp", new {page}),
+                                PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions()
+                                {HttpMethod = "GET", UpdateTargetId = "id"}))
                 </table>
             </div>
         </div>

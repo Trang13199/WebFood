@@ -19,6 +19,34 @@ namespace Web_food.Models
         public Product()
         {
         }
+        public Product(int id,int type, int price, string name, string img, string content)
+        {
+            this.Id = id;
+            this.Type = type;
+            this.Price = price;
+            this.Name = name;
+            this.Images = img;
+            this.content = content;
+        }
+        public Product(int id,  int price, string name, string img, string content, int quantity)
+        {
+            this.Id = id;
+            this.Price = price;
+            this.Name = name;
+            this.Images = img;
+            this.content = content;
+            this.Quantity = quantity;
+        }
+        public Product(int id,  int price, string name, string img, string content, int quantity, int type)
+        {
+            this.Id = id;
+            this.Price = price;
+            this.Name = name;
+            this.Images = img;
+            this.content = content;
+            this.Quantity = quantity;
+            this.Type = type;
+        }
         public Product(int id, int price, string name, string img, string content)
         {
             this.Id = id;

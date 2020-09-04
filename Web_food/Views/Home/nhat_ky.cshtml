@@ -11,7 +11,7 @@
                      
                 <div class="card" style="width: 17rem;">
                     <a href="@Url.Action("chi_tiet_sp", "Home", new { name = @p.Name })">
-                        <img src="~/Content/image/@p.Images" class="card-img" alt="..." style="height: 17rem">
+                        <img src="@p.Images" class="card-img" alt="..." style="height: 17rem">
                     </a>
                     <div class="card-body">
                         <h5 class="card-title">@p.Name</h5>

@@ -11,19 +11,19 @@
 <div class="col-md-8 col-md-offset-2 col-xs-12 col-sm-12 col-xs-offset-0 col-sm-offset-0">
     <form class="form-horizontal " ng-submit="register()" method="post">
         <h2><span>Thông tin tài khoản</span></h2>
+        <p style="color: red">@ViewBag.error</p>
         <div class="form-group">
             <label class="col-sm-3 control-label">Tài khoản<span class="warning">(*)</span></label>
             <div class="col-sm-9">
-                <script>alert('@ViewBag.error')</script>
-                @* <p style="color: red">@ViewBag.error</p> *@
+                @* <script>alert('@ViewBag.error')</script> *@
                 <input type="text" class="form-control" ng-model="Code" required="true" name="username"/>
             </div>
         </div>
+          <p style="color: red">@ViewBag.error</p>
         <div class="form-group">
             <label class="col-sm-3 control-label">Email<span class="warning">(*)</span></label>
             <div class="col-sm-9">
                 @* <script>alert('@ViewBag.error')</script> *@
-                @* <p style="color: red">@ViewBag.error</p> *@
                 <input type="email" class="form-control" ng-model="Email" required="true" name="email"/>
             </div>
         </div>
