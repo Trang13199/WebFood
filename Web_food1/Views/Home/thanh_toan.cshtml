@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 ﻿@using Web_food.Models
-=======
-@using Web_food.Models
->>>>>>> 06772271c26297355a6fcd0480462c7d4dbd0d8e
 @model List<Web_food.Models.CartItem>
 
 @{
@@ -32,13 +28,8 @@
                                     @Html.ActionLink("  Đăng nhập", "dang_nhap", "Home")
                                 </div><br>
                                 <label style="color: black">Mua hàng không cần tài khoản</label>
-<<<<<<< HEAD
                                 <div class="form-group"><input class="form-control" type="hidden" name="id" value="@DateTime.Now.ToString("ddmmyyyyhhmmss")"/></div>
                                 @* <div class="form-group"><input class="form-control" type="text" name="date"/></div> *@
-=======
-                                <div class="form-group"><input class="form-control" type="text" name="id" value="@DateTime.Now.ToString("ddmmyyyyhhmmss")"/></div>
-                                <div class="form-group"><input class="form-control" type="text" name="date"/></div>
->>>>>>> 06772271c26297355a6fcd0480462c7d4dbd0d8e
                                 <div class="form-group"><input class="form-control" placeholder="Họ & Tên" type="text" name="username" ng-model="$parent.CustomerName" value="@u.userName" required/></div>
                                 <div class="form-group"><input class="form-control" placeholder="Số điện thoại" type="text" name="phone" ng-model="$parent.CustomerPhone" value="@u.phone" required/></div>
                                 <div class="form-group"><input class="form-control" placeholder="Email" name="email" type="email" ng-model="$parent.CustomerEmail" value="@u.email" required/></div>
@@ -69,11 +60,7 @@
                                             <label>@Model.Sum(m => m.SoLuong)</label>
                                         </div>
                                         @* <a class="btn btn-primary" href="@Url.Action("dat_hang","Home")">Thanh toán</a> *@
-<<<<<<< HEAD
                                         <button type="submit" class=" btn btn-primary">Thanh toán</button>
-=======
-                                        <button type="submit" class="btn-primary">Thanh toán</button>
->>>>>>> 06772271c26297355a6fcd0480462c7d4dbd0d8e
                                     </div>
                                 </div>
                         </div>
@@ -95,11 +82,7 @@
              @foreach (CartItem item in Model)
              {
                  <tr>
-<<<<<<< HEAD
                      <td class="text-center"><img src="@item.Hinh" width="70" height="60"/> </td>
-=======
-                     <td class="text-center"><img src="~/Content/image/@item.Hinh" width="70" height="60"/> </td>
->>>>>>> 06772271c26297355a6fcd0480462c7d4dbd0d8e
                      <td>@item.TenSanPham </td>
                      <td>
                          @item.SoLuong

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ﻿using System;
 using System.Collections.Generic;
 
@@ -41,16 +40,4 @@ namespace Web_food.Models
             }
         }
     }
-=======
-﻿namespace Web_food.Models
-{
-    public class Order_detail
-    {
-        public string image { get; set; } 
-        public string name { get; set; }
-        public int quantity { get; set; }
-        public double price { get; set; }
-        public string id_order { get; set; }
-    }
->>>>>>> 06772271c26297355a6fcd0480462c7d4dbd0d8e
 }

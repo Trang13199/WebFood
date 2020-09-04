@@ -1,4 +1,4 @@
-@using PagedList.Mvc
+﻿@using PagedList.Mvc
 @model PagedList.IPagedList<Product>
 @using Web_food.Models
 @{
@@ -27,21 +27,22 @@
     <div class="container marketing col-lg-9">
         <div class="row">
             @{
-                foreach (var p in Model)
+                foreach (var p in list)
                 {
                      
                     <div class="card" style="width: 17rem;">
-                        <a href="@Url.Action("chi_tiet_sp", "Home", new {ids = @p.Id})">
+                        <a href="@Url.Action("chi_tiet_sp", "Home", new { ids = @p.Id })">
                             <img src="@p.Images" class="card-img" alt="..." style="height: 17rem">
                         </a>
                         <div class="card-body">
                             <h5 class="card-title">@p.Name</h5>
-                            <p class="card-text">@p.Price.ToString("#,##0").Replace(',', '.') VNĐ</p>
+                            <p class="card-text">@p.Price.ToString("#,##0").Replace(',', '.') VNĐ </p>
                             <div class="cart">
                                 <a href="@Url.Action("gio_hang", "Home")"> <button>Mua hàng</button></a>
-                                <a href="@Url.Action("ThemVaoGio", "Home", new{SanPhamID = @p.Id})">
+                                <a href="@Url.Action("ThemVaoGio", "Home", new {SanPhamID = @p.Id})">
                                     <span style="font-size: 20px; color: #ff363f; margin-left: 5px">
-                                        <i class="fas fa-shopping-basket"></i></span></a>
+                                        <i class="fas fa-shopping-basket"></i></span>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -49,13 +50,7 @@
             }
         </div>
         <br />
-        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
-        @Html.PagedListPager(Model, page => Url.Action("san_pham", new {page}),
-            PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions()
-            {HttpMethod = "GET", UpdateTargetId = "id"}))
-           </div>
-               </div>
-           <hr class="featurette-divider">
-      
-    
+    </div>
+</div>
+<hr class="featurette-divider">
 

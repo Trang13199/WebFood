@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 ﻿namespace Web_food.Models
-=======
-namespace Web_food.Models
->>>>>>> 06772271c26297355a6fcd0480462c7d4dbd0d8e
 {
     public class ProductType
     {
