@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 ﻿﻿using System;
  using System.Collections.Generic;
-=======
-﻿using System.Collections.Generic;
->>>>>>> 06772271c26297355a6fcd0480462c7d4dbd0d8e
  using System.Data;
  using System.Data.SqlClient;
  using MySql.Data.MySqlClient;
@@ -181,10 +177,6 @@ namespace Web_food.DAO
                     list.Add(pro);
                 }
             }
-<<<<<<< HEAD
-=======
-
->>>>>>> 06772271c26297355a6fcd0480462c7d4dbd0d8e
             return list;
         }
 
@@ -217,10 +209,6 @@ namespace Web_food.DAO
             string sql = "insert into product_type(name) values (@name)";
             MySqlCommand command = new MySqlCommand(sql, connection);
             command.Parameters.AddWithValue("@name", productType.Name);
-<<<<<<< HEAD
-=======
-            // command.Parameters.AddWithValue("@active", productType.Active);
->>>>>>> 06772271c26297355a6fcd0480462c7d4dbd0d8e
             return command.ExecuteNonQuery() > 0;
         }
 
@@ -247,7 +235,6 @@ namespace Web_food.DAO
             command.Parameters.AddWithValue("@id", id);
             return command.ExecuteNonQuery() > 0;
         }
-<<<<<<< HEAD
         
         public static List<Product> Product_type(int? type)
         {
@@ -278,7 +265,5 @@ namespace Web_food.DAO
             }
             return products;
         }
-=======
->>>>>>> 06772271c26297355a6fcd0480462c7d4dbd0d8e
     }
 }

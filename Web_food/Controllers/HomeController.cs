@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web.Mvc;
+using MySql.Data.MySqlClient;
 using PagedList;
 using Web_food.DAO;
 using Web_food.EditModel;
@@ -92,11 +93,7 @@ namespace Web_food.Controllers
         
         public ActionResult san_pham1(int? type, int pageindex = 1, int pagesize = 2)
         {
-<<<<<<< HEAD
             List<Product> list = ListProduct.Product_type(type);
-=======
-            List<Product> list = ListProduct.Product(type);
->>>>>>> 06772271c26297355a6fcd0480462c7d4dbd0d8e
             ViewBag.list = list;
             
             List<ProductType> types = ListProduct.getType();
@@ -108,7 +105,6 @@ namespace Web_food.Controllers
             }
             return View();
         }
-<<<<<<< HEAD
         public ActionResult chi_tiet_sp(string ids)
         {
             List<Product> list = ProductDetail.chi_tiet_sp(ids);
@@ -132,13 +128,6 @@ namespace Web_food.Controllers
         {
             List<Product> list_spcungloai = ProductDetail.sp_cungloai(type);
             return PartialView(list_spcungloai);
-=======
-        public ActionResult chi_tiet_sp(string name)
-        {
-            List<Product> list = ProductDetail.showProduct(name);
-            ViewBag.ct = list;
-            return View();
->>>>>>> 06772271c26297355a6fcd0480462c7d4dbd0d8e
         }
 
         public PartialViewResult sp_yeuThich(string user)
@@ -161,7 +150,6 @@ namespace Web_food.Controllers
 
         [HttpPost]
         public ActionResult thanh_toan(FormCollection fc)
-<<<<<<< HEAD
         {
             Order order = new Order();
             order.id = DateTime.Now.ToString("ddmmyyyyhhmmss");
@@ -199,55 +187,13 @@ namespace Web_food.Controllers
             
             DataSet ds = DAOOrder.show_order_byID(order_id);
             ViewBag.show = ds.Tables[0];
-=======
-        {
-            Order order = new Order();
-            order.username = fc["username"];
-            order.phone = fc["phone"];
-            order.email = fc["email"];
-            order.address = fc["address"];
-            order.date = DateTime.Now;
-            order.total = fc["total"];
-            order.sum = fc["sum"];
-            DAOOrder dao = new DAOOrder();
-            string id =  dao.Add_order(order);
-            
-            List<CartItem> giohang = Session["giohang"] as List<CartItem>;
-            foreach (var item in giohang)
-            {
-                Order_detail orderDetail = new Order_detail();
-                orderDetail.image = item.Hinh;
-                orderDetail.name = item.TenSanPham;
-                orderDetail.quantity = item.SoLuong;
-                orderDetail.price = item.DonGia;
-                orderDetail.id_order = id;
-                dao.order_detail(orderDetail);
-            }
-            
-            TempData["msg"] = "INSERT SUCCESS";
-            Session.Remove("giohang");
-            return RedirectToAction("dat_hang","Home");
-        }
-        public ActionResult dat_hang(int? id)
-        {
-            // List<Order> list = DAOOrder.show_order(id);
->>>>>>> 06772271c26297355a6fcd0480462c7d4dbd0d8e
             return View();
-            // DAOOrder dao = new DAOOrder();
-            // DataSet ds = dao.show();
-            // ViewBag.show = ds.Tables[0];
-            // return View();   
-            // List<CartItem> giohang = Session["giohang"] as List<CartItem>;
-            // return View(giohang);
         }
-<<<<<<< HEAD
 
         public ActionResult chi_tiet_don_hang(string id_order)
         {
             return View();
         }
-=======
->>>>>>> 06772271c26297355a6fcd0480462c7d4dbd0d8e
         public ActionResult gioi_thieu()
         {
             return View();
@@ -267,7 +213,6 @@ namespace Web_food.Controllers
         {
             return View();
         }
-<<<<<<< HEAD
         public ActionResult TKKH(string user)
         {
             DAOOrder dao = new DAOOrder();
@@ -276,9 +221,6 @@ namespace Web_food.Controllers
             return View();
         }
         public ActionResult Dơn_hang(string user)
-=======
-        public ActionResult TKKH()
->>>>>>> 06772271c26297355a6fcd0480462c7d4dbd0d8e
         {
             DAOOrder dao = new DAOOrder();
             DataSet ds = dao.show_order_byuser(user);
@@ -353,22 +295,15 @@ namespace Web_food.Controllers
             }
             return RedirectToAction("gio_hang");
         }
-<<<<<<< HEAD
-=======
-
->>>>>>> 06772271c26297355a6fcd0480462c7d4dbd0d8e
         public PartialViewResult hearder_cart()
         {
             List<CartItem> giohang = Session["giohang"] as List<CartItem>;
             
             return PartialView(giohang);
         }
-<<<<<<< HEAD
         public PartialViewResult errorpage()
         {
             return PartialView();
         }
-=======
->>>>>>> 06772271c26297355a6fcd0480462c7d4dbd0d8e
     }
 }

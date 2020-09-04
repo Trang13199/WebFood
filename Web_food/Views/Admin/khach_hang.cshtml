@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 ﻿@using Web_food.Models
-=======
-@using Web_food.Models
->>>>>>> 06772271c26297355a6fcd0480462c7d4dbd0d8e
 ﻿@model dynamic
 
 @{
@@ -50,7 +46,6 @@
                                         @user.address
                                     </td>
                                     <td>@user.gender</td>
-<<<<<<< HEAD
                                     <td>@{
                                             if (user.level == 0)
                                             {
@@ -61,19 +56,12 @@
                                                 <p>User</p>
                                             }
                                         }</td>
-=======
-                                    <td>@user.level</td>
->>>>>>> 06772271c26297355a6fcd0480462c7d4dbd0d8e
                                     <td>
                                         <a href="@Url.Action("chinh_sua_kh", "Admin", new {ID = @user.id})">
                                             <button data-toggle="tooltip" title="Edit" class="pd-setting-ed">
                                                 <i
                                                     class="fa fa-pencil-square-o" aria-hidden="true">
-<<<<<<< HEAD
                                                 </i>
-=======
-                                                </i> Edit
->>>>>>> 06772271c26297355a6fcd0480462c7d4dbd0d8e
                                             </button>
                                         </a>
                                         <a onclick="return confirm('Bạn có chắc muốn xóa')"
