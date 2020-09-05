@@ -10,6 +10,10 @@
         {
             
         }
+        public ProductType( string name)
+        {
+            this.Name = name;
+        }
         public ProductType(int id, string name)
         {
             this.Id = id;

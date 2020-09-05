@@ -109,18 +109,21 @@ namespace Web_food.Controllers
         {
             List<Product> list = ProductDetail.chi_tiet_sp(ids);
             ViewBag.ct = list;
+            List<comment> list_comment =  ProductDetail.show_comment(ids);
+            ViewBag.comment = list_comment;
             return View();
         }
         [HttpPost]
-        public ActionResult chi_tiet_sp(FormCollection fc)
+        public ActionResult chi_tiet_sp(FormCollection fc, string ids)
         {
             comment c = new comment();
             c.comment_text = fc["comment_text"];
-            c.id_product = Convert.ToInt32(fc["id_product"]);
+            c.id_product = Convert.ToInt32(ids);
             c.id_user = Convert.ToInt32(fc["id_user"]);
             c.username = fc["username"];
             ProductDetail productDetail = new ProductDetail();
-            productDetail.danh_gia(c);
+            productDetail.danh_gia(c, ids);
+
             return RedirectToAction("chi_tiet_sp", "Home",new{ids = c.id_product});
         }
         

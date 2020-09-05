@@ -82,25 +82,25 @@ namespace Web_food.DAO
             return ds;
         }
         ///////
-        public void danh_gia(comment c)
+        public void danh_gia(comment c,string ids)
         {
             DBConnection dbConnection = new DBConnection();
             MySqlConnection connection = dbConnection.ConnectionSql();
             connection.Open();
 
-            string sql_danhgia = "insert into comment value (@comment_text, @id_user, @id_product, @username)";
+            string sql_danhgia = "insert into comment value (null,@comment_text, @id_user, @id_product, @username)";
             
             MySqlCommand command = new MySqlCommand(sql_danhgia);
             command.Connection = connection;
             command.Parameters.AddWithValue("@comment_text", c.comment_text);
             command.Parameters.AddWithValue("@id_user", c.id_user);
-            command.Parameters.AddWithValue("@id_product", c.id_product);
+            command.Parameters.AddWithValue("@id_product", ids);
             command.Parameters.AddWithValue("@username", c.username);
 
             command.ExecuteNonQuery();
         }
 
-        public static List<comment> show_comment(int? id_sp)
+        public static List<comment> show_comment(string ids)
         {
             DBConnection dbConnection = new DBConnection();
             MySqlConnection connection = dbConnection.ConnectionSql();
@@ -108,8 +108,8 @@ namespace Web_food.DAO
 
             string sql_danhgia = "SELECT username, comment_text FROM comment WHERE id_product = @id_product";
             
-            MySqlCommand command = new MySqlCommand(sql_danhgia);
-            command.Parameters.AddWithValue("@id_product", id_sp);
+            MySqlCommand command = new MySqlCommand(sql_danhgia,connection);
+            command.Parameters.AddWithValue("@id_product", ids);
             List<comment> list = new List<comment>();
             MySqlDataReader reader = command.ExecuteReader();
             if (reader.HasRows)

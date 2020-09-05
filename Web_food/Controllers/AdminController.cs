@@ -153,9 +153,9 @@ namespace Web_food.Controllers
         [HttpPost]
         public ActionResult them_loai_sp(FormCollection formCollection)
         {
-            int id = Convert.ToInt32(formCollection["id"]);
+            // int id = Convert.ToInt32(formCollection["id"]);
             string name = formCollection["name"];
-            ProductType productType = new ProductType(id, name);
+            ProductType productType = new ProductType( name);
             if (DAOProduct.addProductType(productType))
             {
                 new DaoLog().INFO("success", "them_loai_sp");

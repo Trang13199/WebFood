@@ -144,38 +144,57 @@
                         </div>
                         <div class="group2">
                             
-                                <div class="col-md-12 col-md-offset-2 col-xs-12 col-sm-12 col-xs-offset-0 col-sm-offset-0">
-                                    <form class="form-horizontal " ng-submit="register()" style="color: black">
-                                        <div class="form-group">
-                                            <label class="col-sm-3 control-label">Ý kiến đánh giá của bạn</label>
-                                            <div class="col-sm-9">
-                                                <textarea type="text" name="comment_text" class="form-control" ng-model="Code" required="true" style="height: 150px;" ></textarea>
-                                            </div>
+                            <div class="col-md-12 col-md-offset-2 col-xs-12 col-sm-12 col-xs-offset-0 col-sm-offset-0">
+                                <form class="form-horizontal " method="post" ng-submit="register()" style="color: black">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Ý kiến đánh giá của bạn</label>
+                                        <div class="col-sm-9">
+                                            <textarea type="text" name="comment_text" class="form-control" ng-model="Code" required="true" style="height: 150px;" ></textarea>
                                         </div>
-                                        @if (u != null)
-                                        {
-                                            <input type="hidden" class="form-control" ng-model="Email" name="id_username" value="@u.id"/> 
-                                            <input type="hidden" class="form-control" ng-model="Email" name="username" value="@u.userName"/> 
-                                        }
-                                        <br/>
-                                        <div class="form-group">
-                                            <div class="col-sm-offset-4 col-sm-8">
-                                                <button type="submit" class="btn btn-primary">Đánh giá</button>
-                                            </div>
+                                    </div>
+                                    @if (u != null)
+                                    {
+                                        <input type="hidden" class="form-control" ng-model="Email" name="id_username" value="@u.id"/>
+                                        <input type="hidden" class="form-control" ng-model="Email" name="username" value="@u.userName"/>
+                                    }
+                                    <br/>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-4 col-sm-8">
+                                            <button type="submit" class="btn btn-primary">Gửi bình luận</button>
                                         </div>
-                                    </form>
-                                </div>
+                                    </div>
+                                </form>
+                            </div>
                             
                         </div>
-@*                          @foreach (comment c in comments) *@
-@*                          { *@
-@*                              <div class="col-xl-6 left"> *@
-@*                                  <p>@c.username</p> *@
-@*                              </div> *@
-@*                              <div class="col-xl-6 right"> *@
-@*                                  <p>@c.comment_text</p> *@
-@*                              </div> *@
-@*                          } *@
+                        <div class="product-status-wrap">
+                            <h4>Bình luận</h4>
+                            <table class="table table-bordered">
+                                <tbody >
+                                <tr>
+                                    <th>Khách hàng</th>
+                                    <th>Bình luận</th>
+
+                                </tr>
+                                @foreach (comment c in comments)
+                                {
+
+                                    <tr>
+                                        <td>@c.username</td>
+                                        <td>@c.comment_text</td>
+                                    </tr>
+
+                            @*                               <div class="col-xl-6 left"> *@
+                            @*                                   <p>@c.username</p> *@
+                            @*                               </div> *@
+                            @*                               <div class="col-xl-6 right"> *@
+                            @*                                   <p>@c.comment_text</p> *@
+                            @*                               </div> *@
+                                }
+                                </tbody>
+                            </table>
+                        </div>
+                     
                     </div>
                 </div>
             </div>

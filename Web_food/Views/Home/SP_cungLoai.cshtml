@@ -6,7 +6,7 @@
         @foreach (var p in Model)
         {
             <div class="card" style="width: 17rem;">
-                <a href="@Url.Action("chi_tiet_sp", "Home", new { name = @p.Name })">
+                <a href="@Url.Action("chi_tiet_sp", "Home", new {ids = @p.Id})">
                     <img src="@p.Images" class="card-img" alt="..." style="height: 17rem">
                 </a>
                 <div class="card-body">

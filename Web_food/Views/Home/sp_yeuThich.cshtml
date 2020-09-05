@@ -6,7 +6,7 @@
         @foreach (System.Data.DataRow p in ViewBag.sp_yeuthich.Rows)
         {
             <div class="card" style="width: 17rem;">
-                <a href="@Url.Action("chi_tiet_sp", "Home", new { name = @p["name"] })">
+                <a href="@Url.Action("chi_tiet_sp", "Home", new {ids = @p["product_id"]})">
                     <img src="@p["image"]" class="card-img" alt="..." style="height: 17rem">
                 </a>
                 <div class="card-body">

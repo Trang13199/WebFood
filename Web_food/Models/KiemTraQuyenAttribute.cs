@@ -53,6 +53,7 @@ namespace Web_food.Models
             view.Add(new Role(currentController, "ql_loai_sp"));
             view.Add(new Role(currentController, "QuanLyDonHang"));
             view.Add(new Role(currentController, "chi_tiet_don_hang"));
+            view.Add(new Role(currentController, "loai_sp"));
             return view;
         }
     }

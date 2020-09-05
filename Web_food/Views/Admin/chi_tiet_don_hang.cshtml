@@ -32,7 +32,7 @@
         @foreach (System.Data.DataRow item in ViewBag.show.Rows)
         {
             <tr>
-                <td class="text-center"><img alt="" src="~/Content/image/@item["image"]" width="70" height="60"/> </td>
+                <td class="text-center"><img alt="" src="@item["image"]" width="70" height="60"/> </td>
                 <td>@item["name"] </td>
                 <td>
                     @item["quantity"]
